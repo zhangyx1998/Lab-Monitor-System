@@ -1,4 +1,4 @@
-#ALMS _By Yuxuan Zhang
+# ALMS _By Yuxuan Zhang
 
 >This project, generally speaking, is intended for monitoring the experiment environment (specifically:temperature and hunidity in a closed environment), and make the environment data available though internet.
 
@@ -8,13 +8,13 @@
 
 >Finally, to make everything run automatically, insert the path of launch.sh to the crontab in Linux system using following commands:
 
->>	crontab -e #You will see the vi interface after pressing "Enter"
+>	crontab -e #You will see the vi interface after pressing "Enter"
 
->>	press key "i"
+>	press key "i"
 
->>	insert:"* * * * * [path]/launch.sh"
+>	insert:"* * * * * [path]/launch.sh"
 
->>	press "esc"
+>	press "esc"
 
 >>	put in ":wq", "Enter"
 
@@ -24,83 +24,81 @@ Notice: all source codes should be put into the same folder if you want to launc
 
 ------------------------------------
 
-##V1.01
+## V1.01
 
-1.Bug fix: Timestamp string interpuration error. E.g. timestamp starting with "08" was mistakenly interpurated as Octal.
-
-2.Log system is now made online.
-
+>+ 1.Bug fix.
+>>	Timestamp string interpuration error. E.g. timestamp starting with "08" was mistakenly interpurated as Octal.
+>+ 2.Log system is now made online.
 	Desc:
 		Table Name: "Log"
 		Cols: MSG_Source | MSG_Type | Priority | ERR_ID  | MSG_Index | Stamp   | Date_Time
 		Type: String     | String   | Integer  | Integer | String    | integer | Auto_Update_DateTime
 		Description:
 			MSG_Source could be:
-				    Default "Unknown"
-		    			ARDUINO_Board
-						ARDUINO_IO
-						Control_Service
-						Web_Server Browser
-						Version
-						E.T.C.
-					MSG_Type includes:
-					Default "Unknown"
-						Current_Version
-						Version_Update
-						Operation_Log
-						Error_Log
-						Env_Warning
-						Msg
-					Priority:
-					0 -- Commom messages
-						1 -- Automatic interpuration needed (This problem might can be solved by the system itself)
-						2 -- Mannual interpuration needed (This problem cannot be automatically handeled)
-						3 -- IMMEDIATE Mannual interpuation needed (E.g. Tempurature is too high/Serial not responding)
-					ERR_ID:
-					Default "0"
-					    Each known Error have an unique ID. See the chart below for detailed list. The ID is for the control service to try to take corresponding actions to correct it.
-		    		    If the message is not an error, its ID will be "0"
-		    		Stamp:
-					Default "0"
-						If the message contains an error or a command from web server that needs to be taken care of, the value will be "1" until it is taken care of by control service or manually. (The control service can therefore search for logs whose stamp is 1, and take action on it, and finally change it back to 0)
-					Date_Time:
-					Auto_Update, intended for manual check.
-					mysql> desc Log;
-					+------------+--------------+------+-----+-------------------+-----------------------------+
-					| Field      | Type         | Null | Key | Default           | Extra                       |
-					+------------+--------------+------+-----+-------------------+-----------------------------+
-					| MSG_Source | varchar(20)  | NO   |     | Unknown           |                             |
-					| MSG_Type   | varchar(20)  | NO   |     | Unknown           |                             |
-					| Priority   | int(11)      | NO   |     | 0                 |                             |
-					| ERR_ID     | int(11)      | NO   |     | 0                 |                             |
-					| MSG_Index  | varchar(200) | YES  |     | NULL              |                             |
-					| Stamp      | int(11)      | NO   |     | 0                 |                             |
-					| Date_Time  | timestamp    | NO   | PRI | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
-					+------------+--------------+------+-----+-------------------+-----------------------------+
-					timestamp
-					source L/R
-					path
-
-3.Version Control is now available:
-
-	By introducing this feature, we do not need to delete the old version everytime we upgrade it. Source code of all versions are stored in the folder, and if we want to roll back, we need only to change the key hardcoded in config.sh. Upon the first running of a new version, a log will be automatically inserted to the log table, so we can keep track on version changes.
-	List_of_errors:
-	1 Unspecified Errors
-
-------------------------------------
-
-V2.00
-
-The WebPage is now ready. The data will be automatically refreshed every 1 minute. And the demo website is now online, available at "yuxuanzhang.net". We use ssh to mirror the contents of the website so that the server syncs everything on the target folder of the lab computer.
+				Default "Unknown"
+				ARDUINO_Board
+				ARDUINO_IO
+				Control_Service
+				Web_Server Browser
+				Version
+				E.T.C.
+			MSG_Type includes:
+				Default "Unknown"
+				Current_Version
+				Version_Update
+				Operation_Log
+				Error_Log
+				Env_Warning
+				Msg
+			Priority:
+				0 -- Commom messages
+				1 -- Automatic interpuration needed (This problem might can be solved by the system itself)
+				2 -- Mannual interpuration needed (This problem cannot be automatically handeled)
+				3 -- IMMEDIATE Mannual interpuation needed (E.g. Tempurature is too high/Serial not responding)
+			ERR_ID:
+				Default "0"
+				Each known Error have an unique ID. See the chart below for detailed list. The ID is for the control service to try to take corresponding actions to correct it.
+				If the message is not an error, its ID will be "0"
+			Stamp:
+				Default "0"
+				If the message contains an error or a command from web server that needs to be taken care of, the value will be "1" until it is taken care of by control service or manually. (The control service can therefore search for logs whose stamp is 1, and take action on it, and finally change it back to 0)
+				Date_Time:
+				Auto_Update, intended for manual check.
+			mysql> desc Log;
+				+------------+--------------+------+-----+-------------------+-----------------------------+
+				| Field      | Type         | Null | Key | Default           | Extra                       |
+				+------------+--------------+------+-----+-------------------+-----------------------------+
+				| MSG_Source | varchar(20)  | NO   |     | Unknown           |                             |
+				| MSG_Type   | varchar(20)  | NO   |     | Unknown           |                             |
+				| Priority   | int(11)      | NO   |     | 0                 |                             |
+				| ERR_ID     | int(11)      | NO   |     | 0                 |                             |
+				| MSG_Index  | varchar(200) | YES  |     | NULL              |                             |
+				| Stamp      | int(11)      | NO   |     | 0                 |                             |
+				| Date_Time  | timestamp    | NO   | PRI | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
+				+------------+--------------+------+-----+-------------------+-----------------------------+
+			To_Be_ADDED:
+				timestamp
+				source L/R
+				path
+>+ 3.Version Control is now available:
+>>	By introducing this feature, we do not need to delete the old version everytime we upgrade it. Source code of all versions are stored in the folder, and if we want to roll back, we need only to change the key hardcoded in config.sh. Upon the first running of a new version, a log will be automatically inserted to the log table, so we can keep track on version changes.
+>>	List_of_errors:
+>>	1 Unspecified Errors
 
 ------------------------------------
 
-V2.01
+## V2.00
 
-Version_Control(VER) is separated from Arduino_IO(AIO). Version_Control Service will automatically add log to LOG table should any upgrade is detected.
+>The WebPage is now ready. The data will be automatically refreshed every 1 minute. And the demo website is now online, available at "yuxuanzhang.net". We use ssh to mirror the contents of the website so that the server syncs everything on the target folder of the lab computer.
 
 ------------------------------------
 
-V3.00
+## V2.01
 
-All raw html files are renamed to .html.zsc.
+>Version_Control(VER) is separated from Arduino_IO(AIO). Version_Control Service will automatically add log to LOG table should any upgrade is detected.
+
+------------------------------------
+
+## V3.00
+
+>All raw html files are renamed to .html.zsc.
