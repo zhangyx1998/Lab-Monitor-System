@@ -1,13 +1,13 @@
 #!/bin/bash
 #Author:Yuxuan Zhang
 
-Version="V1.02"
+Version="V2.00"
 
 #-----------------------------------------------------
 #------------------Global Arguments-------------------
 #-----------------------------------------------------
-AIO_name="Arduino_IO_${Version}.py"
-WPG_name="WebPage_Generator_${Version}.py"
+AIO_name="Arduino_IO.py"
+WPG_name="WebPage_Generator.py"
 AIO_path="Source/Arduino_IO/${AIO_name}"
 WPG_path="Source/WebPage_Generator/${WPG_name}"
 CTL_path="Not_Specified"
