@@ -107,3 +107,8 @@ All raw html files are renamed to .html.zsc.
 
 #### V3.01
 
+Minor bug fix and performance improvement.
+
+***
+
+#### V
