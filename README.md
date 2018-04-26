@@ -1,5 +1,7 @@
 # ALMS _By Yuxuan Zhang
 
+## Project Description
+
 >This project, generally speaking, is intended for monitoring the experiment environment (specifically:temperature and hunidity in a closed environment), and make the environment data available though internet.
 >
 >We use an Arduino board with one (or more) HIH-6130 sensor attached on it, to upload data to a linux PC. The arduino source code Arduino_IO_board.ino and the python source code Arduino_IO_Build.py are available in this folder.
@@ -20,7 +22,7 @@ Notice: all source codes should be put into the same folder if you want to launc
 
 ------------------------------------
 
-## V1.01
+#### V1.01
 
 >+ Bug fix.
 >>	Timestamp string interpuration error. E.g. timestamp starting with "08" was mistakenly interpurated as Octal.
@@ -84,18 +86,18 @@ Notice: all source codes should be put into the same folder if you want to launc
 
 ------------------------------------
 
-## V2.00
+#### V2.00
 
 >The WebPage is now ready. The data will be automatically refreshed every 1 minute. And the demo website is now online, available at "yuxuanzhang.net". We use ssh to mirror the contents of the website so that the server syncs everything on the target folder of the lab computer.
 
 ------------------------------------
 
-## V2.01
+#### V2.01
 
 >Version_Control(VER) is separated from Arduino_IO(AIO). Version_Control Service will automatically add log to LOG table should any upgrade is detected.
 
 ------------------------------------
 
-## V3.00
+#### V3.00
 
 >All raw html files are renamed to .html.zsc.
