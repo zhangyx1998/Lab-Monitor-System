@@ -8,11 +8,11 @@
 >
 >Finally, to make everything run automatically, insert the path of launch.sh to the crontab in Linux system using following commands:
 >```
->	crontab -e #You will see the vi interface after pressing "Enter"
->	press key "i"
->	insert:"* * * * * [path]/launch.sh"
->	press "esc"
->	put in ":wq", "Enter"
+>crontab -e #You will see the vi interface after pressing "Enter"
+>press key "i"
+>insert:"* * * * * [path]/launch.sh"
+>press "esc"
+>put in ":wq", "Enter"
 >```
 >All Done!
 
