@@ -1,2 +1,2 @@
-V2.00
-The WebPage is now ready. The data will be automatically refreshed every 1 minute. And the demo website is now online, available at "yuxuanzhang.net". We use ssh to mirror the contents of the website so that the server syncs everything on the target folder of the lab computer.
+V2.01
+Version_Control(VER) is separated from Arduino_IO(AIO). Version_Control Service will automatically add log to LOG table should any upgrade is detected.

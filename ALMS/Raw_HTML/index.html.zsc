@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="refresh" content="300">
+		<title>Env Monitor</title> 
+		<style>
+			body
+			{
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-khtml-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+			input::-webkit-outer-spin-button,  
+			input::-webkit-inner-spin-button{  
+				-webkit-appearance: none !important;  
+				margin: 0;  
+			} 
+
+			.Float_TG
+			{
+				position: fixed;
+				bottom: 10px;
+				right: 10px;
+		        height: 24px;
+		        width: 200px;  
+		        color: #FFFFFF;
+		        background: rgba(0,0,0,0.6);：
+		        border-width: 10px 5px 10px 5px;  
+		        border-style: solid;
+		        border-radius: 10px; 
+		        border-color: rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0);
+				overflow: ellipsis;
+		    }  
+			      
+		    .Float_TG p
+		    {  
+		        margin: 0px auto;  
+		        padding: 0px;  
+		        text-align: center;  
+		        vertical-align: middle;
+		        font-size: 12px;
+		        line-height: 22px;
+		        letter-spacing:0px;  
+		    }  
+
+			.uni_table{
+				border-style: none;
+			}
+			.text_box{
+				text-align: center;
+				color: #fff;
+				border: none;
+				text-align: center; 
+				overflow: hidden;
+				background-color: #FFFFFF;
+				color: #000000
+			}
+			.text_box:focus{
+				font-style: italic;
+				outline: none;
+			 }
+
+			.text_box.L{
+				font-weight: bold;
+				font-size: 12px;
+			}
+			.text_box.M{
+				font-weight: normal;
+				font-size: 12px;
+			}
+			.text_box.S{
+				font-weight: thin;
+				font-size: 6px;
+			}
+
+			.button{
+				line-height: 12px;
+				text-align: center;
+				font-weight: bold;
+				color: #fff;
+				border-radius: 5px;
+				margin: 0px 0px 0px 0px;
+				position: relative;
+				align-self: center;
+				overflow: hidden;
+				z-index: 0;
+			}
+			.button:focus{
+				outline: none;
+			 }
+
+			.button:nth-child(6n){
+				margin-right: 0;
+			}
+			.button.gray{
+				color: #8c96a0;
+				text-shadow:1px 1px 1px #fff;
+				border:1px solid #dce1e6;
+				box-shadow: 0 1px 2px #fff inset,0 -1px 0 #a8abae inset;
+				background: -webkit-linear-gradient(top,#f2f3f7,#e4e8ec);
+				background: -moz-linear-gradient(top,#f2f3f7,#e4e8ec);
+				background: linear-gradient(top,#f2f3f7,#e4e8ec);
+			}
+			.gray:hover{
+				background: -webkit-linear-gradient(top,#fefefe,#ebeced);
+				background: -moz-linear-gradient(top,#f2f3f7,#ebeced);
+				background: linear-gradient(top,#f2f3f7,#ebeced);
+			}
+			.button.gray:focus{
+					 background-color: #00ff00;
+			}
+
+			.MTR_button{
+				line-height: 12px;
+				text-align: center;
+				font-weight: bold;
+				outline: none;
+				color: #fff;
+				margin: 0px 0px 0px 0px;
+				position: relative;
+				align-self: center;
+				overflow: hidden;
+				z-index: 0;
+			}
+			.MTR_button:nth-child(6n){
+				margin-right: 0;
+			}
+			.MTR_button.uni{
+				color: #FFFFFF;
+				border: none;
+				background-color: rgba(0,0,0,0);
+			}
+			.uni:hover{
+				background-color: rgba(255,255,255,0.5);
+			}
+
+			.uni:active{
+				background-color: rgba(0,0,0,0.5);
+			}
+
+			.uni:focus{
+      			outline: none;
+				background-color: rgba(0,0,0,0);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div style="margin: 0 auto; width:100%; position: fixed; top: 0px; left: 0px; text-align: center;height: 60px; background-color: rgb(10,100,170); color: #FFFFFF; z-index:1;">
+			<font face="Avenir">
+				<table width="100%" border="0" align="center" rules=none cellspacing=0 cellpadding=0>
+					<tr>
+						<td colspan="1" align="right" valign="center" width="8%">
+						</td>
+						<td colspan="1" align="left" valign="center" width="54%" height="60px" style="overflow: hidden;">
+							<font size="5%" >ATLAS Lab Environment Monitor System</font>
+						</td>
+						<td colspan="1" align="right" valign="center" height="60px" style="line-height:20px;overflow: hidden;">
+							<font style="color: #DDDDDD" size="2%">
+								General Status: #*General_Status*#<br>
+								LBL pixelKr project team at Bekeley
+							</font>
+						</td>
+						<td colspan="1" align="right" valign="center" width="8%">
+						</td>
+					</tr>
+				</table>
+			</font>
+		</div>
+
+		<div class="Float_TG" id="Flaot_TG" onclick="(function(){/*getElementById('Flaot_TG').style.display='none';*/location.reload(true);})()" style="z-index: 4">  
+    		<p><font face="Avenir" style="vertical-align: middle;">Last Update #*CURRENT_TIMESTAMP*#</font></p>
+		</div>  
+
+		<div style="position: relative; height: 100px; display: block;" align="center">
+		</div>
+
+		<table id="TH_Table" width="85%" border="0" align="center" rules=none cellspacing=0 >
+			<tr style="height:40px;background-color:#00AA88;">
+				<td colspan="1" style="font-size: 14px;" align="left" width="30%">
+					<font color="#FFFFFF" face="Avenir" size="3" style="font-weight: bold;">&nbsp;&nbsp;TEMPERATURE</font>
+				</td>
+				<td colspan="2" align="center" color="#666666"  width="40%">
+					<button onClick="Graph_1.MOVE_LEFT(24);"  type="MTR_button" class="MTR_button uni" align="center" style="width: 40px; height: 40px;">
+						<font face="Avenir" size="3" style="font-weight:normal; line-height: 36px"><<</font>
+					</button>
+					<button onClick="Graph_1.MOVE_LEFT(6);" type="MTR_button" class="MTR_button uni" align="center" style="width: 40px; height: 40px;">
+						<font face="Avenir" size="3" style="font-weight:normal; line-height: 36px"><</font>
+					</button>
+					<button onClick="Graph_1.RESET_ALL();" oncontextmenu="DBG_Switch();" type="MTR_button" class="MTR_button uni" align="center" style="width: 80px; height: 40px;">
+						<font face="Avenir" size="3" style="font-weight:normal; line-height: 36px">RESET</font>
+					</button>
+					<button onClick="Graph_1.MOVE_RIGHT(6);" type="MTR_button" class="MTR_button uni" align="center" style="width: 40px; height: 40px;">
+						<font face="Avenir" size="3" style="font-weight:normal; line-height: 36px">></font>
+					</button>
+					<button onClick="Graph_1.MOVE_RIGHT(24);" type="MTR_button" class="MTR_button uni" align="center" style="width: 40px; height: 40px;">
+						<font face="Avenir" size="3" style="font-weight:normal; line-height: 36px">>></font>
+					</button>
+				</td>
+				<td colspan="1" style="font-size: 14px"  align="right"  width="30%">
+					<font color="#FFFFFF" face="Avenir" size="3" style="font-weight: bold;">HUMIDITY&nbsp;&nbsp;</font>
+				</td>
+			</tr>
+
+				<tr style="height: 1px">
+					<td colspan="4" style="background-color:#FFFFFF;text-align:center;">
+				</tr>
+		</table>
+
+		<center>
+			<canvas id="TH_Chart" style="width:85%;">
+			</canvas>
+		</center>
+
+
+		<div style="position: relative; height: 5px; display: block;" align="center">
+		</div>
+
+		<table width="85%" border="0" align="center" style="border-style: none; table-layout:fixed" rules=none cellspacing=0>
+			<col style="width: 4% " />
+			<col style="width: 0.4% " />
+			<col style="width: 12% " />
+			<col style="width: 12% " />
+			<col />
+			<col style="width: 18% " />
+			<tbody>
+
+				<tr style="height:60px">
+					<td style="background-color: rgba(255,255,255,0);color: #000;text-align: left;" colspan="6">
+						<font face="Avenir" size="5" style="font-weight: normal;">System Log</font>
+					</td>
+				</tr>	
+
+				<tr style="height:40px">
+					<td style="background-color: #EE6600;color: #FFF;text-align: center;">
+						<font face="Avenir" size="3">ID</font>
+					</td>
+					<td style="background-color: #EE6600;color: #FFF;text-align: center;">
+					</td>
+					<td style="background-color: #EE6600;color: #FFF;text-align: center;">
+						<font face="Avenir" size="3">SOURCE</font>
+					</td>
+					<td style="background-color: #EE6600;color: #FFF;text-align: center;">
+						<font face="Avenir" size="3">TYPE</font>
+					</td>
+					<td style="background-color: #EE6600;color: #FFF;text-align: center;">
+						<font face="Avenir" size="3">CONTENT</font>
+					</td>
+					<td style="background-color: #EE6600;color: #FFF;text-align: center;">
+						<font face="Avenir" size="3">DATE</font>
+					</td>
+				</tr>
+
+				<tr style="height: 8px">
+					<td colspan="6" style="background-color:#FFFFFF;text-align:center;">
+				</tr>
+
+				<tr style="height: 6px">#*!LineMerge$1*#
+					<td style="line-height:28px;background-color:#AAAAAA;">
+					</td>
+					<td style="line-height:28px;background-color:#00AA88;">
+					</td>
+					<td style="line-height:28px;background-color:#DDDDDD;">
+					</td>
+					<td style="line-height:28px;background-color:#EEEEEE;">
+					</td>
+					<td style="line-height:28px;background-color:#FFDDAA;">
+					</td>
+					<td style="line-height:28px;background-color:#DDDDDD;">
+					</td>
+				</tr>
+				<tr>
+						<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+							<font face="Avenir" size="3">#*!intv$1*##*<table$Log>ID$00000000*#</font>
+						</td>
+						<td style="line-height:28px;background-color:#00AA88;text-align: center; color: #fff;">
+						</td>
+						<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+							<font face="Avenir" size="3">#*!intv$1*##*<table$Log>MSG_Source$00000000*#</font>
+						</td>
+						<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+							<font face="Avenir" size="3">#*!intv$1*##*<table$Log>MSG_Type$00000000*#</font>
+						</td>
+						<td style="line-height:28px;background-color:#FFDDAA;text-align: center; color: #000;">
+							<font face="Avenir" size="3">#*!intv$1*##*<table$Log>MSG_Index$00000000*#</font>
+						</td>
+						<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+							<font face="Avenir" size="3">#*!intv$1*##*<table$Log>Date_Time$00000000*#</font>
+						</td>
+				</tr>
+				<tr style="height: 6px">
+					<td style="line-height:28px;background-color:#AAAAAA;">
+					</td>
+					<td style="line-height:28px;background-color:#00AA88;">
+					</td>
+					<td style="line-height:28px;background-color:#DDDDDD;">
+					</td>
+					<td style="line-height:28px;background-color:#EEEEEE;">
+					</td>
+					<td style="line-height:28px;background-color:#FFDDAA;">
+					</td>
+					<td style="line-height:28px;background-color:#DDDDDD;">
+					</td>
+				</tr>
+				<tr style="height: 8px">
+					<td colspan="6" style="background-color:#FFFFFF;text-align:center;">
+				</tr>#*!LineMerge$0*#
+				<tr style="height: 3px">
+					<td colspan="6" style="background-color:#FF6600;text-align:center;">
+				</tr>		 
+				<tr style="height: 10px">
+					<td colspan="6" style="background-color:#FFFFFF;text-align:center;">
+				</tr>	
+				<tr style="height: 30px">
+					<td colspan="6" style="background-color:#FFFFFF;text-align:center;">
+						<a href="Version-Gallery.html" style="color: #666666;">
+							<font face="Avenir" size="3">Click HERE For Verison Gallery</font>
+						</a>
+				</tr>
+			</tbody>
+		</table>
+
+
+		<div style="margin: 0 auto; width:85%; position: relative; border:none; text-align: center;height: 80px; background-color: #FFFFFF; color: #666; z-index:1; padding: 0px; vertical-align: middle;">
+			<font face="Avenir">
+				<div style="margin: 0 auto; width: 100% ; height: 100% ; position: absolute; left: 0px; top: 0px; z-index: 2; text-align: center; vertical-align: middle;">
+					<font style="line-height: 16px; font-weight: normal; vertical-align: middle;" align="center" size="3"><br>By Yuxuan Zhang
+					</font>
+					<font style="line-height: 16px; font-weight: bold; vertical-align: middle;" align="center" size="1"><br>APRIL 2018</font>
+				</div>
+				<div style="margin: 0 auto; width: 100% ; height: 100% ; position: absolute; left: 0px; top: 0px; z-index: 3">
+					<a href="https://yuxuanzhang.myportfolio.com" style="display:block; width:100%; height:100%;"></a>
+				</div>
+			</font>
+		</div>
+
+		<!--######################################################################################-->
+		<script type="text/javascript" src="ZGraph.js?V2.01"></script>
+		<script type="text/javascript">	
+			var Graph_1=ZGraph.create("TH_Chart",Default_Style);
+		</script>
+	</body>
+</html>

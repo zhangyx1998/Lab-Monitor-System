@@ -1,0 +1,42 @@
+var TH_Graph_Data_PKG1= Object.create(GraphDataPKG);
+TH_Graph_Data_PKG1.upd_timestamp=#*TS$000000*#;
+TH_Graph_Data_PKG1.Data_L=
+	[
+		[
+			[
+				1,
+				#*!intv$60*##*TS$000000*#,
+		 	]
+		 	,
+		 	[
+		 		2,
+				#*!intv$60*##*ET_D$000000*#,
+		 	]
+		 	,
+		 	[
+		 		0,
+				#*!intv$60*##*EH_D$000000*#,
+		 	]
+		 ]
+	];
+TH_Graph_Data_PKG1.Data_R=
+	[
+		[
+			[
+				1,
+				#*!intv$60*##*TS$000000*#,
+		 	],
+
+		 	[
+		 		2,
+				#*!intv$60*##*EH_D$000000*#,
+		 	]
+		 ]
+	];
+Graph_1.update_data(TH_Graph_Data_PKG1);
+
+function data_upd()
+{
+	Graph_1.update_data(TH_Graph_Data_PKG1);
+}
+setTimeout(data_upd,50);

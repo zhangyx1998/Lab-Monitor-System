@@ -3,8 +3,6 @@
 ## Code By Yuxuan
 ## 
 
-version="V2.00"
-
 import sys
 import argparse
 import serial
@@ -79,54 +77,6 @@ def char_to_int(buff):
   if buff=='9': return 9
   return 0
 
-def version_control():
-  try:
-    if Debug:
-        Log_ADD(
-                "MSG",
-                'Version_Control >> Connecting to Database using '+L_Key.Host+' '+L_Key.ID+' '+L_Key.PW+' '+L_Key.DB,
-                "Arduino_IO")
-    db=MySQLdb.connect(L_Key.Host, L_Key.ID, L_Key.PW)
-    cursor = db.cursor()
-    SQL_CMD="use "+L_Key.DB
-    cursor.execute(SQL_CMD)
-    cursor.execute("SELECT MSG_Index From Log WHERE MSG_Source='VERSION' and MSG_Type='CURRENT'")
-    line = cursor.fetchone()
-    prev_version=line[0]
-    if (version!=prev_version):
-      if (prev_version.count('V')>0):
-        SQL_CMD="INSERT INTO "+log_table+" (MSG_Source, MSG_Type, MSG_Index) VALUES('VERSION', 'UPDATE','From "+prev_version+" To "+version+"');"
-        cursor.execute(SQL_CMD)
-        SQL_CMD="UPDATE "+log_table+" SET MSG_Index='"+version+"' WHERE MSG_Type='CURRENT'"
-        #print SQL_CMD
-        cursor.execute(SQL_CMD)
-      else:
-        SQL_CMD="INSERT INTO "+log_table+" (MSG_Source, MSG_Type, MSG_Index) VALUES('VERSION', 'UPDATE','First Launch: "+version+"');"
-        cursor.execute(SQL_CMD)
-        SQL_CMD="UPDATE "+log_table+" SET MSG_Index='"+version+"' WHERE MSG_Type='CURRENT'"
-        #print SQL_CMD
-        cursor.execute(SQL_CMD)
-    db.commit()
-    db.close()  
-
-    if Debug:
-      if (version!=prev_version):
-        Log_ADD(
-                  "MSG",
-                  'Version_Control >> Update Detected : ' + version + ' (Prev)' + prev_version,
-                  "Arduino_IO")
-      else:
-        Log_ADD(
-                  "MSG",
-                  'Version_Control >> Current_Version : ' + version,
-                  "Arduino_IO")
-  except:
-    Log_ADD(
-      "ERROR",
-      "<Version_Inspection_Failed>Could Not Verify Version",
-      "VER_Ctrl")
-    sys.exit(0)
-
 def Err_Identify(msg_string):
   #
   return 0
@@ -175,7 +125,6 @@ def fetch_data(Port, baudrate, time_out, timestamp, Host, User, Password, Databa
             "MSG",
             'Debug_Mode_Activated',
             "Arduino_IO")
-  version_control()
   try:
     if Debug:
       Log_ADD(
@@ -375,12 +324,8 @@ if __name__ == '__main__':
   parser.add_argument('--host',           default='localhost',  help='Database Host')  
   parser.add_argument('--user',           default='ArduinoIO', help='Database username')
   parser.add_argument('--password',       default='pxKr_AIO',   help='Database password')
-  parser.add_argument('--LOG_user',           default='Log_Upd', help='Database LOG username')
-  parser.add_argument('--LOG_password',       default='pxKr_LOG',   help='Database LOG password')
   parser.add_argument('--Database',       default='ATLAS_Main', help='Name of Database')
   parser.add_argument('--Table',          default='ARDUINO_IO', help='Name of Target Table')
-  parser.add_argument('--LogTable',     default='Log',         help='Target Error Table')
-  parser.add_argument('--LogFile',      default='AIO_Logs.txt',      help='Target Error TXT file')
   parser.add_argument('--InputExpect',    default='$T@Env_Temp$H@Env_Humidity$',help='Sign of datatype and corresponding column name')
   parser.add_argument('--Debug',          default=False,        action='store_true', help='Do not print to screen.')
   parser.add_argument('--Show_All_Possible_Error',          default=False,        action='store_true', help='Do not print to screen.')
@@ -388,9 +333,6 @@ if __name__ == '__main__':
   args = parser.parse_args(sys.argv[1:])
   Debug=args.Debug
   Show_All_Possible_Error=args.Show_All_Possible_Error
-  log_file_route=args.LogFile
-  log_table=args.LogTable
-  L_Key=Log_In_Key(args.host,args.LOG_user,args.LOG_password,args.Database)
   if args.timestamp==0: args.timestamp=(int)(time.time()*1000)
   fetch_data(args.port, args.baudrate, float(args.timeout), args.timestamp, args.host, args.user, args.password, args.Database, args.Table, args.InputExpect)
   sys.exit(0)
