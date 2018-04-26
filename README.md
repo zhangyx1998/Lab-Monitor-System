@@ -111,4 +111,8 @@ Minor bug fix and performance improvement.
 
 ***
 
-#### V
+#### V3.02
+
+ZButton.js is now ready! This is a plugin that can insert buttons easily into canvas objects, and have intractive API to communicate with.
+
+By using ZButton.js, we can now easily create clickable banners and control the display of every single data set.
