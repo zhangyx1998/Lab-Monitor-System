@@ -29,6 +29,7 @@ Notice: all source codes should be put into the same folder if you want to launc
 >+ 1.Bug fix.
 >>	Timestamp string interpuration error. E.g. timestamp starting with "08" was mistakenly interpurated as Octal.
 >+ 2.Log system is now made online.
+
 	Desc:
 		Table Name: "Log"
 		Cols: MSG_Source | MSG_Type | Priority | ERR_ID  | MSG_Index | Stamp   | Date_Time
@@ -80,6 +81,7 @@ Notice: all source codes should be put into the same folder if you want to launc
 				timestamp
 				source L/R
 				path
+
 >+ 3.Version Control is now available:
 >>	By introducing this feature, we do not need to delete the old version everytime we upgrade it. Source code of all versions are stored in the folder, and if we want to roll back, we need only to change the key hardcoded in config.sh. Upon the first running of a new version, a log will be automatically inserted to the log table, so we can keep track on version changes.
 >>	List_of_errors:
