@@ -1359,4 +1359,4 @@ function source_upd()
 	document.body.appendChild(script);
 }
 
-setTimeout(source_upd,50);
+setTimeout(source_upd,1);

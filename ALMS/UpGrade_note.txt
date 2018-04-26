@@ -1,2 +1,1 @@
-V3.01
-Minor bug fix and performance improvement.
+V3.02
