@@ -74,3 +74,6 @@ The WebPage is now ready. The data will be automatically refreshed every 1 minut
 ------------------------------------
 V2.01
 Version_Control(VER) is separated from Arduino_IO(AIO). Version_Control Service will automatically add log to LOG table should any upgrade is detected.
+------------------------------------
+V3.00
+All raw html files are renamed to .html.zsc.

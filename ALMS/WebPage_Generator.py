@@ -1,5 +1,3 @@
-version="V2.00"
-
 import sys
 import time
 import argparse

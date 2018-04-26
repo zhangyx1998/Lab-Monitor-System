@@ -1,14 +1,14 @@
 #!/bin/bash
 #Author:Yuxuan Zhang
 
-Version="V2.01"
+Version="V3.00"
 
 #-----------------------------------------------------
 #------------------Global Arguments-------------------
 #-----------------------------------------------------
 VER_name="Version_Control.py"
-AIO_name="Arduino_IO.py"
-WPG_name="WebPage_Generator.py"
+AIO_name="Arduino_IO_${Version}.py"
+WPG_name="WebPage_Generator_${Version}.py"
 #-----------------------------------------------------
 #----------------VERSION_Ctrl Arguments---------------
 #-----------------------------------------------------

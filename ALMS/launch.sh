@@ -20,9 +20,6 @@ TS=$[${TS_SC}*1000+TS_MS/1000000]
 #echo $AIO_timestamp
 #echo $C_DIR'/'$AIO_path'_'$Version'.py' $CONFIG_AIO $TS $1
 #echo $C_DIR'/'$WPG_path'_'$Version'.py' $CONFIG_WPG $1
-#echo "python ${C_DIR}/${VER_name} ${CONFIG_VER} ${2}"
-#echo "python $C_DIR/${AIO_name} ${CONFIG_AIO} ${TS} --Path ${1} ${2}"
-#echo "python ${C_DIR}/${WPG_Name} ${CONFIG_WPG} ${TS} --Path ${1} ${2}"
-python $C_DIR'/'${VER_name} ${CONFIG_VER} ${2}
-python $C_DIR'/'${AIO_name} ${CONFIG_AIO} $TS '--Path' $1 $2
-python $C_DIR'/'${WPG_name} ${CONFIG_WPG} $TS '--Path' $1 $2
+python $C_DIR'/'$AIO_path $CONFIG_AIO $TS '--Path' $C_DIR'/' $1
+python $C_DIR'/'$WPG_path $CONFIG_WPG $TS '--Path' $C_DIR'/' $1
+
