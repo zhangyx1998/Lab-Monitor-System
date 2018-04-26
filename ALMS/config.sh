@@ -1,7 +1,16 @@
 #!/bin/bash
 #Author:Yuxuan Zhang
 
-Version="V1.01"
+Version="V1.02"
+
+#-----------------------------------------------------
+#------------------Global Arguments-------------------
+#-----------------------------------------------------
+AIO_name="Arduino_IO_${Version}.py"
+WPG_name="WebPage_Generator_${Version}.py"
+AIO_path="Source/Arduino_IO/${AIO_name}"
+WPG_path="Source/WebPage_Generator/${WPG_name}"
+CTL_path="Not_Specified"
 #-----------------------------------------------------
 #------------------ARDUINO_IO Arguments---------------
 #-----------------------------------------------------
@@ -20,6 +29,19 @@ AIO_InputExpect='--InputExpect $T@Env_Temp$H@Env_Humidity$' #ARGS>12
 AIO_Debug=' ' #ARGS>13
 CONFIG_AIO="${AIO_port} ${AIO_baudrate} ${AIO_timeout} ${AIO_host} ${AIO_user} ${AIO_password} ${AIO_Database} ${AIO_Table} ${AIO_LogTable} ${AIO_LogFile} ${AIO_InputExpect} ${AIO_timestamp}"
 #echo $CONFIG_AIO
+#-----------------------------------------------------
+#-------------Web_Page_Generator Arguments------------
+#-----------------------------------------------------
+WPG_timestamp='--timestamp' #ARGS>4 #Do not worry, the stamp will be given later
+WPG_host='--host localhost'
+WPG_user='--user guest'
+WPG_password='--password #NA'
+WPG_Database='--Database ATLAS_Main'
+WPG_DefaultTable='--DefaultTable ARDUINO_IO'
+WPG_InputTableExpect='--InputTableExpect <ARDUINO_IO$TS/d@TS$ECC/d@ECC$ET/4f@Env_Temp$EH/4f@Env_Humidity$ET_D/4f@Env_Temp$EH_D/4f@Env_Humidity$DT/dt@Last_Update$DT_Str/str@Last_Update$><Log$ID/d@ID$MSG_Source@MSG_Source$MSG_Type/cvt@MSG_Type$Priority@Priority$ERR_ID@ERR_ID$MSG_Index/cvt@MSG_Index$Stamp@Stamp$Date_Time@Date_Time$>'
+WPG_file_stream='--file_stream $/WebPage/index.html@/Source/Raw_HTML/'$Version'/RAW_index.html$'
+CONFIG_WPG="${WPG_host} ${WPG_user} ${WPG_password} ${WPG_Database} ${WPG_DefaultTable} ${WPG_InputTableExpect} ${WPG_file_stream} ${WPG_timestamp}"
+#echo $CONFIG_WPG
 #-----------------------------------------------------
 #------------------Other Arguments--------------------
 #-----------------------------------------------------
