@@ -2,7 +2,8 @@
 ##
 ## Code By Yuxuan
 ## 
-version="V1.00"
+
+version="V1.01"
 
 import sys
 import argparse
@@ -16,11 +17,20 @@ from time import sleep
 
 Debug=False
 
-err_file_route=''
-err_table=''
-err_level=['MESSAGE','EXCEPTION','ERROR(L1)','ERROR(L2)','ERROR(L3)','BREAKDOWN']
-err_level=['DEBUG','INFO','WARNING','ERROR','FATAL']
+log_file_route=''
+log_table=''
 
+class Log_In_Key():
+  Host='NA'
+  ID='NA'
+  PW='NA'
+  DB='NA'
+  def __init__(self, Host, ID, PW, DB):
+      self.Host = Host
+      self.ID = ID
+      self.PW = PW
+      self.DB = DB
+L_Key=Log_In_Key('NA','NA','NA','NA')
 
 class data_unit:
   flag=''
@@ -44,7 +54,7 @@ class data_unit:
       self.val+=char_to_int(value_str[0])
       value_str=value_str[1:]
     if(value_str[0]!='.'):
-      report_MSG(2,'Incorrect syntax from Arduino: "'+value_str[0]+'"" not expected')
+      report_MSG("Exception",'Incorrect syntax from Arduino: "'+value_str[0]+'"" not expected',1,0,"Arduino_Board")
     else:
       _pow=1;
       value_str=value_str[1:]
@@ -53,7 +63,7 @@ class data_unit:
         self.val+=_pow*char_to_int(value_str[0])
         value_str=value_str[1:]
       if(len(value_str)>0):
-        report_MSG(2,'Incorrect syntax from Arduino: "'+value_str+'"" not expected')
+        report_MSG("Exception",'Incorrect syntax from Arduino: "'+value_str+'"" not expected',1,0,"Arduino_Board")
 
 def char_to_int(buff):
   if buff=='0': return 0
@@ -66,19 +76,7 @@ def char_to_int(buff):
   if buff=='7': return 7
   if buff=='8': return 8
   if buff=='9': return 9
-
-def report_MSG(error_level,error_string):
-  if Debug:
-    print('ERROR_MSG >> level'+'%.f' % error_level + ' ' + error_string)
-  if(err_file_route!=''): 
-    try:
-      err_out = open(err_file_route, 'a')
-    except:
-      err_out = open(err_file_route, 'w')
-    err_out.write(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+' '+err_level[error_level-1]+' '+error_string+'\n')
-    err_out.close()
-  #if(err_table!=''):
-    #not an online feature 
+  return 0
 
 def version_control():
   #try:
@@ -124,24 +122,52 @@ def version_control():
   #  Log_ADD("ERROR","Could Not Verify Version",1,2,"Arduino_IO")
   #  sys.exit(0)
 
+def report_MSG(msg_type,msg_string,error_ID=0,error_priority=0,msg_source="Arduino_IO"):
+  if Debug:
+    print('ERROR_MSG >> ' + msg_type + ' ' + msg_string)
+  if(log_file_route!=''): 
+    try:
+      err_out = open(log_file_route, 'a')
+    except:
+      err_out = open(log_file_route, 'w')
+    err_out.write(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+' '+msg_type+' '+msg_string+'\n')
+    err_out.close()
+  if(log_table!=''):
+    try:
+      if Debug: print("MSG >> Connecting to Database using "+L_Key.Host+' '+L_Key.ID+' '+L_Key.PW+' '+L_Key.DB)
+      db=MySQLdb.connect(L_Key.Host, L_Key.ID, L_Key.PW)
+      cursor = db.cursor()
+      SQL_CMD="use "+L_Key.DB
+      cursor.execute(SQL_CMD)
+    except:
+      return 0
+    stamp=0
+    if (error_priority!=0): stamp=1
+    INSERT_CMD="INSERT INTO "+log_table+" (MSG_Source, MSG_Type, Priority, ERR_ID, MSG_Index, Stamp) VALUES('"+msg_source+"','"+msg_type+"',"+ '%d' % error_priority+","+ '%d' % error_ID+",'"+msg_string+"',"+ '%d' % stamp+");"
+    cursor.execute(INSERT_CMD)
+    db.commit()
+    db.close()
+    #not an online feature 
+
 def fetch_data(Port, baudrate, time_out, timestamp, Host, User, Password, Database, Table, InputExpect):
   #Start Database Connection
   if Debug: print('Debug_MSG >> In Debug Mode')
+  version_control()
   try:
     if Debug: print('Debug_MSG >> Connecting to Database using Host:'+Host+' User:'+User+' Password:'+Password)
     db = MySQLdb.connect(Host, User, Password)
   except:
-    report_MSG(3,"Data_Base_Initialization_Failed");
+    report_MSG("ERROR","Data_Base_Initialization_Failed",1,2,"Arduino_IO");
     sys.exit(1)
   try:
     cursor = db.cursor()
     cursor.execute("use "+Database)
-    INSERT_CMD="INSERT INTO "+Table+" (TS,ECC) VALUES("+'%d' % timestamp+",0b00000000)"
+    INSERT_CMD="INSERT INTO "+Table+" (TS,ECC) VALUES("+'%d' % timestamp+",0b00000011);"
     if(Debug): print('MySQL_CMD >> '+INSERT_CMD)
     cursor.execute(INSERT_CMD)
     db.commit()
   except:
-    report_MSG(3,"Data_Base_Insertation_Failed");
+    report_MSG("ERROR","Data_Base_Insertation_Failed",1,2,"Arduino_IO");
     sys.exit(1)
   if Debug: print('Debug_MSG >> Database Connection Normal')
   #Start Serial Connection
@@ -150,7 +176,7 @@ def fetch_data(Port, baudrate, time_out, timestamp, Host, User, Password, Databa
     try:
       serial_port = serial.Serial(Port, baudrate, timeout=time_out)
     except serial.serialutil.SerialException:
-      report_MSG(3,'Serial_Port '+Port+' Not_Responding;');
+      report_MSG("ERROR",'Serial_Port '+Port+' Not_Responding;',1,2,"Arduino_IO");
       sys.exit(1)
   if Debug: print('Debug_MSG >> Serial Connection Normal')
   #Fetch RAW
@@ -164,7 +190,7 @@ def fetch_data(Port, baudrate, time_out, timestamp, Host, User, Password, Databa
       timeout_count+=1
     while(RAW_Data_str!='' and RAW_Data_str.count('#')>=2):
       RAW_Data_str=RAW_Data_str[RAW_Data_str.find('#')+1:]
-      report_MSG(1,"From_ARDUINO_Board:"+RAW_Data_str[:RAW_Data_str.find('#')])
+      report_MSG("Exception",RAW_Data_str[:RAW_Data_str.find('#')],0,1,"Arduino_Board")
       RAW_Data_str=RAW_Data_str[RAW_Data_str.find('#'):]
   RAW_Data_str=''
   timeout_count=0
@@ -179,19 +205,19 @@ def fetch_data(Port, baudrate, time_out, timestamp, Host, User, Password, Databa
     #print('Now replaced by: '+DBG_str)
     #RAW_Data_str=DBG_str
   if RAW_Data_str.count('#')%2==1:
-    report_MSG(2,'INVALID_Serial_INPUT:'+RAW_Data_str)
+    report_MSG("ERROR",'INVALID_Serial_INPUT:'+RAW_Data_str,1,0,"Arduino_IO")
     sys.exit(1)
   while(RAW_Data_str.find('#')!=-1):
     err_str=RAW_Data_str[RAW_Data_str.find('#')+1:]
     err_str=err_str[:err_str.find('#')]
-    report_MSG(2,err_str)
+    report_MSG("Exception",err_str,1,0,"Arduino_Board")
     temp_str=RAW_Data_str[:RAW_Data_str.find('#')]
     RAW_Data_str=RAW_Data_str[RAW_Data_str.find('#')+1:]
     RAW_Data_str=RAW_Data_str[RAW_Data_str.find('#')+1:]
     RAW_Data_str=temp_str+RAW_Data_str
   #Pick out values
   if (RAW_Data_str.count('<')!=1 or RAW_Data_str.count('>')!=1):
-    report_MSG(2,'INVALID_Serial_INPUT:'+RAW_Data_str)
+    report_MSG("ERROR",'INVALID_Serial_INPUT:'+RAW_Data_str,1,1,"Arduino_IO")
     sys.exit(1)
   RAW_Data_str=RAW_Data_str[RAW_Data_str.find('<')+1:]
   RAW_Data_str=RAW_Data_str[:RAW_Data_str.find('>')]
@@ -203,22 +229,22 @@ def fetch_data(Port, baudrate, time_out, timestamp, Host, User, Password, Databa
     RAW_Data_str=RAW_Data_str[RAW_Data_str.find('$'):]
     if Debug:print('Debug_MSG >> '+RAW_Data_str)
     if(Current_Data_str.count('%')!=1):
-      report_MSG(2,'INVALID_Data_Record: '+Current_Data_str+' (PROCEED)')
+      report_MSG("ERROR",'INVALID_Data_Record: '+Current_Data_str+' (PROCEED)',1,0)
     else:
       DATA.set_flag(Current_Data_str[:Current_Data_str.find('%')])
       DATA.convert_float(Current_Data_str[Current_Data_str.find('%')+1:])
       DATA.find_table_name(InputExpect)
       if(DATA.table_name==''):
-        report_MSG(2,'INVALID_Data_TAG: '+Current_Data_str[:Current_Data_str.find('%')]+' (PROCEED)')
+        report_MSG("ERROR",'INVALID_Data_TAG: '+Current_Data_str[:Current_Data_str.find('%')]+' (PROCEED)',1,0,"Arduino_IO")
       else:
-        Data_CMD="UPDATE "+Table+" SET "+DATA.table_name+"="+'%.4f' % DATA.val+" WHERE TS=" + '%.2f' % timestamp + ';'
+        Data_CMD="UPDATE "+Table+" SET "+DATA.table_name+"="+'%.4f' % DATA.val+" WHERE TS=" + '%d' % timestamp + ';'
         if Debug:
           print("MySQL_CMD >> "+Data_CMD)
         try:
           cursor.execute(Data_CMD)
           db.commit()
         except:
-          report_MSG(2,'Data_Update_Failed_USING: '+Data_CMD+' (PROCEED)')
+          report_MSG("Exception",'Data_Update_Failed_USING: '+Data_CMD+' (PROCEED)',1,1,"Arduino_IO")
   if Debug:
     RAW_Data_str=''
     timeout_count=0
@@ -227,6 +253,13 @@ def fetch_data(Port, baudrate, time_out, timestamp, Host, User, Password, Databa
       time.sleep(0.1)
       RAW_Data_str=serial_port.readline()
       timeout_count+=1
+    Data_CMD="UPDATE "+Table+" SET ECC="+str(0b11000000)+" WHERE TS=" + '%d' % timestamp + ';'
+  else:
+    Data_CMD="UPDATE "+Table+" SET ECC="+str(0b00000000)+" WHERE TS=" + '%d' % timestamp + ';'
+  if Debug: print("Debug_MSG >> Final ECC Changed to "+str(0b11000000))
+  cursor.execute(Data_CMD)
+  db.commit()
+  db.close()
     
 if __name__ == '__main__':
     
@@ -238,17 +271,20 @@ if __name__ == '__main__':
   parser.add_argument('--host',           default='',  help='Database Host')  
   parser.add_argument('--user',           default='', help='Database username')
   parser.add_argument('--password',       default='',   help='Database password')
+  parser.add_argument('--LOG_user',           default='Log_Upd', help='Database LOG username')
+  parser.add_argument('--LOG_password',       default='pxKr_LOG',   help='Database LOG password')
   parser.add_argument('--Database',       default='', help='Name of Database')
   parser.add_argument('--Table',          default='', help='Name of Target Table')
-  parser.add_argument('--ErrorTable',     default='',         help='Target Error Table')
-  parser.add_argument('--ErrorFile',      default='.txt',      help='Target Error TXT file')
+  parser.add_argument('--LogTable',     default='',         help='Target Error Table')
+  parser.add_argument('--LogFile',      default='.txt',      help='Target Error TXT file')
   parser.add_argument('--InputExpect',    default='',help='Sign of datatype and corresponding column name')
   parser.add_argument('--Debug',          default=False,        action='store_true', help='Do not print to screen.')
   
   args = parser.parse_args(sys.argv[1:])
   Debug=args.Debug
-  err_file_route=args.ErrorFile
-  err_table=args.ErrorTable
+  log_file_route=args.LogFile
+  log_table=args.LogTable
+  L_Key=Log_In_Key(args.host,args.LOG_user,args.LOG_password,args.Database)
   if args.timestamp==0: args.timestamp=(int)(time.time()*1000)
   fetch_data(args.port, args.baudrate, float(args.timeout), args.timestamp, args.host, args.user, args.password, args.Database, args.Table, args.InputExpect)
   sys.exit(0)
