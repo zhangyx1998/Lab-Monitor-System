@@ -185,22 +185,11 @@
 					<font color="#FFFFFF" face="Avenir" size="3" style="font-weight: bold;">&nbsp;&nbsp;TEMPERATURE</font>
 				</td>
 				<td colspan="2" align="center" color="#666666"  width="40%">
-					<button onClick="Graph_1.MOVE_LEFT(24);"  type="MTR_button" class="MTR_button uni" align="center" style="width: 40px; height: 40px;">
-						<font face="Avenir" size="3" style="font-weight:normal; line-height: 36px"><<</font>
-					</button>
-					<button onClick="Graph_1.MOVE_LEFT(6);" type="MTR_button" class="MTR_button uni" align="center" style="width: 40px; height: 40px;">
-						<font face="Avenir" size="3" style="font-weight:normal; line-height: 36px"><</font>
-					</button>
+
 					<button onClick="Graph_1.RESET_ALL();" oncontextmenu="DBG_Switch();" type="MTR_button" class="MTR_button uni" align="center" style="width: 80px; height: 40px;">
 						<font face="Avenir" size="3" style="font-weight:normal; line-height: 36px">RESET</font>
 					</button>
-					<button onClick="Graph_1.MOVE_RIGHT(6);" type="MTR_button" class="MTR_button uni" align="center" style="width: 40px; height: 40px;">
-						<font face="Avenir" size="3" style="font-weight:normal; line-height: 36px">></font>
-					</button>
-					<button onClick="Graph_1.MOVE_RIGHT(24);" type="MTR_button" class="MTR_button uni" align="center" style="width: 40px; height: 40px;">
-						<font face="Avenir" size="3" style="font-weight:normal; line-height: 36px">>></font>
-					</button>
-				</td>
+					
 				<td colspan="1" style="font-size: 14px"  align="right"  width="30%">
 					<font color="#FFFFFF" face="Avenir" size="3" style="font-weight: bold;">HUMIDITY&nbsp;&nbsp;</font>
 				</td>

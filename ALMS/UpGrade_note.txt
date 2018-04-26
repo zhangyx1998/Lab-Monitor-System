@@ -1,2 +1,1 @@
-V3.00
-All raw html files are renamed to .html.zsc.
+Automatic Upgrade Log posting online.

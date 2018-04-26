@@ -285,7 +285,23 @@ var ZGraph =
 			org_max_R = max_R;
 			org_min_R = min_R;
 
-			Mouse_Down_Flag=get_area_id(org_x,org_y);		
+			Mouse_Down_Flag=object.get_area_id(org_x,org_y);
+
+			evt.preventDefault();
+			if(	false
+				|| Mouse_Down_Flag==1
+				|| Mouse_Down_Flag==2
+				|| Mouse_Down_Flag==3
+				|| Mouse_Down_Flag==4
+				|| Mouse_Down_Flag==5
+				) 
+			{
+				window.event.returnValue = false;
+			}
+			else
+			{
+				window.event.returnValue = true;
+			}
 
 			object.refresh();
 		}
@@ -300,25 +316,9 @@ var ZGraph =
 
 		chart.ontouchmove= function (evt)
 		{
-			evt.preventDefault();	
 			x = (evt.pageX-chart.offsetLeft)*ratio;
 			y = (evt.pageY-chart.offsetTop)*ratio;
-			if(
-				get_area_id(x,y)==2
-				|| get_area_id(x,y)==3
-				|| get_area_id(x,y)==4
-				|| Mouse_Down_Flag==2
-				|| Mouse_Down_Flag==3
-				|| Mouse_Down_Flag==4
-				) 
-			{
-				window.event.returnValue = false;
-			}
-			else
-			{
-				window.event.returnValue = true;
-			}
-			refresh (evt);
+			object.refresh (evt);
 		}
 
 		object.refresh_evt = function (evt)
@@ -914,7 +914,8 @@ var ZGraph =
 		object.graph_mouse_track = function (ctx)
 		{
 			if(
-				(( Mouse_Position_Flag==1 || Mouse_Position_Flag==5) 
+				(
+				( Mouse_Position_Flag==1 || Mouse_Position_Flag==5) 
 				&& ( Mouse_Down_Flag==0 || Mouse_Down_Flag==1 || Mouse_Down_Flag==5 )
 				|| (Mouse_Down_Flag==0 && (Mouse_Position_Flag==2 || Mouse_Position_Flag==3)))
 			   )
