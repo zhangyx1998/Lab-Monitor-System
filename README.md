@@ -1,22 +1,15 @@
 # ALMS _By Yuxuan Zhang
 
 >This project, generally speaking, is intended for monitoring the experiment environment (specifically:temperature and hunidity in a closed environment), and make the environment data available though internet.
-
 >We use an Arduino board with one (or more) HIH-6130 sensor attached on it, to upload data to a linux PC. The arduino source code Arduino_IO_board.ino and the python source code Arduino_IO_Build.py are available in this folder.
-
 >To run the project, you need MySQL/Mariadb ready on your computer, and setup a database named "ATLAS_Main". Also, refer to SQL_Desc.txt for detailed command on how to setup specific tables, and how to GRANT usage to the python code.
-
 >Finally, to make everything run automatically, insert the path of launch.sh to the crontab in Linux system using following commands:
-
->	crontab -e #You will see the vi interface after pressing "Enter"
-
->	press key "i"
-
->	insert:"* * * * * [path]/launch.sh"
-
->	press "esc"
-
->>	put in ":wq", "Enter"
+>
+	crontab -e #You will see the vi interface after pressing "Enter"
+	press key "i"
+	insert:"* * * * * [path]/launch.sh"
+	press "esc"
+	put in ":wq", "Enter"
 
 >All Done!
 
@@ -26,10 +19,10 @@ Notice: all source codes should be put into the same folder if you want to launc
 
 ## V1.01
 
->+ 1.Bug fix.
+>+ Bug fix.
 >>	Timestamp string interpuration error. E.g. timestamp starting with "08" was mistakenly interpurated as Octal.
->+ 2.Log system is now made online.
-
+>+ Log system is now made online.
+>
 	Desc:
 		Table Name: "Log"
 		Cols: MSG_Source | MSG_Type | Priority | ERR_ID  | MSG_Index | Stamp   | Date_Time
@@ -81,8 +74,7 @@ Notice: all source codes should be put into the same folder if you want to launc
 				timestamp
 				source L/R
 				path
-
->+ 3.Version Control is now available:
+>+ Version Control is now available:
 >>	By introducing this feature, we do not need to delete the old version everytime we upgrade it. Source code of all versions are stored in the folder, and if we want to roll back, we need only to change the key hardcoded in config.sh. Upon the first running of a new version, a log will be automatically inserted to the log table, so we can keep track on version changes.
 >>	List_of_errors:
 >>	1 Unspecified Errors
