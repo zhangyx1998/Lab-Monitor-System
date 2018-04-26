@@ -1,0 +1,58 @@
+--------------------------------------------------------------------------------
+This file works with visions up to V4.X
+--------------------------------------------------------------------------------
+
+INSERT INTO user (host, user, authentication_string, select_priv, insert_priv, update_priv) VALUES ('localhost','operator',PASSWORD('abc123'), 'Y', 'Y', 'Y');
+
+GRANT SELECT,INSERT,UPDATE,DELETE ON ATLAS_Main.* TO 'ArduinoIO'@'localhost' IDENTIFIED BY 'pxKr_AIO' WITH GRANT OPTION;
+FLUSH Privileges;
+
+GRANT SELECT,INSERT,UPDATE,DELETE ON ATLAS_Main.Log TO 'Log_Upd'@'localhost' IDENTIFIED BY 'pxKr_LOG' WITH GRANT OPTION;
+FLUSH Privileges;
+
+mysql> 
+CREATE TABLE ARDUINO_IO (
+TS DOUBLE NOT NULL,
+ECC TINYINT default 0,
+Env_Temp double default 0,
+Env_Humidity double default 0,
+Last_Update DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+PRIMARY KEY (TS)
+);
+
+mariadb> 
+CREATE TABLE ARDUINO_IO (
+TS DOUBLE NOT NULL,
+ECC INT default 0,
+Env_Temp double default 0,
+Env_Humidity double default 0,
+Last_Update TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+PRIMARY KEY (TS)
+);
+
+mariadb> 
+ALTER TABLE ARDUINO_IO MODIFY ECC INT default 0;
+
+mariadb> 
+CREATE TABLE Log (
+ID INT NOT NULL AUTO_INCREMENT,
+MSG_Source VARCHAR(20) default 'Unknown' NOT NULL,
+MSG_Type VARCHAR(20) default 'Unknown' NOT NULL,
+Priority INT default 0 NOT NULL,
+ERR_ID INT default 0 NOT NULL,
+MSG_Index VARCHAR(200),
+Stamp INT default 0 NOT NULL,
+Date_Time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+PRIMARY KEY (ID)
+);
+INSERT INTO Log (MSG_Source,MSG_Type,Priority,ERR_ID,MSG_Index,Stamp) VALUES('VERSION','Current_Version',0,0,'N/A',0);
+
+UPDATE Log SET MSG_Index='V1.01' WHERE MSG_Index like '%V1.01%';
+
+ALTER TABLE Log 
+MODIFY Date_Time timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL;
+UPDATE Log SET MSG_Type='UPDATE' WHERE MSG_Type='Version_Update';
+UPDATE Log SET MSG_Type='CURRENT' WHERE MSG_Type='Current_Version';
+UPDATE Log SET MSG_Index='From V1.00 To V1.01' WHERE MSG_Index='V1.01' and MSG_Type='UPDATE';
+ALTER TABLE Log 
+MODIFY Date_Time timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP;
