@@ -18,7 +18,7 @@ Project Description
 >```
 >All Done!
 
-Notice: all source codes should be put into the same folder if you want to launch it normally. And if you use different ports for arduino, please change the settings at config.sh
+Notice: all source codes should be arranged exactly the same as what it was if you want to launch it normally. And if you use different serial port for arduino, or you make a different MySQL configuration, please change the settings at config.sh
 
 ***
 
@@ -102,3 +102,8 @@ Version_Control(VER) is separated from Arduino_IO(AIO). Version_Control Service 
 #### V3.00
 
 All raw html files are renamed to .html.zsc.
+
+***
+
+#### V3.01
+
