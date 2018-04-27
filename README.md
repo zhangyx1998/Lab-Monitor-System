@@ -25,6 +25,12 @@ Notice: all source codes should be arranged exactly the same as what it was if y
 
 ## Upgrade Notes
 
+#### V4.15
+
++ NA
+
+***
+
 #### V4.14
 
 + Webpage HTML5 Animation Improvement.
