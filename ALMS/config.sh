@@ -1,7 +1,7 @@
 #!/bin/bash
 #Author:Yuxuan Zhang
 
-Version="V4.10"
+Version="V4.11"
 
 #-----------------------------------------------------
 #------------------Global Arguments-------------------
@@ -33,8 +33,12 @@ AIO_password='--password pxKr_AIO'
 AIO_Database='--Database ATLAS_Main'
 AIO_Table='--Table ARDUINO_IO'
 AIO_InputExpect='--InputExpect $T@Env_Temp$H@Env_Humidity$'
+AIO_LogTable='--LogTable Log'
+AIO_LogFile='--LogFile AIO_Errors.txt'
+AIO_LOGUser='--LOG_user Log_Upd'
+AIO_LOGPassword='--LOG_password pxKr_LOG'
 AIO_Debug=' '
-CONFIG_AIO="${AIO_port} ${AIO_baudrate} ${AIO_timeout} ${AIO_host} ${AIO_user} ${AIO_password} ${AIO_Database} ${AIO_Table} ${AIO_LogTable} ${AIO_LogFile} ${AIO_InputExpect} ${AIO_timestamp}"
+CONFIG_AIO="${AIO_port} ${AIO_baudrate} ${AIO_timeout} ${AIO_host} ${AIO_user} ${AIO_password} ${AIO_Database} ${AIO_Table} ${AIO_LogTable} ${AIO_LogFile} ${AIO_LOGUser} ${AIO_LOGPassword} ${AIO_InputExpect} ${AIO_timestamp}"
 #echo $CONFIG_AIO
 #-----------------------------------------------------
 #-------------Web_Page_Generator Arguments------------

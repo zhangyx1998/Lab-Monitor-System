@@ -349,7 +349,7 @@ if __name__ == '__main__':
 	args = parser.parse_args(sys.argv[1:])
 	DefaultTable=args.DefaultTable
 	Debug=args.Debug
-	#Debug=True
+	Debug=False;
 	Login_key=DB_Key(args.host,args.user,args.password,args.Database)
 	generate(args.InputTableExpect,args.file_stream,args.Path)
 	sys.exit(0)

@@ -978,7 +978,30 @@ var ZChart =
 					ctx.restore();
 					ctx.setLineDash([]);
 
-					object.onfocus(data_ts_tag);//API Call
+					var L_cur_data=[],R_cur_data=[];
+
+					for (var i=0;i<ChartDataPKG.Data_L.length;i++)
+					{
+						data_ts_tag=find_value(ChartDataPKG.Data_L[i][0],upd_timestamp-data_tag*bottom_axis_ratio);
+
+						for (var j=1;j<ChartDataPKG.Data_L[i].length;j++)
+						{
+							L_cur_data.push(ChartDataPKG.Data_L[i][j][data_ts_tag]);
+						}
+					}
+
+					for (var i=0;i<ChartDataPKG.Data_R.length;i++)
+					{
+						data_ts_tag=find_value(ChartDataPKG.Data_R[i][0],upd_timestamp-data_tag*bottom_axis_ratio);
+
+						for (var j=1;j<ChartDataPKG.Data_R[i].length;j++)
+						{
+							R_cur_data.push(ChartDataPKG.Data_R[i][j][data_ts_tag]);
+						}
+					}
+
+
+					object.onfocus(ChartDataPKG.Data_L[0][0][data_ts_tag].toString(),L_cur_data,R_cur_data);//API Call
 				}
 			}
 

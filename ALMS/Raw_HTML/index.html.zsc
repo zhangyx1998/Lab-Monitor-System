@@ -104,8 +104,8 @@
 								<div style="width:100%; height: 100%; display: inline-block;">
 									<table style="width:100%; height: 100%; table-layout:fixed;">
 										<tr style="width:100%; height: 70%;">
-											<td class="huge_data orange">-22&#176;C</td>
-											<td class="huge_data blue">57%</td>
+											<td id="Environment_Temperature" class="huge_data orange">-22&#176;C</td>
+											<td id="Environment_Humidity" class="huge_data blue">57%</td>
 										</tr>
 										<tr style="width:100%; height: 30%;">
 											<td class="huge_data suffix">Environment Temperature</td>
@@ -117,7 +117,7 @@
 						</tr>
 					</table>
 				</div>
-				<div id="Radiation_Source_div" class="card" style="display: inline-block;width: 45%;height: 150px;" onclick="switch_sensor()">
+				<div id="Radiation_Source_div" class="card" style="display: inline-block;width: 45%;height: 150px;">
 					<table rules=none cellspacing=0>
 						<tr>
 							<td class="Card_banner">
@@ -301,6 +301,12 @@
 				}
 				k=!k;
 				setTimeout(function(){document.getElementById("Envrionment Status").className="";},200);
+			}
+
+			Chart_1.onfocus= function(ts,L_data,R_data)
+			{
+				document.getElementById("Environment_Temperature").innerHTML=format_F(L_data[0],0).toString()+"&#176;C";
+				document.getElementById("Environment_Humidity").innerHTML=format_F(R_data[0],0).toString()+"%";
 			}
 
 			function switch_sensor()

@@ -78,17 +78,18 @@ def char_to_int(buff):
   return 0
 
 def Err_Identify(msg_string):
-  #
+  if (msg_string=="zhangyx"): return 1
   return 0
 
 def Error_priority(msg_string):
+  if (msg_string=="zhangyx"): return 1
   return 0
 
 def Log_ADD(msg_type,msg_string,msg_source="Arduino_IO"):
   msg_string=msg_string.replace('\n','')
   msg_string=msg_string.replace('\r','')
-  error_ID=Err_Identify(msg_string)
-  error_priority=Error_priority(error_ID)
+  error_ID=Err_Identify(msg_string)+0
+  error_priority=Error_priority(msg_string)+0
   if Show_All_Possible_Error:
     msg_type="$FAKE$ "+msg_type
   if Debug:
@@ -109,13 +110,20 @@ def Log_ADD(msg_type,msg_string,msg_source="Arduino_IO"):
       SQL_CMD="use "+L_Key.DB
       cursor.execute(SQL_CMD)
     except:
+      print "Log System >> Failed To Login using "+L_Key.Host+" "+L_Key.ID+" "+L_Key.PW;
       return 0
-    stamp=0
-    if (error_priority!=0): stamp=1
-    INSERT_CMD="INSERT INTO "+log_table+" (MSG_Source, MSG_Type, Priority, ERR_ID, MSG_Index, Stamp) VALUES('"+msg_source+"','"+msg_type+"',"+ '%d' % error_priority+","+ '%d' % error_ID+",'"+msg_string+"',"+ '%d' % stamp+");"
-    cursor.execute(INSERT_CMD)
-    db.commit()
-    db.close()
+    try:
+      stamp=0
+      if (error_priority!=0): stamp=1
+      INSERT_CMD="INSERT INTO "+log_table+" (MSG_Source, MSG_Type, Priority, ERR_ID, MSG_Index, Stamp) VALUES('"+msg_source+"','"+msg_type+"',"+ '%d' % error_priority+","+ '%d' % error_ID+",'"+msg_string+"',"+ '%d' % stamp+");"
+      cursor.execute(INSERT_CMD)
+      db.commit()
+      db.close()
+    except:
+      print "Log System >> Failed To add log using "+INSERT_CMD;
+      return 0
+  else:
+    print "Log System >> No Log Table available"
     #not an online feature 
 
 def fetch_data(Port, baudrate, time_out, timestamp, Host, User, Password, Database, Table, InputExpect):
@@ -159,7 +167,7 @@ def fetch_data(Port, baudrate, time_out, timestamp, Host, User, Password, Databa
             "Arduino_IO");
     #msg_type,msg_string,error_ID=0,priority=0,msg_source
     if(Show_All_Possible_Error==False):sys.exit(1)
-  if Debug:    
+  if Debug:  
     Log_ADD(
             "MSG",
             "Database_Connection_Normal",
@@ -316,23 +324,34 @@ def fetch_data(Port, baudrate, time_out, timestamp, Host, User, Password, Databa
 if __name__ == '__main__':
     
   parser = argparse.ArgumentParser(description='Read serial data and record temperature data.', usage='%(prog)s [options]', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-  parser.add_argument('--Path',           default='',  help='Current File System Path')
-  parser.add_argument('--port',           default='/dev/ttyACM1',   help='input serial port')
-  parser.add_argument('--baudrate',       type=int,             default=9600,   help='baud rate')
-  parser.add_argument('--timeout',        type=float,           default=1,    help='timeout for serial reading [s]')
-  parser.add_argument('--timestamp',      type=float,           default=0,      help='timestamp')
-  parser.add_argument('--host',           default='localhost',  help='Database Host')  
-  parser.add_argument('--user',           default='ArduinoIO', help='Database username')
-  parser.add_argument('--password',       default='pxKr_AIO',   help='Database password')
-  parser.add_argument('--Database',       default='ATLAS_Main', help='Name of Database')
+  parser.add_argument('--Path',      default='', help='Current File System Path')
+  parser.add_argument('--port',      default='/dev/ttyACM1',  help='input serial port')
+  parser.add_argument('--baudrate',    type=int,       default=9600,  help='baud rate')
+  parser.add_argument('--timeout',        type=float,      default=1,    help='timeout for serial reading [s]')
+  parser.add_argument('--timestamp',      type=float,      default=0,      help='timestamp')
+  parser.add_argument('--host',      default='localhost',  help='Database Host') 
+  parser.add_argument('--user',      default='ArduinoIO', help='Database username')
+  parser.add_argument('--password',    default='pxKr_AIO',  help='Database password')
+  parser.add_argument('--Database',    default='ATLAS_Main', help='Name of Database')
   parser.add_argument('--Table',          default='ARDUINO_IO', help='Name of Target Table')
   parser.add_argument('--InputExpect',    default='$T@Env_Temp$H@Env_Humidity$',help='Sign of datatype and corresponding column name')
+  parser.add_argument('--LogTable',     default='Log',         help='Target Error Table')
+  parser.add_argument('--LogFile',      default='AIO_Logs.txt',      help='Target Version Control TXT file')
+  parser.add_argument('--LOG_user',           default='Log_Upd', help='Database LOG username')
+  parser.add_argument('--LOG_password',       default='pxKr_LOG',   help='Database LOG password')
   parser.add_argument('--Debug',          default=False,        action='store_true', help='Do not print to screen.')
   parser.add_argument('--Show_All_Possible_Error',          default=False,        action='store_true', help='Do not print to screen.')
   
   args = parser.parse_args(sys.argv[1:])
   Debug=args.Debug
+
+  log_file_route=args.LogFile
+  log_table=args.LogTable
+
+  L_Key=Log_In_Key(args.host,args.LOG_user,args.LOG_password,args.Database)
+
   Show_All_Possible_Error=args.Show_All_Possible_Error
+
   if args.timestamp==0: args.timestamp=(int)(time.time()*1000)
   fetch_data(args.port, args.baudrate, float(args.timeout), args.timestamp, args.host, args.user, args.password, args.Database, args.Table, args.InputExpect)
   sys.exit(0)
