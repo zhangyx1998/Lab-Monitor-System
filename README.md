@@ -25,6 +25,12 @@ Notice: all source codes should be arranged exactly the same as what it was if y
 
 ## Upgrade Notes
 
+#### V4.06
+
++ NA
+
+***
+
 #### V4.05
 
 + Fixed Font Size Problems in Linux System.(HTML page)

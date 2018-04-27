@@ -632,6 +632,7 @@ var ZChart =
 				}
 				if(highlight==-1)
 				{
+					ctx.globalAlpha=0.5;
 					ctx.lineWidth = golbal_line_width/2;
 				}
 				if(highlight==-2)
@@ -684,6 +685,7 @@ var ZChart =
 					}
 					ctx.stroke();
 				}
+				ctx.globalAlpha=1;
 			}
 
 			object.graph_content_gen = function (ctx)
