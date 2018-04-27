@@ -22,6 +22,13 @@ Notice: all source codes should be arranged exactly the same as what it was if y
 
 ***
 
+#### V4.03
+
++Minor Bug Fix
++You can now highlight a specific line by floating your mouse on its corresponding button. (ZChart Feature Update using ZButton API)
+
+***
+
 #### V4.02
 
 + Logic problem emergency fix.
@@ -62,7 +69,7 @@ Notice: all source codes should be arranged exactly the same as what it was if y
 
 #### V2.01
 
-+ Version_Control(VER) is separated from Arduino_IO(AIO). Version_Control Service will automatically add log to LOG table should any upgrade is detected.
++ Version_Control(VER) is separated from Arduino_IO(AIO). Version_Control Service will automatically add log to LOG table should any upgrade be detected.
 
 ***
 

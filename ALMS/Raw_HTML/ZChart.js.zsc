@@ -568,6 +568,22 @@ var ZChart =
 						}
 					}
 				}
+				else if(ChartStyle.Display_Banner)
+				{
+					HEIGHT_Banner=Banner_line_height;
+
+					ctx.fillStyle=Banner_Color;
+					ctx.fillRect(
+						0,0,
+						WIDTH,Banner_line_height
+						);
+
+					ctx.font="35px Avenir";
+					ctx.fillStyle="#666666";
+					ctx.textBaseline="middle";
+					ctx.textAlign="center";
+					ctx.fillText("Loading...",WIDTH/2,Banner_line_height/2);
+				}
 				else
 				{
 					HEIGHT_Banner=0;
@@ -1147,18 +1163,6 @@ var ZChart =
 				ctx.restore();
 			}
 
-			object.loading_sign_gen = function(ctx)
-			{
-				if (ChartDataPKG==undefined)
-				{
-					ctx.font="40px Avenir";
-					ctx.fillStyle="#666666";
-					ctx.textBaseline="middle";
-					ctx.textAlign="center";
-					ctx.fillText("Loading...",WIDTH/2,HEIGHT/2);
-				}
-			}
-
 			object.graph_clear = function ()
 			{				
 				HEIGHT=HEIGHT_Banner+HEIGHT_Chart+HEIGHT_Container;
@@ -1190,8 +1194,6 @@ var ZChart =
 
 				object.graph_marker_gen(ctx);
 				//ctx.restore();
-
-				object.loading_sign_gen(ctx);
 
 				if(Debug) object.commom_DBG();
 
