@@ -25,6 +25,10 @@ Notice: all source codes should be arranged exactly the same as what it was if y
 
 ## Upgrade Notes
 
+#### V4.12
+
++ NA
+
 #### V4.11
 
 + Performance Enhancement

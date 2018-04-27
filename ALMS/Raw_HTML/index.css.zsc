@@ -159,7 +159,7 @@ h3{
 p{
 	font-family: 'ZFont-light';
 	font-weight: 600;
-	line-height: 8px;
+	line-height: 18px;
 	font-size: 15px;
 }
 
