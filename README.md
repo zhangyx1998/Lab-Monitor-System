@@ -22,6 +22,12 @@ Notice: all source codes should be arranged exactly the same as what it was if y
 
 ***
 
+#### V4.02
+
++ Logic problem emergency fix.
+
+***
+
 #### V4.01
 
 + Color Composition Adjustment. UX design upgrade.

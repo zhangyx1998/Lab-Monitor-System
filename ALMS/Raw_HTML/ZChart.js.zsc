@@ -80,7 +80,7 @@ var ChartStyle =
 	Default_side_spacing:	[5    ,5    ,5    ,5    ],
 	Default_line_width: 	[0.8  ,0.8  ,0.8  ,0.5  ],
 	Default_DBG_lineHeight:	[18   ,14   ,14   ,14   ],
-	Default_marker_WIDTH:	[40   ,60   ,40   ,40   ],	
+	Default_marker_WIDTH:	[45   ,45   ,45   ,45   ],	
 	Default_Scale_Index:	[1    ,2    ,1.5  ,1    ],  //Define the Scale Index of fonts
 	Default_L_limit:		[240  ,120  ,240  ,120  ],	//Bottom Horizational Axis default display Range
 	Default_R_limit:		[0    ,0    ,0    ,0    ],	//Bottom Horizational Axis default display Range
@@ -353,11 +353,13 @@ var ZChart =
 					banner_button_L.display();
 					banner_button_L.status_count=2;
 					banner_button_L.onfocus=function(){object.refresh();};
-					banner_button_L.onclick=function()
+					banner_button_L.onclick=function(status)
 					{
+
 						for(var buttons in Button_table.L)
 						{
-							Button_table.L[buttons].display();
+							if(status==2) Button_table.L[buttons].display();
+							else Button_table.L[buttons].hide();
 						}
 						for(var buttons in Button_table.R)
 						{
@@ -372,7 +374,7 @@ var ZChart =
 					banner_button_R.display();
 					banner_button_R.status_count=2;
 					banner_button_R.onfocus=function(){object.refresh()};
-					banner_button_R.onclick=function()
+					banner_button_R.onclick=function(status)
 					{
 						for(var buttons in Button_table.L)
 						{
@@ -380,7 +382,8 @@ var ZChart =
 						}
 						for(var buttons in Button_table.R)
 						{
-							Button_table.R[buttons].display();
+							if(status==2) Button_table.R[buttons].display();
+							else Button_table.R[buttons].hide();
 						}
 						Button_table.Banner[0].status=1;
 						object.refresh()
@@ -608,9 +611,13 @@ var ZChart =
 				{
 					ctx.lineWidth = golbal_line_width*2;
 				}
-				if(highlight==2)
+				if(highlight==-1)
 				{
 					ctx.lineWidth = golbal_line_width/2;
+				}
+				if(highlight==-2)
+				{
+					ctx.lineWidth = golbal_line_width/3;
 				}
 				//some code here
 				var L_limit_TS=upd_timestamp-L_limit*bottom_axis_ratio;
@@ -663,58 +670,64 @@ var ZChart =
 			object.graph_content_gen = function (ctx)
 			{
 				//Chart Content Drawing
-
-				//LEFT AXIS
-				if (ChartDataPKG.Data_L!=undefined)
+				if (ChartDataPKG!=undefined)
 				{
-					for(var i=0;i<ChartDataPKG.Data_L.length;i+=1)
+					//LEFT AXIS
+					if (ChartDataPKG.Data_L!=undefined)
 					{
-						if(ChartDataPKG.Data_L[i].length>=2)
+						for(var i=0;i<ChartDataPKG.Data_L.length;i+=1)
 						{
-							for(var j=1;j<ChartDataPKG.Data_L[i].length;j+=1)
+							if(ChartDataPKG.Data_L[i].length>=2)
 							{
-								if(ChartDataPKG.Data_L[i][j].length>2 && (ChartDataPKG.Data_L[i][j][0]!=0 || ChartDataPKG.HighLight.L[i][j]!=0))
+								for(var j=1;j<ChartDataPKG.Data_L[i].length;j+=1)
 								{
-									if(ChartDataPKG.Data_L[i][j][0]!=2)ChartDataPKG.HighLight.L[i][j]=2;
-									//alert("Chart Table L "+i+" "+j);
-									object.draw_data(
-										ChartDataPKG.Left_Axis_Color,
-										ChartDataPKG.Data_L[i][0],
-										ChartDataPKG.Data_L[i][j],
-										max_L,min_L,
-										ChartDataPKG.HighLight.L[i][j]);
-									ChartDataPKG.HighLight.L[i][j]=0;
+									if(ChartDataPKG.Data_L[i][j].length>2 && (ChartDataPKG.Data_L[i][j][0]!=0 || ChartDataPKG.HighLight.L[i][j]!=0))
+									{
+										if(ChartDataPKG.Data_L[i][j][0]==1 && ChartDataPKG.HighLight.L[i][j]==0)ChartDataPKG.HighLight.L[i][j]=-1;
+										if(ChartDataPKG.Data_L[i][j][0]==1 && ChartDataPKG.HighLight.L[i][j]==1)ChartDataPKG.HighLight.L[i][j]=0;
+										if(ChartDataPKG.Data_L[i][j][0]==0 && ChartDataPKG.HighLight.L[i][j]==1)ChartDataPKG.HighLight.L[i][j]=-2;
+										//alert("Chart Table L "+i+" "+j);
+										object.draw_data(
+											ChartDataPKG.Left_Axis_Color,
+											ChartDataPKG.Data_L[i][0],
+											ChartDataPKG.Data_L[i][j],
+											max_L,min_L,
+											ChartDataPKG.HighLight.L[i][j]);
+										ChartDataPKG.HighLight.L[i][j]=0;
+									}
 								}
 							}
 						}
 					}
-				}
-				//RIGHT AXIS
-				if (ChartDataPKG.Data_R!=undefined)
-				{
-					for(var i=0;i<ChartDataPKG.Data_R.length;i++)
+					//RIGHT AXIS
+					if (ChartDataPKG.Data_R!=undefined)
 					{
-						if(ChartDataPKG.Data_R[i].length>=2)
+						for(var i=0;i<ChartDataPKG.Data_R.length;i++)
 						{
-							for(var j=1;j<ChartDataPKG.Data_R[i].length;j++)
+							if(ChartDataPKG.Data_R[i].length>=2)
 							{
-								if(ChartDataPKG.Data_R[i][j].length>2 && (ChartDataPKG.Data_R[i][j][0]!=0 || ChartDataPKG.HighLight.R[i][j]!=0))
+								for(var j=1;j<ChartDataPKG.Data_R[i].length;j++)
 								{
-									if(ChartDataPKG.Data_R[i][j][0]!=2)ChartDataPKG.HighLight.R[i][j]=2;
-									//alert("Chart Table R "+i+" "+j);
-									object.draw_data(
-										ChartDataPKG.Right_Axis_Color,
-										ChartDataPKG.Data_R[i][0],
-										ChartDataPKG.Data_R[i][j],
-										max_R,min_R,
-										ChartDataPKG.HighLight.R[i][j]);
-									ChartDataPKG.HighLight.R[i][j]=0;
+									if(ChartDataPKG.Data_R[i][j].length>2 && (ChartDataPKG.Data_R[i][j][0]!=0 || ChartDataPKG.HighLight.R[i][j]!=0))
+									{
+										if(ChartDataPKG.Data_R[i][j][0]==1 && ChartDataPKG.HighLight.R[i][j]==0)ChartDataPKG.HighLight.R[i][j]=-1;
+										if(ChartDataPKG.Data_R[i][j][0]==1 && ChartDataPKG.HighLight.R[i][j]==1)ChartDataPKG.HighLight.R[i][j]=0;
+										if(ChartDataPKG.Data_R[i][j][0]==0 && ChartDataPKG.HighLight.R[i][j]==1)ChartDataPKG.HighLight.R[i][j]=-2;
+										//alert("Chart Table R "+i+" "+j);
+										object.draw_data(
+											ChartDataPKG.Right_Axis_Color,
+											ChartDataPKG.Data_R[i][0],
+											ChartDataPKG.Data_R[i][j],
+											max_R,min_R,
+											ChartDataPKG.HighLight.R[i][j]);
+										ChartDataPKG.HighLight.R[i][j]=0;
+									}
 								}
 							}
 						}
 					}
-				}
 				//alert("exit");
+				}
 			}
 
 			object.graph_assistline = function (position_x)
@@ -810,7 +823,7 @@ var ZChart =
 									vertical_space=-4;
 								}
 
-								ctx.fillText(Left_Axis_Buf.toString(),axis_x+horizational_space*ratio,HEIGHT_Banner+axis_y+vertical_space*ratio);
+								ctx.fillText(format_F(Left_Axis_Buf,2),axis_x+horizational_space*ratio,HEIGHT_Banner+axis_y+vertical_space*ratio);
 								ctx.restore();
 							}
 						}			
@@ -861,7 +874,7 @@ var ZChart =
 									vertical_space=-4;
 								}
 
-								ctx.fillText(Right_Axis_Buf.toString(),axis_x+horizational_space*ratio, HEIGHT_Banner+axis_y+vertical_space*ratio);
+								ctx.fillText(format_F(Right_Axis_Buf,2),axis_x+horizational_space*ratio, HEIGHT_Banner+axis_y+vertical_space*ratio);
 							}
 						}
 					}
@@ -993,7 +1006,7 @@ var ZChart =
 					if(i==0) ctx.textBaseline="top";
 					if(i==H_Lines) ctx.textBaseline="bottom";
 					var MARK=min_Marker+((H_Lines-i)/(H_Lines))*(max_Marker-min_Marker);
-					ctx.fillText(format_F(MARK,2),0+side_spacing*ratio,HEIGHT_Banner+i*Grid_length);
+					ctx.fillText(format_F(MARK,1),0+side_spacing*ratio,HEIGHT_Banner+i*Grid_length);
 				}
 
 				//Left Mark lines
@@ -1057,7 +1070,7 @@ var ZChart =
 					if(i==0) ctx.textBaseline="top";
 					if(i==H_Lines) ctx.textBaseline="bottom";
 					var MARK=min_Marker+((H_Lines-i)/(H_Lines))*(max_Marker-min_Marker);
-					ctx.fillText(format_F(MARK,2),WIDTH-side_spacing*ratio,HEIGHT_Banner+i*Grid_length);
+					ctx.fillText(format_F(MARK,1),WIDTH-side_spacing*ratio,HEIGHT_Banner+i*Grid_length);
 				}
 				//Right Mark lines
 				ctx.strokeStyle=Right_Axis_Color;
@@ -1134,6 +1147,18 @@ var ZChart =
 				ctx.restore();
 			}
 
+			object.loading_sign_gen = function(ctx)
+			{
+				if (ChartDataPKG==undefined)
+				{
+					ctx.font="40px Avenir";
+					ctx.fillStyle="#666666";
+					ctx.textBaseline="middle";
+					ctx.textAlign="center";
+					ctx.fillText("Loading...",WIDTH/2,HEIGHT/2);
+				}
+			}
+
 			object.graph_clear = function ()
 			{				
 				HEIGHT=HEIGHT_Banner+HEIGHT_Chart+HEIGHT_Container;
@@ -1146,25 +1171,27 @@ var ZChart =
 			{
 				chart=document.getElementById(chart_ID);
 				ctx=chart.getContext("2d");
-				ctx.save();
+				//ctx.save();
 
 				object.graph_banner(ctx);
-				ctx.restore();
+				//ctx.restore();
 
 				object.graph_highlight(ctx);
-				ctx.restore();
+				//ctx.restore();
 
 				object.graph_grid_gen(ctx);
-				ctx.restore();
+				//ctx.restore();
 
-				if (ChartDataPKG!=undefined) object.graph_content_gen(ctx);
-				ctx.restore();
+				object.graph_content_gen(ctx);
+				//ctx.restore();
 
 				object.graph_mouse_track(ctx);
-				ctx.restore();
+				//ctx.restore();
 
 				object.graph_marker_gen(ctx);
-				ctx.restore();
+				//ctx.restore();
+
+				object.loading_sign_gen(ctx);
 
 				if(Debug) object.commom_DBG();
 

@@ -1,2 +1,2 @@
-V4.01
-Color Composition Adjustment. UX design upgrade.
+V4.02
+Logic problem emergency fix.

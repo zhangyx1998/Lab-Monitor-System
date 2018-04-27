@@ -204,21 +204,21 @@
 				</tr>	
 
 				<tr style="height:40px">
-					<td style="background-color: #EE6600;color: #FFF;text-align: center;">
+					<td style="background-color: #4BC2C5;color: #FFF;text-align: center;">
 						<font face="Avenir" size="3">ID</font>
 					</td>
-					<td style="background-color: #EE6600;color: #FFF;text-align: center;">
+					<td style="background-color: #4BC2C5;color: #FFF;text-align: center;">
 					</td>
-					<td style="background-color: #EE6600;color: #FFF;text-align: center;">
+					<td style="background-color: #4BC2C5;color: #FFF;text-align: center;">
 						<font face="Avenir" size="3">SOURCE</font>
 					</td>
-					<td style="background-color: #EE6600;color: #FFF;text-align: center;">
+					<td style="background-color: #4BC2C5;color: #FFF;text-align: center;">
 						<font face="Avenir" size="3">TYPE</font>
 					</td>
-					<td style="background-color: #EE6600;color: #FFF;text-align: center;">
+					<td style="background-color: #4BC2C5;color: #FFF;text-align: center;">
 						<font face="Avenir" size="3">CONTENT</font>
 					</td>
-					<td style="background-color: #EE6600;color: #FFF;text-align: center;">
+					<td style="background-color: #4BC2C5;color: #FFF;text-align: center;">
 						<font face="Avenir" size="3">DATE</font>
 					</td>
 				</tr>
@@ -230,13 +230,13 @@
 				<tr style="height: 6px">#*!LineMerge$1*#
 					<td style="line-height:28px;background-color:#AAAAAA;">
 					</td>
-					<td style="line-height:28px;background-color:#00AA88;">
+					<td style="line-height:28px;background-color:#4BC2C5;">
 					</td>
 					<td style="line-height:28px;background-color:#DDDDDD;">
 					</td>
 					<td style="line-height:28px;background-color:#EEEEEE;">
 					</td>
-					<td style="line-height:28px;background-color:#FFDDAA;">
+					<td style="line-height:28px;background-color:#DDEEE8;">
 					</td>
 					<td style="line-height:28px;background-color:#DDDDDD;">
 					</td>
@@ -245,7 +245,7 @@
 						<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
 							<font face="Avenir" size="3">#*!intv$1*##*<table$Log>ID$00000000*#</font>
 						</td>
-						<td style="line-height:28px;background-color:#00AA88;text-align: center; color: #fff;">
+						<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
 						</td>
 						<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
 							<font face="Avenir" size="3">#*!intv$1*##*<table$Log>MSG_Source$00000000*#</font>
@@ -253,7 +253,7 @@
 						<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
 							<font face="Avenir" size="3">#*!intv$1*##*<table$Log>MSG_Type$00000000*#</font>
 						</td>
-						<td style="line-height:28px;background-color:#FFDDAA;text-align: center; color: #000;">
+						<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
 							<font face="Avenir" size="3">#*!intv$1*##*<table$Log>MSG_Index$00000000*#</font>
 						</td>
 						<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
@@ -263,13 +263,13 @@
 				<tr style="height: 6px">
 					<td style="line-height:28px;background-color:#AAAAAA;">
 					</td>
-					<td style="line-height:28px;background-color:#00AA88;">
+					<td style="line-height:28px;background-color:#4BC2C5;">
 					</td>
 					<td style="line-height:28px;background-color:#DDDDDD;">
 					</td>
 					<td style="line-height:28px;background-color:#EEEEEE;">
 					</td>
-					<td style="line-height:28px;background-color:#FFDDAA;">
+					<td style="line-height:28px;background-color:#DDEEE8;">
 					</td>
 					<td style="line-height:28px;background-color:#DDDDDD;">
 					</td>
