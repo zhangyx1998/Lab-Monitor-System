@@ -27,7 +27,7 @@ Notice: all source codes should be arranged exactly the same as what it was if y
 
 #### V4.06
 
-+ NA
++ Appearance Improvement (Half-shown lines are now half-transparent)
 
 ***
 
@@ -40,8 +40,8 @@ Notice: all source codes should be arranged exactly the same as what it was if y
 #### V4.04
 
 + Minor Bug Fix
-+ Add API "Onfocus" to ZChart:
-> `chartobject.onfocus=function(onfocus_timestamp,this_object){;}`
++ Add API "Onfocus" to ZChart: `chartobject.onfocus=function(onfocus_timestamp,this_object){;}`
++ Using API "Onfocus" to highlight the lines selected. (UX Improvement)
 
 ***
 
