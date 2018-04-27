@@ -27,7 +27,7 @@ Notice: all source codes should be arranged exactly the same as what it was if y
 
 #### V4.13
 
-+ NA
++ ZChart.js logic correction (Minor Bug Fix)
 
 #### V4.12
 
