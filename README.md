@@ -25,6 +25,10 @@ Notice: all source codes should be arranged exactly the same as what it was if y
 
 ## Upgrade Notes
 
+#### V4.14
+
++ NA
+
 #### V4.13
 
 + ZChart.js logic correction (Minor Bug Fix)

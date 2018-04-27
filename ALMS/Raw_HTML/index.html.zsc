@@ -36,10 +36,11 @@
 		<center>
 			<div style="width: 85%; position: relative; height: 60px; display: block; align-self: center;">
 			</div><!--This div is meant to take the position of the head banner-->
-
+			<!--
 			<div class="notice red" style="width: 85%; text-align: left;">
 				Notice: an unexpected system breakdown has happened because ARDUINO mistakenly received fake timestamp from debug tools. Therefore, data from 2018-4-11 13:38:01 to 2018-4-15 16:05:02 are unfortunately lost. We will do our best to prevent this accident from happening again.
 			</div>
+			-->
 			
 			<div style="width: 85%; position: relative; height: 32px; display: block; align-self: center;">
 				<h2>Current Status</h2>
@@ -189,6 +190,114 @@
 		<center>
 			<canvas id="Envrionment Status" style="width:85%;" oncontextmenu="DBG_Switch();">
 			</canvas>
+		</center>
+		
+		<center>
+			<div style="width: 85%; position: relative; height: 32px; display: block; align-self: center;">
+				<h2>Occupancy Map</h2>
+			</div>
+			<div class="div_line pink">
+			</div>
+			<div style="width: 85%; position: relative; height: 20px; display: block; align-self: center;">
+			</div>
+			<div style="width: 85%; position: relative; display: block; align-self: center;">
+				<table>
+					<col style="width: 50%;"/>
+					<col style="width: 50%;"/>
+					<tbody>
+						<tr>
+							<td align="center">
+								<div class="image_show">
+									<div>
+										<table>
+											<tr>
+												<td class="huge_data white" style="height: 25%;background-color: #b0b0b0; font-size:40px; line-height: 36px; vertical-align: middle;">
+													LEFT
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>TIMESTAMP</b><br>
+													1523852881545
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>DATE</b><br>
+													2018-04-15
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>TEMPERATURE</b><br>
+													-22.23&#176;C
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>HUMIDITY</b><br>
+													62.19%
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>RADIATION ON</b><br>
+													YES
+												</td>
+											</tr>
+										</table>
+									</div>
+									<img src="OccupancyMap/L1.png" />
+								</div>
+							</td>
+							<td align="center">
+								<div class="image_show">
+									<div>
+										<table>
+											<tr>
+												<td class="huge_data white" style="height: 25%;background-color: #b0b0b0; font-size:40px; line-height: 36px; vertical-align: middle;">
+													RIGHT
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>TIMESTAMP</b><br>
+													1523852881545
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>DATE</b><br>
+													2018-04-15
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>TEMPERATURE</b><br>
+													-22.23&#176;C
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>HUMIDITY</b><br>
+													62.19%
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>RADIATION ON</b><br>
+													YES
+												</td>
+											</tr>
+										</table>
+									</div>
+									<img src="OccupancyMap/R1.png" />
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</center>
 
 

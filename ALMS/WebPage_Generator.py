@@ -121,6 +121,7 @@ class DB_Struct:
 						if self.col_TYPE[Value_ID]=='dt': print '------  ------'+unicode(self.RAW[Line_ID][Value_ID])
 						if self.col_TYPE[Value_ID]=='str': print '------  ------'+'"'+unicode(self.RAW[Line_ID][Value_ID])+'"'
 						if self.col_TYPE[Value_ID]=='cvt': print '------  ------'+self.RAW[Line_ID][Value_ID]
+						if self.col_TYPE[Value_ID]=='fake_ts': print "%d" % ((self.RAW[Line_ID][Value_ID]) if(self.RAW[Line_ID][Value_ID]>1523600000000) else (self.RAW[Line_ID][Value_ID]+350880224-60000))
 
 
 			if Value_ID==-1: return Err_exit_str+'"Error Invaild_Argument: '+CMD[:CMD.find('$')]+'"'
@@ -149,6 +150,8 @@ class DB_Struct:
 				while (t_str.count('<br><br>')>0) : t_str=t_str.replace('<br><br>','<br>')
 				t_str=t_str.replace('$FAKE$ ','')
 				return t_str
+			if self.col_TYPE[Value_ID]=='fake_ts': 
+				return "%d" % ((self.RAW[Line_ID][Value_ID]) if(self.RAW[Line_ID][Value_ID]>1523600000000) else (self.RAW[Line_ID][Value_ID]+350880224-60000))
 		if (Debug and Display_Detail):
 			print "------  ------ ERROR In Final Intp: "+self.tableName		
 		return Err_exit_str+'Unkonwn Error'
