@@ -27,7 +27,8 @@ Notice: all source codes should be arranged exactly the same as what it was if y
 
 #### V4.16
 
-+ NA
++ Webpage Generator(WPG) logic improvement
++ Version Control(VER) is now able to automatically detect upgrade notes and add them to Log table.
 
 ***
 
