@@ -1,7 +1,7 @@
 #!/bin/bash
 #Author:Yuxuan Zhang
 
-Version="V4.04"
+Version="V4.05"
 
 #-----------------------------------------------------
 #------------------Global Arguments-------------------

@@ -1,4 +1,4 @@
-# ALMS
+# ALMS - ATLAS Lab Monitor System
 ###### By Yuxuan Zhang
 
 ## Project Description
@@ -25,6 +25,10 @@ Notice: all source codes should be arranged exactly the same as what it was if y
 
 ## Upgrade Notes
 
+#### V4.05
+
++ Fixed Font Size Problems in Linux System.(HTML page)
+
 ***
 
 #### V4.04
@@ -32,7 +36,6 @@ Notice: all source codes should be arranged exactly the same as what it was if y
 + Minor Bug Fix
 + Add API "Onfocus" to ZChart:
 > `chartobject.onfocus=function(onfocus_timestamp,this_object){;}`
-
 
 ***
 

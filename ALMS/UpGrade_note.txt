@@ -1,4 +1,2 @@
-V4.04
-Minor Bug Fix
-Add API "Onfocus" to ZChart:
-chartobject.onfocus=function(onfocus_timestamp,this_object){;}
+V4.05
+Fixed Font Size Problems in Linux System.

@@ -352,7 +352,7 @@ var ZChart =
 				{
 					Button_table.Banner=[];
 
-					var banner_button_L=ZButton.create(chart,ChartDataPKG.Left_Axis_Name,Banner_line_height,"35px Avenir Heavy",1);
+					var banner_button_L=ZButton.create(chart,ChartDataPKG.Left_Axis_Name,Banner_line_height,object.font_size_uni_str(18)+" Avenir Heavy",1);
 					banner_button_L.display();
 					banner_button_L.status_count=2;
 					banner_button_L.onfocus=function(){object.refresh();};
@@ -373,7 +373,7 @@ var ZChart =
 					};
 					Button_table.Banner.push(banner_button_L);
 
-					var banner_button_R=ZButton.create(chart,ChartDataPKG.Right_Axis_Name,Banner_line_height,"35px Avenir Heavy",1);
+					var banner_button_R=ZButton.create(chart,ChartDataPKG.Right_Axis_Name,Banner_line_height,object.font_size_uni_str(18)+" Avenir Heavy",1);
 					banner_button_R.display();
 					banner_button_R.status_count=2;
 					banner_button_R.onfocus=function(){object.refresh()};
@@ -404,7 +404,7 @@ var ZChart =
 							if(ChartDataPKG.Data_L_Name[name_pointer]!=undefined)
 							{
 								data_name=ChartDataPKG.Data_L_Name[name_pointer];
-								var data_button=ZButton.create(chart,data_name,Banner_line_height,"30px Avenir",3-ChartDataPKG.Data_L[i][j][0]);
+								var data_button=ZButton.create(chart,data_name,Banner_line_height,object.font_size_uni_str(15)+" Avenir",3-ChartDataPKG.Data_L[i][j][0]);
 								data_button.hide();
 								data_button.tinydataPKG={cur_i:i,cur_j:j};
 								data_button.onclick=function(status,this_object)
@@ -439,7 +439,7 @@ var ZChart =
 							if(ChartDataPKG.Data_R_Name[name_pointer]!=undefined)
 							{
 								data_name=ChartDataPKG.Data_R_Name[name_pointer];
-								var data_button=ZButton.create(chart,data_name,Banner_line_height,"30px Avenir",3-ChartDataPKG.Data_R[i][j][0]);
+								var data_button=ZButton.create(chart,data_name,Banner_line_height,object.font_size_uni_str(15)+" Avenir",3-ChartDataPKG.Data_R[i][j][0]);
 								data_button.hide();
 								data_button.tinydataPKG={cur_i:i,cur_j:j};
 								data_button.onclick=function(status,this_object)
@@ -506,7 +506,7 @@ var ZChart =
 						WIDTH,Banner_line_height
 						);
 					ctx.fillStyle="#000000";
-					ctx.font = "35px Avenir";
+					ctx.font =object.font_size_uni_str(18)+" Avenir";
 					ctx.textBaseline = "middle";
 					ctx.textAlign="center";
 					ctx.fillText(chart_ID,WIDTH/2,Banner_line_height/2);
@@ -581,7 +581,7 @@ var ZChart =
 						WIDTH,Banner_line_height
 						);
 
-					ctx.font="35px Avenir";
+					ctx.font=object.font_size_uni_str(18)+" Avenir";
 					ctx.fillStyle="#666666";
 					ctx.textBaseline="middle";
 					ctx.textAlign="center";
@@ -632,7 +632,6 @@ var ZChart =
 				}
 				if(highlight==-1)
 				{
-					ctx.globalAlpha=0.1;
 					ctx.lineWidth = golbal_line_width/2;
 				}
 				if(highlight==-2)
@@ -684,7 +683,6 @@ var ZChart =
 						if(absX<0 || absX>WIDTH || pointer==ts_table.length) break;
 					}
 					ctx.stroke();
-					ctx.globalAlpha=1;
 				}
 			}
 
