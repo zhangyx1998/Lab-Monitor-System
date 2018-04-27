@@ -29,13 +29,19 @@ Notice: all source codes should be arranged exactly the same as what it was if y
 
 + Webpage HTML5 Animation Improvement.
 
+***
+
 #### V4.13
 
 + ZChart.js logic correction (Minor Bug Fix).
 
+***
+
 #### V4.12
 
 + Paragraph line hight adjustment.
+
+***
 
 #### V4.11
 
