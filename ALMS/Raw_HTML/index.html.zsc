@@ -341,28 +341,53 @@
 					<tr style="height: 8px">
 						<td colspan="6" style="background-color:rgba(255,255,255,0);;text-align:center;">
 					</tr>
-					<tr class="log_table">#*!LineMerge$1*#
+
+					<tr class="log_table">
 							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
-								<p>#*!intv$1*##*<table$Log>ID$00000000*#</p>
+								<p>#*<table$Log>ID$-00000000*#</p>
 							</td>
 							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
 							</td>
 							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
-								<p>#*!intv$1*##*<table$Log>MSG_Source$00000000*#</p>
+								<p>#*<table$Log>MSG_Source$-00000000*#</p>
 							</td>
 							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
-								<p>#*!intv$1*##*<table$Log>MSG_Type$00000000*#</p>
+								<p>#*<table$Log>MSG_Type$-00000000*#</p>
 							</td>
 							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
-								<p>#*!intv$1*##*<table$Log>MSG_Index$00000000*#</p>
+								<p>#*<table$Log>MSG_Index$-00000000*#</p>
 							</td>
 							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
-								<p>#*!intv$1*##*<table$Log>Date_Time$00000000*#</p>
+								<p>#*<table$Log>Date_Time$-00000000*#</p>
 							</td>
 					</tr>
 					<tr style="height: 8px">
 						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
-					</tr>#*!LineMerge$0*#
+					</tr>
+
+					<tr class="log_table">#*!LineMerge$1*##*!intv$1*##*!max_rows$5*#
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>#*<table$Log>ID$00000000*#</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>#*<table$Log>MSG_Source$00000000*#</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>#*<table$Log>MSG_Type$00000000*#</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>#*<table$Log>MSG_Index$00000000*#</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>#*<table$Log>Date_Time$00000000*#</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					#*!LineMerge$0*#
 					<tr style="height: 3px">
 						<td colspan="6" style="background-color:#4BC2C5;text-align:center;">
 					</tr>		 

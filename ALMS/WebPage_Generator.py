@@ -83,7 +83,7 @@ class DB_Struct:
 	def identify(self,tag):
 		if (Debug and Display_Detail): print self.tableName+" identify >> "+tag
 		flag=0
-		while flag<=self.col_Count:
+		while flag<self.col_Count:
 			if self.col_TAG_NAME[flag]==tag:
 				return flag
 			flag+=1
@@ -103,7 +103,10 @@ class DB_Struct:
 		if CMD.count('$')==1:
 			#print "intp in "+self.tableName+" index = %d"%index
 			Value_ID=self.identify(CMD[:CMD.find('$')])
-			Line_ID=to_num(CMD[CMD.find('$')+1:])+index
+			if (CMD[CMD.find('$')+1:].count('-')==0):
+				Line_ID=to_num(CMD[CMD.find('$')+1:])+index
+			else:
+				Line_ID=self.line_Count+to_num(CMD[CMD.find('$')+1:])-index-1
 
 			if (Debug and Display_Detail):
 				print "------  ------  In Final Intp: "+self.tableName+" %d "%Value_ID+"%d"%Line_ID
@@ -126,6 +129,7 @@ class DB_Struct:
 
 			if Value_ID==-1: return Err_exit_str+'"Error Invaild_Argument: '+CMD[:CMD.find('$')]+'"'
 			if Line_ID>=self.line_Count: return Err_exit_str+'"Error Time Exceed Maximum: '+"%d"%Line_ID+'"'
+			if Line_ID<0: return Err_exit_str
 			if self.col_TYPE[Value_ID]=='n': return str(self.RAW[Line_ID][Value_ID])
 			if self.col_TYPE[Value_ID]=='d': return "%d" % self.RAW[Line_ID][Value_ID]
 			if self.col_TYPE[Value_ID]=='f': return "%.f" % self.RAW[Line_ID][Value_ID]
@@ -268,7 +272,7 @@ def generate(InputTableExpect,file_stream,Path):
 		try:
 			TARGET_File=open(Path+target_file,'w')
 		except:
-			print "Unable to write file: "+target_file
+			print "Unable to write file: "+Path+target_file
 			File_Open_Flag=0
 		if (File_Open_Flag==1):
 			eof_flag=0
@@ -331,7 +335,7 @@ def generate(InputTableExpect,file_stream,Path):
 								print "%06d|*"%eof_flag+line.replace('\n','')
 							line=line_buf
 						if intv==0: flag=False
-						if eof_flag>100000: sys.exit(0)
+						if eof_flag>1000000: sys.exit(0)
 			RAW_File.close()
 			TARGET_File.close()
 			#print "Interpuation Succeeded, %d lines proccessed" % eof_flag + " " + raw_file + " " +target_file
