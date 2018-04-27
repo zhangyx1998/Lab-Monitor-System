@@ -27,20 +27,20 @@ Notice: all source codes should be arranged exactly the same as what it was if y
 
 #### V4.14
 
-+ NA
++ Webpage HTML5 Animation Improvement.
 
 #### V4.13
 
-+ ZChart.js logic correction (Minor Bug Fix)
++ ZChart.js logic correction (Minor Bug Fix).
 
 #### V4.12
 
-+ Paragraph line hight adjustment
++ Paragraph line hight adjustment.
 
 #### V4.11
 
-+ Performance Enhancement
-+ Stability Improvement
++ Performance Enhancement.
++ Stability Improvement.
 
 ***
 
