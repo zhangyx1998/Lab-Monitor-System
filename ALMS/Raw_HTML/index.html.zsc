@@ -33,8 +33,115 @@
     		<p>Last Update #*CURRENT_TIMESTAMP*#</p>
 		</div>  
 
-		<div style="position: relative; height: 80px; display: block;" align="center">
-		</div>
+		<center>
+			<div style="width: 85%; position: relative; height: 60px; display: block; align-self: center;">
+			</div><!--This div is meant to take the position of the head banner-->
+
+			<div style="width: 85%; position: relative; height: 10px; display: block; align-self: center;">
+			</div>
+			<div style="width: 85%; position: relative; height: auto; display: block; align-self: center;">
+				<h2>Current Status</h2>
+			</div>
+			<div class="div_line green">
+			</div>
+			<div style="width: 85%; position: relative; height: 20px; display: block; align-self: center;">
+			</div>
+
+
+			<div style="width: 92%; height: auto; align-self: center;">
+				<div class="card" style="width: 45%;height: 150px;">
+					<table rules=none cellspacing=0>
+						<tr>
+							<td class="Card_banner">
+								<div class="vertical">&nbsp;&nbsp;Left Sensor</div>
+							</td>
+							<td>
+								<div style="width:100%; height: 100%; display: inline-block;">
+									<table style="width:100%; height: 100%; table-layout:fixed;">
+										<tr style="width:100%; height: 70%;">
+											<td class="huge_data blue">3.41V</td>
+											<td class="huge_data green">3.29V</td>
+										</tr>
+										<tr style="width:100%; height: 30%;">
+											<td class="huge_data suffix">ANALOG VOLTAGE</td>
+											<td class="huge_data suffix">DIGITAL VOLTAGE</td>
+										</tr>
+									</table>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="card" style="display: inline-block;width: 45%;height: 150px;">
+					<table rules=none cellspacing=0>
+						<tr>
+							<td class="Card_banner">
+								<div class="vertical">&nbsp;&nbsp;Right Sensor</div>
+							</td>
+							<td>
+								<div style="width:100%; height: 100%; display: inline-block;">
+									<table style="width:100%; height: 100%; table-layout:fixed;">
+										<tr style="width:100%; height: 70%;">
+											<td class="huge_data blue">3.18V</td>
+											<td class="huge_data green">3.20V</td>
+										</tr>
+										<tr style="width:100%; height: 30%;">
+											<td class="huge_data suffix">ANALOG VOLTAGE</td>
+											<td class="huge_data suffix">DIGITAL VOLTAGE</td>
+										</tr>
+									</table>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="card" style="display: inline-block;width: 45%;height: 150px;">
+					<table rules=none cellspacing=0>
+						<tr>
+							<td class="Card_banner">
+								<div class="vertical">&nbsp;&nbsp;Environment Status</div>
+							</td>
+							<td>
+								<div style="width:100%; height: 100%; display: inline-block;">
+									<table style="width:100%; height: 100%; table-layout:fixed;">
+										<tr style="width:100%; height: 70%;">
+											<td class="huge_data orange">-22&#176;C</td>
+											<td class="huge_data blue">57%</td>
+										</tr>
+										<tr style="width:100%; height: 30%;">
+											<td class="huge_data suffix">Environment Temperature</td>
+											<td class="huge_data suffix">Environment Humidity</td>
+										</tr>
+									</table>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="card" style="display: inline-block;width: 45%;height: 150px;">
+					<table rules=none cellspacing=0>
+						<tr>
+							<td class="Card_banner">
+								<div class="vertical">&nbsp;&nbsp;Radition Source</div>
+							</td>
+							<td>
+								<div style="width:100%; height: 100%; display: inline-block;">
+									<table style="width:100%; height: 100%; table-layout:fixed;">
+										<tr style="width:100%; height: 70%;">
+											<td class="huge_data blue">3.18V</td>
+											<td class="huge_data green">3.20V</td>
+										</tr>
+										<tr style="width:100%; height: 30%;">
+											<td class="huge_data suffix">ANALOG VOLTAGE</td>
+											<td class="huge_data suffix">DIGITAL VOLTAGE</td>
+										</tr>
+									</table>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</center>
 
 		<center>
 			<canvas id="Envrionment Status" style="width:85%;" oncontextmenu="DBG_Switch();">
@@ -42,10 +149,10 @@
 		</center>
 
 
-		<div style="position: relative; height: 5px; display: block;" align="center">
+		<div style="position: relative;top: 0px;left: 0px; height: 5px; display: block;" align="center">
 		</div>
 
-		<table width="85%" border="0" align="center" style="border-style: none; table-layout:fixed" rules=none cellspacing=0>
+		<table width="85%" border="0" align="center" style="border-style: none; table-layout:fixed; width: 85%" rules=none cellspacing=0>
 			<col style="width: 4% " />
 			<col style="width: 0.4% " />
 			<col style="width: 12% " />

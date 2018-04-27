@@ -18,6 +18,7 @@ input::-webkit-inner-spin-button{
 canvas
 {
 	-webkit-tap-highlight-color:rgba(255,255,255,0);
+	z-index: 10;
 }
 
 @font-face {
@@ -134,8 +135,11 @@ h1{
 }
 
 h2{
+	padding: 0px 0px;
+	text-align: left;
+	vertical-align: bottom;
 	font-family: 'ZFont-light';
-	line-height: 28px;
+	line-height: 24px;
 	font-size: 24px;
 }
 
@@ -175,6 +179,169 @@ a:active {
 	color:#666666;
 }
 
+div{
+	text-align: center;
+	vertical-align: middle;
+}
+
+div.shadow{
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3), 05px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+div.card {
+	display: inline-block;
+	background-color: #EFEFEF;
+	min-width: 400px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3), 05px 5px 10px rgba(0, 0, 0, 0.1);
+
+	padding: 0px;
+	border: 0px;
+
+	margin-left:1%;
+	margin-right: 1%; 
+	margin-bottom: 25px; 
+	text-align: center;
+
+	-webkit-transition: 0.2s ease-out;
+	transition: 0.2s ease-out;
+}​
+
+div.card:link
+{
+}
+
+div.card:visited
+{
+}
+
+div.card:hover
+{
+	-webkit-transition: 0.15s ease-out;
+	transition: 0.15s ease-out;
+	-webkit-transform: scale(1.03, 1.03);
+	transform: scale(1.03, 1.03);
+}
+
+div.card:active
+{
+	-webkit-transition: 0.1s ease-out;
+	transition: 0.1s ease-out;
+	-webkit-transform-origin: 50% 50% 0;
+    transform-origin: 50% 50% 0;
+	-webkit-transform: rotate3d(1,0,0,-5deg) ;
+	transform: rotate3d(1,0,0,-5deg) ;
+	background-color:#DDDDDD;
+}
+
+td.huge_data{
+	font-family: "ZFont-thin";
+	font-size: 64px;
+	line-height: 64px;
+}
+
+td.huge_data.green{
+	vertical-align: bottom;
+	font-family: "ZFont-thin";
+	font-size: 64px;
+	line-height: 64px;
+	color: #00A89D;
+}
+td.huge_data.blue{
+	vertical-align: bottom;
+	font-family: "ZFont-thin";
+	font-size: 64px;
+	line-height: 64px;
+	color: #0076BA;
+}
+
+td.huge_data.orange{
+	vertical-align: bottom;
+	font-family: "ZFont-thin";
+	font-size: 64px;
+	line-height: 64px;
+	color: #F9602F;
+}
+
+td.huge_data.important{
+	vertical-align: bottom;
+	font-size: 64px;
+	line-height: 64px;
+	color: #9E3200;
+	font-family: "ZFont-regular";
+}
+
+td.huge_data.suffix{
+	vertical-align: middle;
+	color: #b0b0b0;
+	font-size: 13px;
+	line-height: 13px;
+	font-family: "ZFont-regular";
+}
+
+
+div.div_line{
+	width: 85%;
+	position: static;
+	height: 3px;
+	display: block;
+	align-self: center;
+}
+
+div.div_line.green{
+	background-color: #4DBFBE;
+}
+
+td{
+	word-break:keep-all;
+	overflow: hidden;
+	text-overflow:ellipsis;
+}
+
+td.Card_banner{
+	white-space:nowrap;
+	overflow: hidden;
+	word-break:keep-all;
+	width: 24px;
+	background-color: #999999;
+	color:#EFEFEF;
+	text-align: center;
+	vertical-align: middle;
+}
+
+table
+{
+	table-layout:fixed;
+	border-style: none;
+	width: 100%;
+	height:100%;
+}
+
+div.vertical
+{
+	position:relative;
+	left:-65px;
+	top:0px;
+	width:150px;
+	height:20px;
+	color:#EFEFEF;
+	text-align:left;
+	line-height:20px;
+	/* Rotate div */
+	transform:rotate(-90deg);
+	-ms-transform:rotate(-90deg); /* IE 9 */
+	-webkit-transform:rotate(-90deg); /* Safari and Chrome */
+}
+
+div.flip{
+	-webkit-transform-origin: 50% 0% 0;
+    transform-origin: 50% 0% 0;
+	/* Rotate div */
+	transform:rotate(180deg);
+	-ms-transform:rotate(180deg); /* IE 9 */
+	-webkit-transform:rotate(180deg); /* Safari and Chrome */
+
+}
+
 #Float_TAG
 {
 	position: fixed;
@@ -183,7 +350,7 @@ a:active {
 	height: 24px;
 	width: 200px;  
 	color: #FFFFFF;
-	background: rgba(0,0,0,0.6);：
+	background: rgba(0,0,0,0.6);ï¼š
 	border-width: 10px 5px 10px 5px;  
 	border-style: solid;
 	border-radius: 10px; 

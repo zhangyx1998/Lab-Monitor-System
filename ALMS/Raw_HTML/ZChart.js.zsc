@@ -1560,14 +1560,9 @@ var ZChart =
 				HEIGHT=Math.floor(WIDTH*chart_ratio);
 
 				HEIGHT_Chart=Math.floor(HEIGHT*H_Lines/(H_Lines+0.5*Scale_Index));
-				HEIGHT_Container=HEIGHT-HEIGHT_Chart;
-				if (HEIGHT_Container<(65*Scale_Index) || true)
-				{
-					HEIGHT_Container=65*Scale_Index;
-					HEIGHT=HEIGHT_Chart+HEIGHT_Container;
-				}
+				HEIGHT_Container=40*ratio*Scale_Index;
 				Grid_length=HEIGHT_Chart/H_Lines;
-				HEIGHT+=HEIGHT_Banner;
+				HEIGHT=HEIGHT_Chart+HEIGHT_Container+HEIGHT_Banner;
 				chart.style.height=(Math.floor(HEIGHT/ratio)).toString()+"px";
 				chart.width=WIDTH.toString();
 				chart.height=HEIGHT.toString();
