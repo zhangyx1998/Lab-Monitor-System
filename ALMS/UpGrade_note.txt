@@ -1,3 +1,4 @@
-V4.03
+V4.04
 Minor Bug Fix
-You can now highlight a specific line by floating your mouse on its corresponding button. (ZChart)
+Add API "Onfocus" to ZChart:
+chartobject.onfocus=function(onfocus_timestamp,this_object){;}

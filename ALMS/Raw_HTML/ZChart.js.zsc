@@ -243,6 +243,9 @@ var ZChart =
 				var Right_Axis_OnGrag_Color=	"#BBBBBB";
 		//------------------------------------------------------------
 		//Interaction presets
+
+			object.onfocus= function (ts,object){;} //API
+
 			document.oncontextmenu=function (){return false;}
 
 			chart.onmousedown = function (evt) 
@@ -629,6 +632,7 @@ var ZChart =
 				}
 				if(highlight==-1)
 				{
+					ctx.globalAlpha=0.1;
 					ctx.lineWidth = golbal_line_width/2;
 				}
 				if(highlight==-2)
@@ -680,6 +684,7 @@ var ZChart =
 						if(absX<0 || absX>WIDTH || pointer==ts_table.length) break;
 					}
 					ctx.stroke();
+					ctx.globalAlpha=1;
 				}
 			}
 
@@ -823,6 +828,8 @@ var ZChart =
 								ctx.font="bold italic "+object.font_size_uni_str(12)+" Arial";
 
 								var axis_x=position_x;
+									axis_x=(axis_x<marker_WIDTH?marker_WIDTH:axis_x);
+									axis_x=axis_x>(WIDTH-marker_WIDTH)?(WIDTH-marker_WIDTH):axis_x;
 								var axis_y=Left_Axis_Data_axis_Y;
 								var horizational_space=4;
 								var vertical_space=4;
@@ -874,6 +881,8 @@ var ZChart =
 								ctx.font="bold italic "+object.font_size_uni_str(12)+" Arial";
 
 								var axis_x=position_x;
+									axis_x=(axis_x<marker_WIDTH?marker_WIDTH:axis_x);
+									axis_x=axis_x>(WIDTH-marker_WIDTH)?(WIDTH-marker_WIDTH):axis_x;
 								var axis_y=Right_Axis_Data_axis_Y;
 								var horizational_space=4;
 								var vertical_space=4;
@@ -912,6 +921,8 @@ var ZChart =
 					ts_ms=h+m+s;
 
 					var axis_x=position_x;
+						axis_x=(axis_x<marker_WIDTH?marker_WIDTH:axis_x);
+						axis_x=axis_x>(WIDTH-marker_WIDTH)?(WIDTH-marker_WIDTH):axis_x;
 					var axis_y=Math.ceil(HEIGHT_Chart-Grid_length/3);
 					var horizational_space=4;
 					var vertical_space=4;
@@ -933,6 +944,8 @@ var ZChart =
 						HEIGHT_Banner+vertical_space*ratio)
 					ctx.restore();
 					ctx.setLineDash([]);
+
+					object.onfocus(data_ts_tag);//API Call
 				}
 			}
 

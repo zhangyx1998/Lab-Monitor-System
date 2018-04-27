@@ -1,4 +1,5 @@
-# ALMS _By Yuxuan Zhang
+# ALMS
+###### By Yuxuan Zhang
 
 Project Description
 
@@ -22,10 +23,19 @@ Notice: all source codes should be arranged exactly the same as what it was if y
 
 ***
 
+#### V4.04
+
++ Minor Bug Fix
++ Add API "Onfocus" to ZChart:
+> `chartobject.onfocus=function(onfocus_timestamp,this_object){;}`
+
+
+***
+
 #### V4.03
 
 + Minor Bug Fix
-+ You can now highlight a specific line by floating your mouse on its corresponding button. (ZChart Feature Update using ZButton API)
++ You can now highlight a specific line by floating your mouse on its corresponding button. (ZChart Feature Upgrade using ZButton API)
 
 ***
 
