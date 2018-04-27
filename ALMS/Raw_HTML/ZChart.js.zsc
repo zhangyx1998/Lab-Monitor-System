@@ -352,7 +352,7 @@ var ZChart =
 				{
 					Button_table.Banner=[];
 
-					var banner_button_L=ZButton.create(chart,ChartDataPKG.Left_Axis_Name,Banner_line_height,object.font_size_uni_str(18)+" Avenir Heavy",1);
+					var banner_button_L=ZButton.create(chart,ChartDataPKG.Left_Axis_Name,Banner_line_height,object.font_size_uni_str(18)+" ZFont-regular Heavy",1);
 					banner_button_L.display();
 					banner_button_L.status_count=2;
 					banner_button_L.onfocus=function(){object.refresh();};
@@ -373,7 +373,7 @@ var ZChart =
 					};
 					Button_table.Banner.push(banner_button_L);
 
-					var banner_button_R=ZButton.create(chart,ChartDataPKG.Right_Axis_Name,Banner_line_height,object.font_size_uni_str(18)+" Avenir Heavy",1);
+					var banner_button_R=ZButton.create(chart,ChartDataPKG.Right_Axis_Name,Banner_line_height,object.font_size_uni_str(18)+" ZFont-regular Heavy",1);
 					banner_button_R.display();
 					banner_button_R.status_count=2;
 					banner_button_R.onfocus=function(){object.refresh()};
@@ -404,7 +404,7 @@ var ZChart =
 							if(ChartDataPKG.Data_L_Name[name_pointer]!=undefined)
 							{
 								data_name=ChartDataPKG.Data_L_Name[name_pointer];
-								var data_button=ZButton.create(chart,data_name,Banner_line_height,object.font_size_uni_str(15)+" Avenir",3-ChartDataPKG.Data_L[i][j][0]);
+								var data_button=ZButton.create(chart,data_name,Banner_line_height,object.font_size_uni_str(15)+" ZFont-regular",3-ChartDataPKG.Data_L[i][j][0]);
 								data_button.hide();
 								data_button.tinydataPKG={cur_i:i,cur_j:j};
 								data_button.onclick=function(status,this_object)
@@ -439,7 +439,7 @@ var ZChart =
 							if(ChartDataPKG.Data_R_Name[name_pointer]!=undefined)
 							{
 								data_name=ChartDataPKG.Data_R_Name[name_pointer];
-								var data_button=ZButton.create(chart,data_name,Banner_line_height,object.font_size_uni_str(15)+" Avenir",3-ChartDataPKG.Data_R[i][j][0]);
+								var data_button=ZButton.create(chart,data_name,Banner_line_height,object.font_size_uni_str(15)+" ZFont-regular",3-ChartDataPKG.Data_R[i][j][0]);
 								data_button.hide();
 								data_button.tinydataPKG={cur_i:i,cur_j:j};
 								data_button.onclick=function(status,this_object)
@@ -506,14 +506,14 @@ var ZChart =
 						WIDTH,Banner_line_height
 						);
 					ctx.fillStyle="#000000";
-					ctx.font =object.font_size_uni_str(18)+" Avenir";
+					ctx.font =object.font_size_uni_str(18)+" ZFont-regular";
 					ctx.textBaseline = "middle";
 					ctx.textAlign="center";
 					ctx.fillText(chart_ID,WIDTH/2,Banner_line_height/2);
 					text_len=ctx.measureText(chart_ID).width*1.3;
 					text_len=text_len>WIDTH/3?text_len:WIDTH/3;
 					Button_table.Banner[0].height=Banner_line_height;
-					Button_table.Banner[0].resetFont(object.font_size_uni_str(18)+" Avenir Heavy");
+					Button_table.Banner[0].resetFont(object.font_size_uni_str(18)+" ZFont-bold");
 					Button_table.Banner[0].draw(
 						0,
 						0,
@@ -521,7 +521,7 @@ var ZChart =
 						"left",
 						(WIDTH-text_len)/2);
 					Button_table.Banner[1].height=Banner_line_height;
-					Button_table.Banner[1].resetFont(object.font_size_uni_str(18)+" Avenir Heavy");
+					Button_table.Banner[1].resetFont(object.font_size_uni_str(18)+" ZFont-bold");
 					Button_table.Banner[1].draw(
 						WIDTH,
 						0,
@@ -549,7 +549,7 @@ var ZChart =
 									ctx.fillRect(0,HEIGHT_Banner,WIDTH,Banner_line_height);
 								}
 								Button_table.L[i].height=Banner_line_height;
-								Button_table.L[i].resetFont(object.font_size_uni_str(15)+" Avenir Heavy");
+								Button_table.L[i].resetFont(object.font_size_uni_str(15)+" ZFont-regular");
 								Button_table.L[i].draw(x_handle,HEIGHT_Banner,Left_Axis_Color);
 								x_handle+=Button_table.L[i].width;
 							}
@@ -571,7 +571,7 @@ var ZChart =
 									ctx.fillRect(0,HEIGHT_Banner,WIDTH,Banner_line_height);
 								}
 								Button_table.R[i].height=Banner_line_height;
-								Button_table.R[i].resetFont(object.font_size_uni_str(15)+" Avenir Heavy");
+								Button_table.R[i].resetFont(object.font_size_uni_str(15)+" ZFont-regular");
 								Button_table.R[i].draw(x_handle,HEIGHT_Banner,Right_Axis_Color);
 								x_handle+=Button_table.R[i].width;
 							}
@@ -589,7 +589,7 @@ var ZChart =
 						WIDTH,Banner_line_height
 						);
 
-					ctx.font=object.font_size_uni_str(18)+" Avenir";
+					ctx.font=object.font_size_uni_str(18)+" ZFont-regular";
 					ctx.fillStyle="#666666";
 					ctx.textBaseline="middle";
 					ctx.textAlign="center";
@@ -799,7 +799,7 @@ var ZChart =
 					ctx.textAlign="center";
 					ctx.textBaseline="top";
 					ctx.fillStyle="#000000";
-					ctx.font="bold italic "+object.font_size_uni_str(12)+" Avenir";
+					ctx.font="bold italic "+object.font_size_uni_str(12)+" ZFont-regular";
 
 					ctx.fillText("ORG"+data_tag.toString(),WIDTH/2,5)
 					ctx.fillText("STP"+(upd_timestamp-data_tag*bottom_axis_ratio).toString(),WIDTH/2,25)
@@ -833,7 +833,7 @@ var ZChart =
 								ctx.textAlign="left";
 								ctx.textBaseline="top";
 								ctx.fillStyle=Left_Axis_Color;
-								ctx.font="bold italic "+object.font_size_uni_str(12)+" Arial";
+								ctx.font=object.font_size_uni_str(12)+" ZFont-regular";
 
 								var axis_x=position_x;
 									axis_x=(axis_x<marker_WIDTH?marker_WIDTH:axis_x);
@@ -886,7 +886,7 @@ var ZChart =
 								ctx.textAlign="left";
 								ctx.textBaseline="top";
 								ctx.fillStyle=Right_Axis_Color;
-								ctx.font="bold italic "+object.font_size_uni_str(12)+" Arial";
+								ctx.font=object.font_size_uni_str(12)+" ZFont-regular";
 
 								var axis_x=position_x;
 									axis_x=(axis_x<marker_WIDTH?marker_WIDTH:axis_x);
@@ -915,7 +915,7 @@ var ZChart =
 					//Time Tag
 					ctx.textAlign="left";
 					ctx.fillStyle=Assist_Font_Color;
-					ctx.font=object.font_size_uni_str(10)+" Arial";
+					ctx.font=object.font_size_uni_str(10)+" ZFont-regular";
 
 					var date=new Date(ChartDataPKG.Data_L[0][0][data_ts_tag]);
 					Y = date.getFullYear() + '-';
@@ -1034,7 +1034,7 @@ var ZChart =
 					}
 				}
 
-				ctx.font="Bold "+object.font_size_uni_str(12)+" Arial";
+				ctx.font="Bold "+object.font_size_uni_str(12)+" ZFont-regular";
 				var max_Marker=max_L;
 				var min_Marker=min_L;
 				for (var i=0; i<=H_Lines; i++)
@@ -1098,7 +1098,7 @@ var ZChart =
 					}
 				}
 
-				ctx.font="Bold "+object.font_size_uni_str(12)+" Arial";
+				ctx.font=object.font_size_uni_str(12)+" ZFont-bold";
 				var max_Marker=max_R;
 				var min_Marker=min_R;
 				for (var i=0; i<=H_Lines; i++)
@@ -1151,7 +1151,7 @@ var ZChart =
 
 				//Buttom Marker
 				ctx.fillStyle=Axis_Font_Color;
-				ctx.font="Bold "+object.font_size_uni_str(12)+" Arial";
+				ctx.font=object.font_size_uni_str(12)+" ZFont-regular";
 				var max_Marker=L_limit;
 				var min_Marker=R_limit;
 				var Marker_Count=5;
@@ -1166,18 +1166,18 @@ var ZChart =
 					var MARK=min_Marker+(1-i/(Marker_Count))*(max_Marker-min_Marker);
 					if(Math.floor(MARK)<=0)
 					{
-						ctx.font="Bold "+object.font_size_uni_str(12)+" Arial";
+						ctx.font=object.font_size_uni_str(12)+" ZFont-bold";
 						ctx.fillText("NOW",i*WIDTH/Marker_Count,HEIGHT_Banner+height_axis);
 						height_axis+=(HEIGHT_Container/10+object.font_size_uni(12));
-						ctx.font="Bold "+object.font_size_uni_str(8)+" Arial";
+						ctx.font=object.font_size_uni_str(8)+" ZFont-bold";
 						ctx.fillText("Real Time",i*WIDTH/Marker_Count,HEIGHT_Banner+height_axis);
 					}
 					else
 					{
-						ctx.font="Bold "+object.font_size_uni_str(12)+" Arial";
+						ctx.font=object.font_size_uni_str(12)+" ZFont-bold";
 						ctx.fillText(Math.ceil(MARK-0.00000001).toString(),i*WIDTH/Marker_Count,HEIGHT_Banner+height_axis);
 						height_axis+=(HEIGHT_Container/10+object.font_size_uni(12));
-						ctx.font="Bold "+object.font_size_uni_str(8)+" Arial";
+						ctx.font=object.font_size_uni_str(8)+" ZFont-bold";
 						ctx.fillText(bottom_axis_unit,i*WIDTH/Marker_Count,HEIGHT_Banner+height_axis);
 					}
 				}
@@ -1388,7 +1388,7 @@ var ZChart =
 
 				var Pedding=0;
 				ctx.fillStyle="#000";
-				ctx.font=object.font_size_uni_str(12)+" Arial thin";
+				ctx.font=object.font_size_uni_str(12)+" ZFont-light";
 				ctx.textAlign="center";
 				ctx.textBaseline="top";
 

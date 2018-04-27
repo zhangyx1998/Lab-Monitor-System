@@ -25,9 +25,15 @@ Notice: all source codes should be arranged exactly the same as what it was if y
 
 ## Upgrade Notes
 
-#### V4.07
+#### V4.08
 
 + NA
+
+***
+
+#### V4.07
+
++ Appearence Improvement.
 
 ***
 

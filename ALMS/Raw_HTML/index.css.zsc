@@ -1,0 +1,266 @@
+body
+{
+	-webkit-tap-highlight-color: rgba(255,255,255,0);
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+input::-webkit-outer-spin-button,  
+input::-webkit-inner-spin-button{  
+	-webkit-appearance: none !important;  
+	margin: 0;  
+} 
+
+canvas
+{
+	-webkit-tap-highlight-color:rgba(255,255,255,0);
+}
+
+@font-face {
+	font-family:'ZFont-regular';
+	src: url('Fonts/ZFont/ZFont-regular.ttf') format('truetype'),
+		 url('Fonts/ZFont/ZFont-regular.svg') format('svg'),
+		 url('Fonts/ZFont/ZFont-regular.eot') format('embedded-opentype'),
+		 url('Fonts/ZFont/ZFont-regular.woff') format('woff'),
+		 url('Fonts/ZFont/ZFont-regular.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family:'ZFont-thin';
+	src: url('Fonts/ZFont/ZFont-thin.ttf') format('truetype'),
+		 url('Fonts/ZFont/ZFont-thin.svg') format('svg'),
+		 url('Fonts/ZFont/ZFont-thin.eot') format('embedded-opentype'),
+		 url('Fonts/ZFont/ZFont-thin.woff') format('woff'),
+		 url('Fonts/ZFont/ZFont-thin.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family:'ZFont-light';
+	src: url('Fonts/ZFont/ZFont-light.ttf') format('truetype'),
+		 url('Fonts/ZFont/ZFont-light.svg') format('svg'),
+		 url('Fonts/ZFont/ZFont-light.eot') format('embedded-opentype'),
+		 url('Fonts/ZFont/ZFont-light.woff') format('woff'),
+		 url('Fonts/ZFont/ZFont-light.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family:'ZFont-medium';
+	src: url('Fonts/ZFont/ZFont-medium.ttf') format('truetype'),
+		 url('Fonts/ZFont/ZFont-medium.svg') format('svg'),
+		 url('Fonts/ZFont/ZFont-medium.eot') format('embedded-opentype'),
+		 url('Fonts/ZFont/ZFont-medium.woff') format('woff'),
+		 url('Fonts/ZFont/ZFont-medium.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family:'ZFont-bold';
+	src: url('Fonts/ZFont/ZFont-bold.ttf') format('truetype'),
+		 url('Fonts/ZFont/ZFont-bold.svg') format('svg'),
+		 url('Fonts/ZFont/ZFont-bold.eot') format('embedded-opentype'),
+		 url('Fonts/ZFont/ZFont-bold.woff') format('woff'),
+		 url('Fonts/ZFont/ZFont-bold.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family:'ZFont-black';
+	src: url('Fonts/ZFont/ZFont-black.ttf') format('truetype'),
+		 url('Fonts/ZFont/ZFont-black.svg') format('svg'),
+		 url('Fonts/ZFont/ZFont-black.eot') format('embedded-opentype'),
+		 url('Fonts/ZFont/ZFont-black.woff') format('woff'),
+		 url('Fonts/ZFont/ZFont-black.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.font_thin{
+	font-family: 'ZFont-thin';
+	font-weight: normal;
+	font-style: normal;
+}
+
+.font_light{
+	font-family: 'ZFont-light';
+	font-weight: normal;
+	font-style: normal;
+}
+
+.font_medium{
+	font-family: 'ZFont-medium';
+	font-weight: normal;
+	font-style: normal;
+}
+
+.font_bold{
+	font-family: 'ZFont-bold';
+	font-weight: normal;
+	font-style: normal;
+}
+
+.font_black{
+	font-family: 'ZFont-black';
+	font-weight: normal;
+	font-style: normal;
+}
+
+.font_regular{
+	font-family: 'ZFont-regular';
+	font-weight: normal;
+	font-style: normal;
+}
+
+body{
+	font-family: 'ZFont-regular';
+	font-size: 14px;
+}
+
+h1{
+	font-family: 'ZFont-light';
+	line-height: 20px;
+	font-size: 24px;
+}
+
+h2{
+	font-family: 'ZFont-light';
+	line-height: 28px;
+	font-size: 24px;
+}
+
+h3{
+	font-family: 'ZFont-thin';
+	line-height: 16px;
+	font-size: 12px;
+}
+
+p{
+	font-family: 'ZFont-light';
+	font-weight: 600;
+	line-height: 8px;
+	font-size: 15px;
+}
+
+a{
+	font-family: 'ZFont-medium';
+	line-height: 12px;
+	font-size: 12px;
+}
+
+a:link {
+	background-color: rgba(255,255,255,0);
+	color:#000000;
+}
+a:visited {
+	background-color: rgba(255,255,255,0);
+	color:#000000;
+}
+a:hover {
+	background-color: rgba(200,200,200,0);
+	color:#666666;
+}
+a:active {
+	background-color: rgba(200,200,200,1);
+	color:#666666;
+}
+
+#Float_TAG
+{
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	height: 24px;
+	width: 200px;  
+	color: #FFFFFF;
+	background: rgba(0,0,0,0.6);：
+	border-width: 10px 5px 10px 5px;  
+	border-style: solid;
+	border-radius: 10px; 
+	border-color: rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0);
+	overflow: ellipsis;
+}  
+	  
+#Float_TAG p
+{  
+	margin: 0px auto;  
+	padding: 0px;  
+	text-align: center;  
+	vertical-align: middle;
+	font-size: 14px;
+	line-height: 22px;
+	letter-spacing:0px;  
+}  
+
+.uni_table{
+	border-style: none;
+}
+.text_box{
+	text-align: center;
+	color: #fff;
+	border: none;
+	text-align: center; 
+	overflow: hidden;
+	background-color: #FFFFFF;
+	color: #000000
+}
+.text_box:focus{
+	font-style: italic;
+	outline: none;
+ }
+
+.text_box.L{
+	font-weight: bold;
+	font-size: 12px;
+}
+.text_box.M{
+	font-weight: normal;
+	font-size: 12px;
+}
+.text_box.S{
+	font-weight: thin;
+	font-size: 6px;
+}
+
+.MTR_button{
+	line-height: 12px;
+	text-align: center;
+	font-weight: bold;
+	outline: none;
+	color: #fff;
+	margin: 0px 0px 0px 0px;
+	position: relative;
+	align-self: center;
+	overflow: hidden;
+	z-index: 0;
+}
+.MTR_button:nth-child(6n){
+	margin-right: 0;
+}
+.MTR_button.uni{
+	color: #FFFFFF;
+	border: none;
+	background-color: rgba(0,0,0,0);
+}
+.uni:hover{
+	background-color: rgba(255,255,255,0.5);
+}
+
+.uni:active{
+	background-color: rgba(0,0,0,0.5);
+}
+
+.uni:focus{
+		outline: none;
+	background-color: rgba(0,0,0,0);
+}
