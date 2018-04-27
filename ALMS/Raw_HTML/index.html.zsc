@@ -176,32 +176,11 @@
     		<p><font face="Avenir" style="vertical-align: middle;">Last Update #*CURRENT_TIMESTAMP*#</font></p>
 		</div>  
 
-		<div style="position: relative; height: 100px; display: block;" align="center">
+		<div style="position: relative; height: 80px; display: block;" align="center">
 		</div>
 
-		<table id="TH_Table" width="85%" border="0" align="center" rules=none cellspacing=0 >
-			<tr style="height:40px;background-color:#00AA88;">
-				<td colspan="1" style="font-size: 14px;" align="left" width="30%">
-					<font color="#FFFFFF" face="Avenir" size="3" style="font-weight: bold;">&nbsp;&nbsp;TEMPERATURE</font>
-				</td>
-				<td colspan="2" align="center" color="#666666"  width="40%">
-
-					<button onClick="Graph_1.RESET_ALL();" oncontextmenu="DBG_Switch();" type="MTR_button" class="MTR_button uni" align="center" style="width: 80px; height: 40px;">
-						<font face="Avenir" size="3" style="font-weight:normal; line-height: 36px">RESET</font>
-					</button>
-					
-				<td colspan="1" style="font-size: 14px"  align="right"  width="30%">
-					<font color="#FFFFFF" face="Avenir" size="3" style="font-weight: bold;">HUMIDITY&nbsp;&nbsp;</font>
-				</td>
-			</tr>
-
-				<tr style="height: 1px">
-					<td colspan="4" style="background-color:#FFFFFF;text-align:center;">
-				</tr>
-		</table>
-
 		<center>
-			<canvas id="TH_Chart" style="width:85%;">
+			<canvas id="Envrionment Status" style="width:85%;" oncontextmenu="DBG_Switch();">
 			</canvas>
 		</center>
 
@@ -328,9 +307,9 @@
 		</div>
 
 		<!--######################################################################################-->
-		<script type="text/javascript" src="ZGraph.js?V2.01"></script>
+		<script type="text/javascript" src="ZChart.js?V2.01"></script>
 		<script type="text/javascript">	
-			var Graph_1=ZGraph.create("TH_Chart",Default_Style);
+			var Chart_1=ZChart.create("Envrionment Status",Enviornment_Status_Style);
 		</script>
 	</body>
 </html>

@@ -25,6 +25,7 @@ var ZButton =
 		var highlight=false;
 		var mouse_cilck_flag=0;
 
+		object.content=content;
 		object.status_count=3;
 		object.height=height;
 		object.width=draw_button(ctx,height,content,font,0);
@@ -37,10 +38,11 @@ var ZButton =
 		}
 
 		object.onclick=function(){;}//Commom API
+		object.onfocus=function(){;}//Commom API
 
 		object.display= function()
 		{
-			window.addEventListener(
+			chart.addEventListener(
 				'mousedown',
 				function(evt)
 				{
@@ -48,7 +50,7 @@ var ZButton =
 					var this_y = (evt.pageY-chart.offsetTop)*ratio;
 					object.catchmouseevent(this_x,this_y,1);
 				});
-			window.addEventListener(
+			chart.addEventListener(
 				'mousemove',
 				function(evt)
 				{
@@ -56,7 +58,7 @@ var ZButton =
 					var this_y = (evt.pageY-chart.offsetTop)*ratio;
 					object.catchmouseevent(this_x,this_y,mouse_cilck_flag);
 				});
-			window.addEventListener(
+			chart.addEventListener(
 				'mouseup',
 				function(evt)
 				{
@@ -69,12 +71,31 @@ var ZButton =
 
 		object.hide= function(){active=false};
 
-		object.draw=function(this_x,this_y,bkg_color)
+		object.draw=function(this_x,this_y,bkg_color,
+			/*Not Necessarily required*/style,
+			/*Not Necessarily required*/this_width)
 		{
 			if(active)
 			{
 				display_x=this_x;
 				display_y=this_y;
+
+				if(style!=undefined)
+				{
+					if (style=="left")
+					{
+						display_x=this_x;
+						display_y=this_y;
+						object.width=this_width;
+					}
+					if (style=="right")
+					{
+						display_x=this_x-this_width;
+						display_y=this_y;
+						object.width=this_width;
+					}
+				}
+
 				var front_color="#FFFFFF";
 				if(color_illuminance(bkg_color)>0.9)front_color="#000000";
 				var this_color_set=
@@ -83,7 +104,7 @@ var ZButton =
 						background: bkg_color,
 						highlight:	color_mix(front_color,bkg_color,0.6),
 					}
-				draw_button(ctx,height,content,font,object.status,this_x,this_y,this_color_set,highlight);
+				draw_button(ctx,height,content,font,object.status,this_x,this_y,this_color_set,highlight,style,this_width);
 			}
 		}
 
@@ -98,13 +119,14 @@ var ZButton =
 					&& this_y<(display_y+object.height)
 					)
 				{
+					object.onfocus(object.status,object);
 					highlight=true;
 					if(mouse_cilck_flag==1 && mouseStatus==0)
 					{
 						mouse_cilck_flag=0;
 						object.status++;
 						if(object.status>object.status_count)object.status=1;
-						object.onclick(status,object);
+						object.onclick(object.status,object);
 					}
 					mouse_cilck_flag=mouseStatus;
 				}
@@ -123,7 +145,7 @@ var ZButton =
 function hexToRgb(hex) 
 {
     var color = [], rgb = [];
-    hex = hex.replace(/#/,"");
+    hex = hex.replace("#","");
 
     if (hex.length == 3)
     {
@@ -187,7 +209,82 @@ function color_illuminance(hex_color)
 	return val/Math.sqrt(3*255*255);
 }
 
-function draw_button(ctx,height,content,font,status,x,y,color_family,highlight)
+function draw_button(ctx,height,content,font,status,x,y,color_family,highlight,style,width)
+{
+	if(style==undefined)
+	{
+		return draw_button_style1(ctx,height,content,font,status,x,y,color_family,highlight);
+	}
+	if(style=="left" || style=="right")
+	{
+		draw_button_banner(ctx,height,content,font,status,x,y,color_family,highlight,style,width);
+		return width;
+	}
+}
+
+function draw_button_banner(ctx,height,content,font,status,x,y,color_family,highlight,style,width)
+{
+
+	if(status==1)
+	{
+		fill_color=color_family.background;
+		text_color=color_family.front;
+	}
+
+	if(status==2)
+	{
+		fill_color=color_mix(color_family.background,"#000000",0.8);
+		text_color=color_family.front;
+	}
+
+	if(highlight==true)
+	{
+		fill_color=color_mix(fill_color,"#FFFFFF",0.9);
+		text_color=color_family.front;
+	}
+
+	ctx.font = font;
+	ctx.textBaseline = "middle";
+	ctx.textAlign=style;
+	text_length=ctx.measureText(content).width;
+	var inner_pedding=Math.floor(height*0.2);
+
+	while(content.length>1 && (text_length+inner_pedding+height/2)>width)
+	{
+		content=content.slice(0,content.length-1);
+		text_length=ctx.measureText(content).width;
+	}
+
+	if (style=="left")
+	{
+		ctx.fillStyle=fill_color;
+		ctx.beginPath();
+		ctx.moveTo(x,y);
+		ctx.lineTo(x+width-height/2,y);
+		ctx.lineTo(x+width,y+height);
+		ctx.lineTo(x,y+height);
+		ctx.lineTo(x,y);
+		ctx.fill();
+		ctx.fillStyle=text_color;
+		ctx.fillText(content,x+inner_pedding,y+height/2);
+	}
+
+	if (style=="right")
+	{
+		ctx.fillStyle=fill_color;
+		ctx.beginPath();
+		ctx.moveTo(x,y);
+		ctx.lineTo(x-width+height/2,y);
+		ctx.lineTo(x-width,y+height);
+		ctx.lineTo(x,y+height);
+		ctx.lineTo(x,y);
+		ctx.fill();
+		ctx.fillStyle=text_color;
+		ctx.fillText(content,x-inner_pedding,y+height/2);
+	}
+}
+
+function draw_button_style1(ctx,height,content,font,status,x,y,color_family,highlight)
 {
 	ctx.font = font;
 	ctx.textBaseline = "middle";
@@ -201,7 +298,7 @@ function draw_button(ctx,height,content,font,status,x,y,color_family,highlight)
 
 	var width=parseInt(text.width)+pedding*2+inner_pedding*2;
 
-	if(status>0)
+	if(status>0 && status<=3)
 	{
 		var border_color="#FFFFFF";
 		var fill_color="#FFFFFF";
