@@ -25,6 +25,12 @@ Notice: all source codes should be arranged exactly the same as what it was if y
 
 ## Upgrade Notes
 
+#### V4.07
+
++ NA
+
+***
+
 #### V4.06
 
 + Appearance Improvement (Half-shown lines are now half-transparent)

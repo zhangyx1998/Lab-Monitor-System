@@ -28,8 +28,18 @@ var ZButton =
 		object.content=content;
 		object.status_count=3;
 		object.height=height;
-		object.width=draw_button(ctx,height,content,font,0);
+		object.width=draw_button(ctx,object.height,content,font,0);
 		object.status=(default_status==undefined?1:default_status);
+
+		object.resetFont = function(this_font)
+		{
+			font=this_font;
+			ctx.font = this_font;
+			ctx.textBaseline = "middle";
+			ctx.textAlign="start";
+			text=ctx.measureText(content);
+			object.width=draw_button(ctx,object.height,content,font,0);
+		}
 
 		object.actual_length=function()
 		{
@@ -104,7 +114,7 @@ var ZButton =
 						background: bkg_color,
 						highlight:	color_mix(front_color,bkg_color,0.6),
 					}
-				draw_button(ctx,height,content,font,object.status,this_x,this_y,this_color_set,highlight,style,this_width);
+				draw_button(ctx,object.height,content,font,object.status,this_x,this_y,this_color_set,highlight,style,this_width);
 			}
 		}
 
