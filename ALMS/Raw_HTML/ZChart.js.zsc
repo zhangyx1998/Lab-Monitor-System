@@ -684,7 +684,7 @@ var ZChart =
 				var pointer=1;
 
 				while (ts_table[pointer]>R_limit_TS && pointer<ts_table.length) pointer+=1;
-				if(pointer>2)pointer-=1;
+				if(pointer>1)pointer-=1;
 
 				if(pointer<ts_table.length)
 				{
@@ -714,7 +714,7 @@ var ZChart =
 						//alert("Line To "+absX+" "+absY)
 						pointer+=1;
 
-						if(absX<0 || absX>WIDTH || pointer==ts_table.length) break;
+						if(absX<0 || absX>WIDTH || pointer>ts_table.length) break;
 					}
 					ctx.stroke();
 				}

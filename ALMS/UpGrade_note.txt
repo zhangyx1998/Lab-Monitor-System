@@ -1,2 +1,1 @@
-V4.12
-Paragraph line hight adjustment
+V4.13

@@ -25,9 +25,13 @@ Notice: all source codes should be arranged exactly the same as what it was if y
 
 ## Upgrade Notes
 
-#### V4.12
+#### V4.13
 
 + NA
+
+#### V4.12
+
++ Paragraph line hight adjustment
 
 #### V4.11
 

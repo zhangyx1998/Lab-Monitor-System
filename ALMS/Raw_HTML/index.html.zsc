@@ -37,9 +37,11 @@
 			<div style="width: 85%; position: relative; height: 60px; display: block; align-self: center;">
 			</div><!--This div is meant to take the position of the head banner-->
 
-			<div style="width: 85%; position: relative; height: 10px; display: block; align-self: center;">
+			<div class="notice red" style="width: 85%; text-align: left;">
+				Notice: an unexpected system breakdown has happened because ARDUINO mistakenly received fake timestamp from debug tools. Therefore, data from 2018-4-11 13:38:01 to 2018-4-15 16:05:02 are unfortunately lost. We will do our best to prevent this accident from happening again.
 			</div>
-			<div style="width: 85%; position: relative; height: auto; display: block; align-self: center;">
+			
+			<div style="width: 85%; position: relative; height: 32px; display: block; align-self: center;">
 				<h2>Current Status</h2>
 			</div>
 			<div class="div_line green">
@@ -231,7 +233,7 @@
 				<tr style="height: 8px">
 					<td colspan="6" style="background-color:rgba(255,255,255,0);;text-align:center;">
 				</tr>
-				<tr>#*!LineMerge$1*#
+				<tr class="log_table">#*!LineMerge$1*#
 						<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
 							<p>#*!intv$1*##*<table$Log>ID$00000000*#</p>
 						</td>

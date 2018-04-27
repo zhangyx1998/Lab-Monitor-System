@@ -159,7 +159,7 @@ h3{
 p{
 	font-family: 'ZFont-light';
 	font-weight: 600;
-	line-height: 18px;
+	line-height: 22px;
 	font-size: 15px;
 }
 
@@ -193,6 +193,40 @@ div{
 
 div.shadow{
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3), 05px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+div.notice{
+	font-family: "ZFont-regular";
+	font-size: 14px;
+	line-height:20px;
+	border-width: 10px 5px 10px 5px;  
+	border-style: solid;
+	border-radius: 10px; 
+	border-color: rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0);
+	overflow: ellipsis;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-top: 5px;
+}
+
+div.notice.red{
+	background-color: rgba(255,64,0,0.5);
+	color: rgba(255,255,255,1);
+}
+
+div.notice.green{
+	background-color: rgba(125,255,125,1);
+	color: rgba(255,255,255,1);
+}
+
+div.notice.blue{
+	background-color: rgba(0,64,255,0.4);
+	color: rgba(255,255,255,1);
+}
+
+div.notice.gray{
+	background-color: rgba(64,64,64,0.3);
+	color: rgba(255,255,255,1);
 }
 
 div.card {
@@ -239,6 +273,37 @@ div.card:active
 	transform: rotate3d(1,0,0,-5deg) ;
 	background-color:#DDDDDD;
 }
+
+tr.log_table{
+	-webkit-transition: 0.2s ease-out;
+	transition: 0.2s ease-out;
+}
+
+tr.log_table:link
+{
+}
+
+tr.log_table:visited
+{
+}
+
+tr.log_table:hover
+{
+	-webkit-transition: 0.2s ease-out;
+	transition: 0.2s ease-out;
+	-webkit-transform: scale(1.03, 1.03);
+	transform: scale(1.03, 1.03);
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3), 05px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+tr.log_table:active
+{
+	-webkit-transition: 0.2s ease-out;
+	transition: 0.2s ease-out;
+	-webkit-transform: scale(0.98, 0.98);
+	transform: scale(0.98, 0.98);
+}
+
 
 td.huge_data{
 	font-family: "ZFont-thin";
