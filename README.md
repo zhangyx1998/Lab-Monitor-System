@@ -22,6 +22,44 @@ Notice: all source codes should be arranged exactly the same as what it was if y
 
 ***
 
+#### V4.00
+
++ Modulize of the webpage has been completed, and the performance of the webpage has been dramatically improved thanks to "Step-by-step" loading strategy. Code reusability has also been grately improved.
+
+***
+
+#### V3.02
+
++ ZButton.js is now ready! This is a plugin that can insert buttons easily into canvas objects, and have intractive API to communicate with.
+
++ By using ZButton.js, we can now easily create clickable banners and control the display of every single data set.
+
+***
+
+#### V3.01
+
++ Minor bug fix and performance improvement.
+
+***
+
+#### V3.00
+
++ All raw html files are renamed to .html.zsc.
+
+***
+
+#### V2.01
+
++ Version_Control(VER) is separated from Arduino_IO(AIO). Version_Control Service will automatically add log to LOG table should any upgrade is detected.
+
+***
+
+#### V2.00
+
++ The WebPage is now ready to use. The data from ARDUINO will be automatically refreshed every 1 minute. And the demo website is now online, available at "yuxuanzhang.net". We use ssh to mirror the contents of the website so that the server syncs everything on the target folder of the lab computer.
+
+***
+
 #### V1.01
 
 + Bug fix.
@@ -86,39 +124,3 @@ Description:
 >	1 Unspecified Errors
 
 ***
-
-#### V2.00
-
-+ The WebPage is now ready to use. The data from ARDUINO will be automatically refreshed every 1 minute. And the demo website is now online, available at "yuxuanzhang.net". We use ssh to mirror the contents of the website so that the server syncs everything on the target folder of the lab computer.
-
-***
-
-#### V2.01
-
-+ Version_Control(VER) is separated from Arduino_IO(AIO). Version_Control Service will automatically add log to LOG table should any upgrade is detected.
-
-***
-
-#### V3.00
-
-+ All raw html files are renamed to .html.zsc.
-
-***
-
-#### V3.01
-
-+ Minor bug fix and performance improvement.
-
-***
-
-#### V3.02
-
-+ ZButton.js is now ready! This is a plugin that can insert buttons easily into canvas objects, and have intractive API to communicate with.
-
-+ By using ZButton.js, we can now easily create clickable banners and control the display of every single data set.
-
-***
-
-#### V4.00
-
-+ V
