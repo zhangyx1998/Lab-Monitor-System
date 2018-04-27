@@ -1,7 +1,7 @@
 # ALMS
 ###### By Yuxuan Zhang
 
-Project Description
+## Project Description
 
 >This project, generally speaking, is intended for monitoring the experiment environment (specifically:temperature and hunidity in a closed environment), and make the environment data available though internet.
 >
@@ -20,6 +20,10 @@ Project Description
 >All Done!
 
 Notice: all source codes should be arranged exactly the same as what it was if you want to launch it normally. And if you use different serial port for arduino, or you make a different MySQL configuration, please change the settings at config.sh
+
+***
+
+## Upgrade Notes
 
 ***
 
