@@ -22,6 +22,12 @@ Notice: all source codes should be arranged exactly the same as what it was if y
 
 ***
 
+### V4.01
+
++ Color Composition Adjustment. UX design upgrade.
+
+***
+
 #### V4.00
 
 + Modulize of the webpage has been completed, and the performance of the webpage has been dramatically improved thanks to "Step-by-step" loading strategy. Code reusability has also been grately improved.

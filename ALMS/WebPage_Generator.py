@@ -2,6 +2,7 @@ import sys
 import time
 import argparse
 import MySQLdb
+import random
 from datetime import datetime
 Debug=False
 Display_Detail=False
@@ -214,6 +215,9 @@ def intp(CMD,index):
 	if CMD=='General_Status':
 		if (Debug and Display_Detail): return "DEBUG"
 		return "NORMAL"
+	if CMD.count('RANDOM$')>0:
+		amp=to_num(CMD[CMD.find('$')+1:])
+		return ("%.4f"%(amp*(random.random()-0.5)))
 	CMD_table=DefaultTable
 	if(CMD.count("<table$")==1):
 		Buf_str=CMD[:CMD.find('<table$')]
@@ -340,7 +344,7 @@ if __name__ == '__main__':
 	parser.add_argument('--Database',       default='ATLAS_Main', help='Name of Database')
 	parser.add_argument('--DefaultTable',       default='ARDUINO_IO', help='')
 	parser.add_argument('--InputTableExpect',    default='<ARDUINO_IO$TS/d@TS$ECC/d@ECC$ET/4f@Env_Temp$EH/4f@Env_Humidity$ET_D/4f@Env_Temp$EH_D/4f@Env_Humidity$DT/dt@Last_Update$DT_Str/str@Last_Update$><Log$ID/d@ID$MSG_Source@MSG_Source$MSG_Type/cvt@MSG_Type$Priority@Priority$ERR_ID@ERR_ID$MSG_Index/cvt@MSG_Index$Stamp@Stamp$Date_Time@Date_Time$>',help='See Readme')
-	parser.add_argument('--file_stream',    default='$/WebPage/index.html@RAW_index.html$',help='I/O File name')
+	parser.add_argument('--file_stream',    default='$index.html@Raw_HTML/index.html.zsc$data.js@Raw_HTML/data.js.zsc$',help='I/O File name')
 	parser.add_argument('--Debug',          default=False,        action='store_true', help='Do not print to screen.')
 	args = parser.parse_args(sys.argv[1:])
 	DefaultTable=args.DefaultTable

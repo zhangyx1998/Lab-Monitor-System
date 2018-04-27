@@ -529,37 +529,37 @@ var ZChart =
 							ctx.fillRect(0,HEIGHT_Banner,WIDTH,HEIGHT_Banner);
 							var n=0;
 							var x_handle=0;
-							for(var i in Button_table.L)
+							for(var i=0;i<Button_table.L.length;i++)
 							{
 								if(Button_table.L[i].width+x_handle>WIDTH && Button_table.L[i].width<WIDTH)
 								{
 									HEIGHT_Banner+=Banner_line_height;
 									x_handle=0;
 									ctx.fillStyle=Left_Axis_Color;
-									ctx.fillRect(0,HEIGHT_Banner,WIDTH,HEIGHT_Banner);
+									ctx.fillRect(0,HEIGHT_Banner,WIDTH,Banner_line_height);
 								}
 								Button_table.L[i].draw(x_handle,HEIGHT_Banner,Left_Axis_Color);
 								x_handle+=Button_table.L[i].width;
 							}
 							HEIGHT_Banner+=Banner_line_height;
 						}
-						if(Button_table.Banner[1].status==2)
+						else if(Button_table.Banner[1].status==2)
 						{
 							ctx.fillStyle=Right_Axis_Color;
 							ctx.fillRect(0,HEIGHT_Banner,WIDTH,HEIGHT_Banner);
 							var n=0;
 							var x_handle=0;
-							for(var i in Button_table.R)
+							for(var i=0;i<Button_table.R.length;i++)
 							{
 								if(Button_table.R[i].width+x_handle>WIDTH && Button_table.R[i].width<WIDTH)
 								{
 									HEIGHT_Banner+=Banner_line_height;
 									x_handle=0;
 									ctx.fillStyle=Right_Axis_Color;
-									ctx.fillRect(0,HEIGHT_Banner,WIDTH,HEIGHT_Banner);
-									x_handle+=Button_table.R[i].width;
+									ctx.fillRect(0,HEIGHT_Banner,WIDTH,Banner_line_height);
 								}
 								Button_table.R[i].draw(x_handle,HEIGHT_Banner,Right_Axis_Color);
+								x_handle+=Button_table.R[i].width;
 							}
 							HEIGHT_Banner+=Banner_line_height;
 						}
@@ -607,6 +607,10 @@ var ZChart =
 				if(highlight==1)
 				{
 					ctx.lineWidth = golbal_line_width*2;
+				}
+				if(highlight==2)
+				{
+					ctx.lineWidth = golbal_line_width/2;
 				}
 				//some code here
 				var L_limit_TS=upd_timestamp-L_limit*bottom_axis_ratio;
@@ -669,8 +673,9 @@ var ZChart =
 						{
 							for(var j=1;j<ChartDataPKG.Data_L[i].length;j+=1)
 							{
-								if(ChartDataPKG.Data_L[i][j].length>2 && ChartDataPKG.Data_L[i][j][0]!=0)
+								if(ChartDataPKG.Data_L[i][j].length>2 && (ChartDataPKG.Data_L[i][j][0]!=0 || ChartDataPKG.HighLight.L[i][j]!=0))
 								{
+									if(ChartDataPKG.Data_L[i][j][0]!=2)ChartDataPKG.HighLight.L[i][j]=2;
 									//alert("Chart Table L "+i+" "+j);
 									object.draw_data(
 										ChartDataPKG.Left_Axis_Color,
@@ -693,8 +698,9 @@ var ZChart =
 						{
 							for(var j=1;j<ChartDataPKG.Data_R[i].length;j++)
 							{
-								if(ChartDataPKG.Data_R[i][j].length>2 && ChartDataPKG.Data_R[i][j][0]!=0)
+								if(ChartDataPKG.Data_R[i][j].length>2 && (ChartDataPKG.Data_R[i][j][0]!=0 || ChartDataPKG.HighLight.R[i][j]!=0))
 								{
+									if(ChartDataPKG.Data_R[i][j][0]!=2)ChartDataPKG.HighLight.R[i][j]=2;
 									//alert("Chart Table R "+i+" "+j);
 									object.draw_data(
 										ChartDataPKG.Right_Axis_Color,
