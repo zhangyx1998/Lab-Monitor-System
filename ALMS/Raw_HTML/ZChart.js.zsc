@@ -128,6 +128,7 @@ var ZChart =
 		//------------------------------------------------------------
 		//Values
 			var object={};//FATAL:DO NOT REMOVE
+			var display=true;
 			//DATA
 			var ChartDataPKG;
 			var ChartStyle;
@@ -340,6 +341,18 @@ var ZChart =
 			}
 		//------------------------------------------------------------
 		//Data PKG
+			object.hide = function()
+			{
+				display=false;
+				object.refresh();
+			}
+			object.display = function()
+			{
+				display=true;
+				object.refresh();
+			}
+
+
 			object.update_data = function (PKG)
 			{
 				ChartDataPKG=PKG;
@@ -348,147 +361,159 @@ var ZChart =
 				Button_table.L=[];
 				Button_table.R=[];
 
-				if(ChartStyle.Display_Banner)
+				if(ChartDataPKG!=undefined)
 				{
-					Button_table.Banner=[];
-
-					var banner_button_L=ZButton.create(chart,ChartDataPKG.Left_Axis_Name,Banner_line_height,object.font_size_uni_str(18)+" ZFont-regular Heavy",1);
-					banner_button_L.display();
-					banner_button_L.status_count=2;
-					banner_button_L.onfocus=function(){object.refresh();};
-					banner_button_L.onclick=function(status)
+					if(ChartStyle.Display_Banner)
 					{
+						Button_table.Banner=[];
 
-						for(var buttons in Button_table.L)
+						var banner_button_L=ZButton.create(chart,ChartDataPKG.Left_Axis_Name,Banner_line_height,object.font_size_uni_str(18)+" ZFont-regular Heavy",1);
+						banner_button_L.display();
+						banner_button_L.status_count=2;
+						banner_button_L.onfocus=function(){object.refresh();};
+						banner_button_L.onclick=function(status)
 						{
-							if(status==2) Button_table.L[buttons].display();
-							else Button_table.L[buttons].hide();
-						}
-						for(var buttons in Button_table.R)
-						{
-							Button_table.R[buttons].hide();
-						}
-						Button_table.Banner[1].status=1;
-						object.refresh();
-					};
-					Button_table.Banner.push(banner_button_L);
 
-					var banner_button_R=ZButton.create(chart,ChartDataPKG.Right_Axis_Name,Banner_line_height,object.font_size_uni_str(18)+" ZFont-regular Heavy",1);
-					banner_button_R.display();
-					banner_button_R.status_count=2;
-					banner_button_R.onfocus=function(){object.refresh()};
-					banner_button_R.onclick=function(status)
-					{
-						for(var buttons in Button_table.L)
-						{
-							Button_table.L[buttons].hide();
-						}
-						for(var buttons in Button_table.R)
-						{
-							if(status==2) Button_table.R[buttons].display();
-							else Button_table.R[buttons].hide();
-						}
-						Button_table.Banner[0].status=1;
-						object.refresh()
-					};
-					Button_table.Banner.push(banner_button_R);
-
-					var name_pointer=0;
-
-					for(var i=0;i<ChartDataPKG.Data_L.length;i++)
-					{
-						var HIGHLIGHT=[0];
-						for(var j=1;j<ChartDataPKG.Data_L[i].length;j++)
-						{
-							var data_name="DATA-"+(name_pointer+1).toString();
-							if(ChartDataPKG.Data_L_Name[name_pointer]!=undefined)
+							for(var buttons in Button_table.L)
 							{
-								data_name=ChartDataPKG.Data_L_Name[name_pointer];
-								var data_button=ZButton.create(chart,data_name,Banner_line_height,object.font_size_uni_str(15)+" ZFont-regular",3-ChartDataPKG.Data_L[i][j][0]);
-								data_button.hide();
-								data_button.tinydataPKG={cur_i:i,cur_j:j};
-								data_button.onclick=function(status,this_object)
-								{
-									//alert(this_object.tinydataPKG.cur_i+" "+this_object.tinydataPKG.cur_j+" "+(3-status));
-									ChartDataPKG.HighLight.L[this_object.tinydataPKG.cur_i][this_object.tinydataPKG.cur_j]=1;
-									ChartDataPKG.Data_L[this_object.tinydataPKG.cur_i][this_object.tinydataPKG.cur_j][0]=3-status;
-									object.refresh();
-								}
-								data_button.onfocus=function(status,this_object)
-								{
-									//alert(this_object.tinydataPKG.cur_i+" "+this_object.tinydataPKG.cur_j+" "+(3-status));
-									ChartDataPKG.HighLight.L[this_object.tinydataPKG.cur_i][this_object.tinydataPKG.cur_j]=1;
-									object.refresh();
-								}
-								Button_table.L.push(data_button);
-								name_pointer++;
+								if(status==2) Button_table.L[buttons].display();
+								else Button_table.L[buttons].hide();
 							}
-							HIGHLIGHT.push(0);
+							for(var buttons in Button_table.R)
+							{
+								Button_table.R[buttons].hide();
+							}
+							Button_table.Banner[1].status=1;
+							object.refresh();
+						};
+						Button_table.Banner.push(banner_button_L);
+
+						var banner_button_R=ZButton.create(chart,ChartDataPKG.Right_Axis_Name,Banner_line_height,object.font_size_uni_str(18)+" ZFont-regular Heavy",1);
+						banner_button_R.display();
+						banner_button_R.status_count=2;
+						banner_button_R.onfocus=function(){object.refresh()};
+						banner_button_R.onclick=function(status)
+						{
+							for(var buttons in Button_table.L)
+							{
+								Button_table.L[buttons].hide();
+							}
+							for(var buttons in Button_table.R)
+							{
+								if(status==2) Button_table.R[buttons].display();
+								else Button_table.R[buttons].hide();
+							}
+							Button_table.Banner[0].status=1;
+							object.refresh()
+						};
+						Button_table.Banner.push(banner_button_R);
+
+						var name_pointer=0;
+
+						for(var i=0;i<ChartDataPKG.Data_L.length;i++)
+						{
+							var HIGHLIGHT=[0];
+							for(var j=1;j<ChartDataPKG.Data_L[i].length;j++)
+							{
+								var data_name="DATA-"+(name_pointer+1).toString();
+								if(ChartDataPKG.Data_L_Name[name_pointer]!=undefined)
+								{
+									data_name=ChartDataPKG.Data_L_Name[name_pointer];
+									var data_button=ZButton.create(chart,data_name,Banner_line_height,object.font_size_uni_str(15)+" ZFont-regular",3-ChartDataPKG.Data_L[i][j][0]);
+									data_button.hide();
+									data_button.tinydataPKG={cur_i:i,cur_j:j};
+									data_button.onclick=function(status,this_object)
+									{
+										//alert(this_object.tinydataPKG.cur_i+" "+this_object.tinydataPKG.cur_j+" "+(3-status));
+										ChartDataPKG.HighLight.L[this_object.tinydataPKG.cur_i][this_object.tinydataPKG.cur_j]=1;
+										ChartDataPKG.Data_L[this_object.tinydataPKG.cur_i][this_object.tinydataPKG.cur_j][0]=3-status;
+										object.refresh();
+									}
+									data_button.onfocus=function(status,this_object)
+									{
+										//alert(this_object.tinydataPKG.cur_i+" "+this_object.tinydataPKG.cur_j+" "+(3-status));
+										ChartDataPKG.HighLight.L[this_object.tinydataPKG.cur_i][this_object.tinydataPKG.cur_j]=1;
+										object.refresh();
+									}
+									Button_table.L.push(data_button);
+									name_pointer++;
+								}
+								HIGHLIGHT.push(0);
+							}
+							ChartDataPKG.HighLight.L.push(HIGHLIGHT);
 						}
-						ChartDataPKG.HighLight.L.push(HIGHLIGHT);
+
+						name_pointer=0;
+
+						for(var i=0;i<ChartDataPKG.Data_R.length;i++)
+						{
+							var HIGHLIGHT=[0];
+							for(var j=1;j<ChartDataPKG.Data_R[i].length;j++)
+							{
+								var data_name="DATA-"+(name_pointer+1).toString();
+								if(ChartDataPKG.Data_R_Name[name_pointer]!=undefined)
+								{
+									data_name=ChartDataPKG.Data_R_Name[name_pointer];
+									var data_button=ZButton.create(chart,data_name,Banner_line_height,object.font_size_uni_str(15)+" ZFont-regular",3-ChartDataPKG.Data_R[i][j][0]);
+									data_button.hide();
+									data_button.tinydataPKG={cur_i:i,cur_j:j};
+									data_button.onclick=function(status,this_object)
+									{
+										//alert(this_object.tinydataPKG.cur_i+" "+this_object.tinydataPKG.cur_j+" "+(3-status));
+										ChartDataPKG.HighLight.R[this_object.tinydataPKG.cur_i][this_object.tinydataPKG.cur_j]=1;
+										ChartDataPKG.Data_R[this_object.tinydataPKG.cur_i][this_object.tinydataPKG.cur_j][0]=3-status;
+										object.refresh();
+									}
+									data_button.onfocus=function(status,this_object)
+									{
+										//alert(this_object.tinydataPKG.cur_i+" "+this_object.tinydataPKG.cur_j+" "+(3-status));
+										ChartDataPKG.HighLight.R[this_object.tinydataPKG.cur_i][this_object.tinydataPKG.cur_j]=1;
+										object.refresh();
+									}
+									Button_table.R.push(data_button);
+									name_pointer++;
+								}
+								HIGHLIGHT.push(0);
+							}
+							ChartDataPKG.HighLight.R.push(HIGHLIGHT);
+						}
+
 					}
 
-					name_pointer=0;
-
-					for(var i=0;i<ChartDataPKG.Data_R.length;i++)
+					if (ChartDataPKG.upd_timestamp!=undefined)
 					{
-						var HIGHLIGHT=[0];
-						for(var j=1;j<ChartDataPKG.Data_R[i].length;j++)
-						{
-							var data_name="DATA-"+(name_pointer+1).toString();
-							if(ChartDataPKG.Data_R_Name[name_pointer]!=undefined)
-							{
-								data_name=ChartDataPKG.Data_R_Name[name_pointer];
-								var data_button=ZButton.create(chart,data_name,Banner_line_height,object.font_size_uni_str(15)+" ZFont-regular",3-ChartDataPKG.Data_R[i][j][0]);
-								data_button.hide();
-								data_button.tinydataPKG={cur_i:i,cur_j:j};
-								data_button.onclick=function(status,this_object)
-								{
-									//alert(this_object.tinydataPKG.cur_i+" "+this_object.tinydataPKG.cur_j+" "+(3-status));
-									ChartDataPKG.HighLight.R[this_object.tinydataPKG.cur_i][this_object.tinydataPKG.cur_j]=1;
-									ChartDataPKG.Data_R[this_object.tinydataPKG.cur_i][this_object.tinydataPKG.cur_j][0]=3-status;
-									object.refresh();
-								}
-								data_button.onfocus=function(status,this_object)
-								{
-									//alert(this_object.tinydataPKG.cur_i+" "+this_object.tinydataPKG.cur_j+" "+(3-status));
-									ChartDataPKG.HighLight.R[this_object.tinydataPKG.cur_i][this_object.tinydataPKG.cur_j]=1;
-									object.refresh();
-								}
-								Button_table.R.push(data_button);
-								name_pointer++;
-							}
-							HIGHLIGHT.push(0);
-						}
-						ChartDataPKG.HighLight.R.push(HIGHLIGHT);
+						upd_timestamp=ChartDataPKG.upd_timestamp;
+					}
+					else
+					{
+						upd_timestamp=Date.now();
+						//alert(Date.now())
 					}
 
+					Left_Axis_Color=		ChartDataPKG.Left_Axis_Color;
+					Left_Axis_BKG_Color=	ChartDataPKG.Left_Axis_BKG_Color;
+					Left_Axis_OnGrag_Color=	ChartDataPKG.Left_Axis_OnGrag_Color;
+					Right_Axis_Color=		ChartDataPKG.Right_Axis_Color;
+					Right_Axis_BKG_Color=	ChartDataPKG.Right_Axis_BKG_Color;
+					Right_Axis_OnGrag_Color=ChartDataPKG.Right_Axis_OnGrag_Color;
+
+					object.RESET();
+
+					if(ChartDataPKG.Move_right_on_refresh==true)
+					{
+						var mov_len=R_limit-R_limit_min;
+						L_limit-=mov_len;
+						R_limit=R_limit_min;
+					}
 				}
-
-				if (ChartDataPKG.upd_timestamp!=undefined)
+				else//if PKG==Undefined
 				{
-					upd_timestamp=ChartDataPKG.upd_timestamp;
-				}
-				else
-				{
-					upd_timestamp=Date.now();
-					//alert(Date.now())
-				}
-
-				Left_Axis_Color=		ChartDataPKG.Left_Axis_Color;
-				Left_Axis_BKG_Color=	ChartDataPKG.Left_Axis_BKG_Color;
-				Left_Axis_OnGrag_Color=	ChartDataPKG.Left_Axis_OnGrag_Color;
-				Right_Axis_Color=		ChartDataPKG.Right_Axis_Color;
-				Right_Axis_BKG_Color=	ChartDataPKG.Right_Axis_BKG_Color;
-				Right_Axis_OnGrag_Color=ChartDataPKG.Right_Axis_OnGrag_Color;
-
-				object.RESET();
-
-				if(ChartDataPKG.Move_right_on_refresh==true)
-				{
-					var mov_len=R_limit-R_limit_min;
-					L_limit-=mov_len;
-					R_limit=R_limit_min;
+					Left_Axis_Color=			"#888888";
+					Left_Axis_BKG_Color=		"#AAAAAA";
+					Left_Axis_OnGrag_Color=		"#BBBBBB";
+					Right_Axis_Color=			"#888888";
+					Right_Axis_BKG_Color=		"#AAAAAA";
+					Right_Axis_OnGrag_Color=	"#BBBBBB";
 				}
 
 				object.refresh();
@@ -1244,116 +1269,123 @@ var ZChart =
 
 			object.refresh = function ()
 			{
-				if(Mouse_Position_Flag!=object.get_area_id(x,y))
+				if(display)
 				{
-					org_x = x;
-					org_y = y;
-					org_L = L_limit;
-					org_R = R_limit;
-					org_max_L = max_L;
-					org_min_L = min_L;
-					org_max_R = max_R;
-					org_min_R = min_R;
-				}
-				Mouse_Position_Flag=object.get_area_id(x,y)
-
-				//Main Chart Area Drag (Move,Horizational)
-				if(Mouse_Down_Flag==1 && Mouse_Position_Flag==1)
-				{
-					var distence=(org_x-x)*(org_R-org_L)/WIDTH;
-					var New_L=Math.floor(org_L+distence);
-					var New_R=Math.floor(org_R+distence);
-					if(New_L>L_limit_max)
+					if(Mouse_Position_Flag!=object.get_area_id(x,y))
 					{
-						New_R-=(New_L-L_limit_max);
-						New_L=L_limit_max;
+						org_x = x;
+						org_y = y;
+						org_L = L_limit;
+						org_R = R_limit;
+						org_max_L = max_L;
+						org_min_L = min_L;
+						org_max_R = max_R;
+						org_min_R = min_R;
 					}
-					if(New_R<R_limit_min)
-					{
-						New_L+=(R_limit_min-New_R);
-						New_R=R_limit_min;
-					}		
-					if(New_L>L_limit_max) New_L=L_limit_max;
-					L_limit=New_L;
-					R_limit=New_R;
-				}
+					Mouse_Position_Flag=object.get_area_id(x,y)
 
-				//Left Marker Area Drag (Move,Vertiacl)
-				if(Mouse_Down_Flag==2 && Mouse_Position_Flag==2)
-				{
-					var distence=((org_max_L-org_min_L)*(y-org_y)/HEIGHT_Chart);
-					var New_Max=org_max_L+distence;
-					var New_Min=org_min_L+distence;
-					max_L=New_Max;
-					min_L=New_Min;
-				}
-
-				//Left Marker Area Drag (Scale,Vertiacl)
-				if(Mouse_Down_Flag==2 && Mouse_Position_Flag==1)
-				{
-					var distence=((org_max_L-org_min_L)*(y-org_y)/HEIGHT_Chart);
-					var New_Max=org_max_L+distence;
-					var New_Min=org_min_L-distence;
-					if (New_Max<New_Min)
+					//Main Chart Area Drag (Move,Horizational)
+					if(Mouse_Down_Flag==1 && Mouse_Position_Flag==1)
 					{
-						var temp=New_Max;
-						New_Max=New_Min;
-						New_Min=temp;
+						var distence=(org_x-x)*(org_R-org_L)/WIDTH;
+						var New_L=Math.floor(org_L+distence);
+						var New_R=Math.floor(org_R+distence);
+						if(New_L>L_limit_max)
+						{
+							New_R-=(New_L-L_limit_max);
+							New_L=L_limit_max;
+						}
+						if(New_R<R_limit_min)
+						{
+							New_L+=(R_limit_min-New_R);
+							New_R=R_limit_min;
+						}		
+						if(New_L>L_limit_max) New_L=L_limit_max;
+						L_limit=New_L;
+						R_limit=New_R;
 					}
-					max_L=New_Max;
-					min_L=New_Min;
-				}
 
-				//Right Marker Area Drag (Move,Vertiacl)
-				//_____________________________________
-				if(Mouse_Down_Flag==3 && Mouse_Position_Flag==3)
-				{
-					var distence=((org_max_R-org_min_R)*(y-org_y)/HEIGHT_Chart);
-					var New_Max=org_max_R+distence;
-					var New_Min=org_min_R+distence;
-					max_R=New_Max;
-					min_R=New_Min;
-				}
-
-				//Right Marker Area Drag (Scale,Vertiacl)
-				//_____________________________________
-				if(Mouse_Down_Flag==3 && Mouse_Position_Flag==1)
-				{
-					var distence=((org_max_R-org_min_R)*(y-org_y)/HEIGHT_Chart);
-					var New_Max=org_max_R+distence;
-					var New_Min=org_min_R-distence;
-					if (New_Max<New_Min)
+					//Left Marker Area Drag (Move,Vertiacl)
+					if(Mouse_Down_Flag==2 && Mouse_Position_Flag==2)
 					{
-						var temp=New_Max;
-						New_Max=New_Min;
-						New_Min=temp;
+						var distence=((org_max_L-org_min_L)*(y-org_y)/HEIGHT_Chart);
+						var New_Max=org_max_L+distence;
+						var New_Min=org_min_L+distence;
+						max_L=New_Max;
+						min_L=New_Min;
 					}
-					max_R=New_Max;
-					min_R=New_Min;
-				}
 
-				//Bottom Marker Area Drag (Scale,Horizational)
-				//_____________________________________
-				if(Mouse_Down_Flag==4 && (Mouse_Position_Flag==4 ||Mouse_Position_Flag==5 ||Mouse_Position_Flag==1))
-				{
-					var distence=Math.ceil((x-org_x)*ratio/(WIDTH/(L_limit-R_limit)));
-					var New_L=org_L+distence;
-					var New_R=org_R-distence;
-					if (New_L>L_limit_max) New_L=L_limit_max;
-					if (New_R<R_limit_min) New_R=R_limit_min;
-					if (New_L<New_R)
+					//Left Marker Area Drag (Scale,Vertiacl)
+					if(Mouse_Down_Flag==2 && Mouse_Position_Flag==1)
 					{
-						var temp=New_L;
-						New_L=New_R;
-						New_R=temp;
+						var distence=((org_max_L-org_min_L)*(y-org_y)/HEIGHT_Chart);
+						var New_Max=org_max_L+distence;
+						var New_Min=org_min_L-distence;
+						if (New_Max<New_Min)
+						{
+							var temp=New_Max;
+							New_Max=New_Min;
+							New_Min=temp;
+						}
+						max_L=New_Max;
+						min_L=New_Min;
 					}
-					L_limit=New_L;
-					R_limit=New_R;
+
+					//Right Marker Area Drag (Move,Vertiacl)
+					//_____________________________________
+					if(Mouse_Down_Flag==3 && Mouse_Position_Flag==3)
+					{
+						var distence=((org_max_R-org_min_R)*(y-org_y)/HEIGHT_Chart);
+						var New_Max=org_max_R+distence;
+						var New_Min=org_min_R+distence;
+						max_R=New_Max;
+						min_R=New_Min;
+					}
+
+					//Right Marker Area Drag (Scale,Vertiacl)
+					//_____________________________________
+					if(Mouse_Down_Flag==3 && Mouse_Position_Flag==1)
+					{
+						var distence=((org_max_R-org_min_R)*(y-org_y)/HEIGHT_Chart);
+						var New_Max=org_max_R+distence;
+						var New_Min=org_min_R-distence;
+						if (New_Max<New_Min)
+						{
+							var temp=New_Max;
+							New_Max=New_Min;
+							New_Min=temp;
+						}
+						max_R=New_Max;
+						min_R=New_Min;
+					}
+
+					//Bottom Marker Area Drag (Scale,Horizational)
+					//_____________________________________
+					if(Mouse_Down_Flag==4 && (Mouse_Position_Flag==4 ||Mouse_Position_Flag==5 ||Mouse_Position_Flag==1))
+					{
+						var distence=Math.ceil((x-org_x)*ratio/(WIDTH/(L_limit-R_limit)));
+						var New_L=org_L+distence;
+						var New_R=org_R-distence;
+						if (New_L>L_limit_max) New_L=L_limit_max;
+						if (New_R<R_limit_min) New_R=R_limit_min;
+						if (New_L<New_R)
+						{
+							var temp=New_L;
+							New_L=New_R;
+							New_R=temp;
+						}
+						L_limit=New_L;
+						R_limit=New_R;
+					}
+					if (L_limit>L_limit_max) L_limit=L_limit_max;
+					if (R_limit<R_limit_min) R_limit=R_limit_min;
+					object.graph_clear();
+					object.graph_gen();
 				}
-				if (L_limit>L_limit_max) L_limit=L_limit_max;
-				if (R_limit<R_limit_min) R_limit=R_limit_min;
-				object.graph_clear();
-				object.graph_gen();
+				else
+				{
+					chart.style.height="0px";
+				}
 			}
 			object.font_size_uni_str = function (size_def)
 			{

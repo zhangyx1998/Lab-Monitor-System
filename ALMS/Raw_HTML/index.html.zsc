@@ -49,7 +49,7 @@
 
 
 			<div style="width: 92%; height: auto; align-self: center;">
-				<div class="card" style="width: 45%;height: 150px;">
+				<div id="Left_Sensor_div" class="card" style="width: 45%;height: 150px;">
 					<table rules=none cellspacing=0>
 						<tr>
 							<td class="Card_banner">
@@ -72,7 +72,7 @@
 						</tr>
 					</table>
 				</div>
-				<div class="card" style="display: inline-block;width: 45%;height: 150px;">
+				<div id="Right_Sensor_div" class="card" style="display: inline-block;width: 45%;height: 150px;">
 					<table rules=none cellspacing=0>
 						<tr>
 							<td class="Card_banner">
@@ -94,7 +94,7 @@
 						</tr>
 					</table>
 				</div>
-				<div class="card" style="display: inline-block;width: 45%;height: 150px;">
+				<div id="Environment_Status_div" class="card" style="display: inline-block;width: 45%;height: 150px;" onclick="hide_chart()">
 					<table rules=none cellspacing=0>
 						<tr>
 							<td class="Card_banner">
@@ -117,7 +117,7 @@
 						</tr>
 					</table>
 				</div>
-				<div class="card" style="display: inline-block;width: 45%;height: 150px;">
+				<div id="Radiation_Source_div" class="card" style="display: inline-block;width: 45%;height: 150px;" onclick="switch_sensor()">
 					<table rules=none cellspacing=0>
 						<tr>
 							<td class="Card_banner">
@@ -126,13 +126,54 @@
 							<td>
 								<div style="width:100%; height: 100%; display: inline-block;">
 									<table style="width:100%; height: 100%; table-layout:fixed;">
-										<tr style="width:100%; height: 70%;">
-											<td class="huge_data blue">3.18V</td>
-											<td class="huge_data green">3.20V</td>
-										</tr>
-										<tr style="width:100%; height: 30%;">
-											<td class="huge_data suffix">ANALOG VOLTAGE</td>
-											<td class="huge_data suffix">DIGITAL VOLTAGE</td>
+										<td style="width: 100%">
+											<tr style="width:100%; height: 70%; vertical-align: center;">
+												<td>
+													<embed src="Fonts/SVG/LR_Indicator.svg" type="image/svg+xml" style="height: 45%; vertical-align: bottom;"/>
+												</td>
+											</tr>
+											<tr style="width:100%; height: 30%;">
+												<td class="huge_data suffix">Radiation Source Position</td>
+											</tr>
+										</td>
+									</table>
+								</div>
+							</td>
+							<td>
+								<div style="width:100%; height: 100%; display: inline-block;">
+									<table style="width:100%; height: 100%; table-layout:fixed;">
+										<tr style="width:100%; height: 100%; vertical-align: center;">
+											<td width="144px" rules=none cellspacing=0>
+												<embed src="Fonts/SVG/MATRIX.svg" type="image/svg+xml" style="width: 90%;max-height: 90%; vertical-align: center;"/>
+											</td>
+											<td>
+												<div style="width: 100%; height: 100%; position: relative;">
+													<table rules=none cellspacing=0>
+														<tr style="height: 30%; text-align: left;">
+															<td class="huge_data tiny_data">
+																12.34
+															</td>
+														</tr>
+														<tr style="height: 17%; text-align: left;">
+															<td class="huge_data tiny_suffix">
+																AVERAGE
+															</td>
+														</tr>
+														<tr style="height: 30%; text-align: left;">
+															<td class="huge_data tiny_data green">
+																23.14
+															</td>
+														</tr>
+														<tr style="height: 17%; text-align: left;">
+															<td class="huge_data tiny_suffix">
+																AVERAGE
+															</td>
+														</tr>
+														<tr>
+														</tr>
+													</table>
+												</div>
+											</td>
 										</tr>
 									</table>
 								</div>
@@ -242,6 +283,69 @@
 		<script type="text/javascript" src="ZChart.js?V2.01"></script>
 		<script type="text/javascript">	
 			var Chart_1=ZChart.create("Envrionment Status",Enviornment_Status_Style);
+			var k=true;
+			var k2=true;
+			function hide_chart()
+			{
+				//alert(document.getElementById("Envrionment Status").className);
+				document.getElementById("Envrionment Status").className="allow_transiton";
+				if(k)
+				{
+					Chart_1.hide();
+					//Chart_1.update_data(undefined);
+				}
+				else
+				{
+					Chart_1.display();
+					//Chart_1.update_data(TH_Chart_Data_PKG1);
+				}
+				k=!k;
+				setTimeout(function(){document.getElementById("Envrionment Status").className="";},200);
+			}
+
+			function switch_sensor()
+			{
+				var color=["#9E3200","#FF9F79","#C0C0C0","#56BCDD","#3A60AE"];
+				var color_vari=[4,3,4,3,5,4,2,3,3,2,4,3,4,3,1,2];
+				var switch_color=["#C0C0C0","#52BFBD"];
+				var switch_color_vari=[0,1];
+				if (!k2)
+				{
+					color_vari=[3,4,3,4,4,5,3,2,2,3,3,4,3,4,2,1];
+					switch_color_vari=[1,0]
+				}
+
+				var target=document.getElementById("matrix_icn_frame_L");
+				if (target==undefined) alert("NULL");
+				for(var i in target)
+				{
+					alert(i);
+				}
+				alert(target);
+
+				document.getElementById("matrix_icn_frame_L").fill=switch_color[switch_color_vari[0]];
+				document.getElementById("Sensor_ICN_L").fill      =switch_color[switch_color_vari[0]];
+
+				document.getElementById("matrix_icn_frame_R").fill=switch_color[switch_color_vari[1]];
+				document.getElementById("Sensor_ICN_R").fill      =switch_color[switch_color_vari[1]];
+
+				document.getElementById("matrix_dot_LL1").fill=color[color_vari[0]-1];
+				document.getElementById("matrix_dot_LL2").fill=color[color_vari[1]-1];
+				document.getElementById("matrix_dot_LR1").fill=color[color_vari[2]-1];
+				document.getElementById("matrix_dot_LR2").fill=color[color_vari[3]-1];
+				document.getElementById("matrix_dot_LL1").fill=color[color_vari[4]-1];
+				document.getElementById("matrix_dot_LL2").fill=color[color_vari[5]-1];
+				document.getElementById("matrix_dot_LR1").fill=color[color_vari[6]-1];
+				document.getElementById("matrix_dot_LR2").fill=color[color_vari[7]-1];
+				document.getElementById("matrix_dot_RL1").fill=color[color_vari[8]-1];
+				document.getElementById("matrix_dot_RL2").fill=color[color_vari[9]-1];
+				document.getElementById("matrix_dot_RR1").fill=color[color_vari[10]-1];
+				document.getElementById("matrix_dot_RR2").fill=color[color_vari[11]-1];
+				document.getElementById("matrix_dot_RL1").fill=color[color_vari[12]-1];
+				document.getElementById("matrix_dot_RL2").fill=color[color_vari[13]-1];
+				document.getElementById("matrix_dot_RR1").fill=color[color_vari[14]-1];
+				document.getElementById("matrix_dot_RR2").fill=color[color_vari[15]-1];
+			}
 		</script>
 	</body>
 </html>

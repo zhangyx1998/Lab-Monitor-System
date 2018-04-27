@@ -1,5 +1,5 @@
 var TH_Chart_Data_PKG1= Object.create(ChartDataPKG);
-TH_Chart_Data_PKG1.upd_timestamp=1522885261116;
+TH_Chart_Data_PKG1.upd_timestamp=#*TS$000000*#;
 TH_Chart_Data_PKG1.Data_L_Name=["ARDUINO_IO_T","Board-Sensor-1","Board-Sensor-2","Board-Sensor-3","Board-Sensor-4","Board-Sensor-5","Board-Sensor-6","Board-Sensor-7"];
 TH_Chart_Data_PKG1.Data_R_Name=["ARDUINO_IO_H","Board-Sensor-1","Board-Sensor-2","Board-Sensor-3","Board-Sensor-4","Board-Sensor-5","Board-Sensor-6","Board-Sensor-7"];
 TH_Chart_Data_PKG1.Left_Axis_Name="TEMPERATURE";
@@ -117,3 +117,17 @@ function data_upd()
 	Chart_1.update_data(TH_Chart_Data_PKG1);
 }
 setTimeout(data_upd,50);
+
+var TH_Chart_Data_PKG2= Object.create(ChartDataPKG);
+TH_Chart_Data_PKG2.upd_timestamp=#*TS$000000*#;
+TH_Chart_Data_PKG2.Data_L_Name=[""];
+TH_Chart_Data_PKG2.Data_R_Name=[""];
+TH_Chart_Data_PKG2.Left_Axis_Name="N/A";
+TH_Chart_Data_PKG2.Right_Axis_Name="N/A";
+
+TH_Chart_Data_PKG2.Left_Axis_Color			="#B0B0B0";
+TH_Chart_Data_PKG2.Left_Axis_BKG_Color		="#B0B0B0";
+TH_Chart_Data_PKG2.Left_Axis_OnGrag_Color	="#B0B0B0";
+TH_Chart_Data_PKG2.Right_Axis_Color			="#B0B0B0";
+TH_Chart_Data_PKG2.Right_Axis_BKG_Color		="#B0B0B0";
+TH_Chart_Data_PKG2.Right_Axis_OnGrag_Color	="#B0B0B0";
