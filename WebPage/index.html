@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<!--<meta http-equiv="refresh" content="300">-->
+		<title>Env Monitor</title> 
+		<link rel="stylesheet" type="text/css" href="global.css">
+	</head>
+
+	<body>
+		<div style="margin: 0 auto; width:100%; position: fixed; top: 0px; left: 0px; text-align: center;height: 60px; background-color: rgb(10,100,170); color: #FFFFFF; z-index:1;">
+			<table width="100%" border="0" align="center" rules=none cellspacing=0 cellpadding=0>
+				<tr>
+					<td colspan="1" align="right" valign="center" width="8%">
+					</td>
+					<td colspan="1" align="left" valign="center" width="54%" height="60px" style="overflow: hidden;">
+						<h1>ATLAS Lab Environment Monitor System</h1>
+					</td>
+					<td colspan="1" align="right" valign="center" height="60px" style="line-height:20px;overflow: hidden;">
+						<h3>
+							General Status: NORMAL<br>
+							LBL pixelKr project team at Bekeley
+						</h3>
+					</td>
+					<td colspan="1" align="right" valign="center" width="8%">
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="Float_TAG" onclick="(function(){/*getElementById('Flaot_TG').style.display='none';*/location.reload(true);})()" style="z-index: 4">  
+    		<p>Last Update 2018-04-28 18:06:04</p>
+		</div>  
+
+		<center>
+			<div style="width: 85%; position: relative; height: 60px; display: block; align-self: center;">
+			</div><!--This div is meant to take the position of the head banner-->
+			<!--
+			<div class="notice red" style="width: 85%; text-align: left;">
+				Notice: an unexpected system breakdown has happened because ARDUINO mistakenly received fake timestamp from debug tools. Therefore, data from 2018-4-11 13:38:01 to 2018-4-15 16:05:02 are unfortunately lost. We will do our best to prevent this accident from happening again.
+			</div>
+			-->
+			
+			<div style="width: 85%; position: relative; height: 32px; display: block; align-self: center;">
+				<h2>Current Status</h2>
+			</div>
+			<div class="div_line green">
+			</div>
+			<div style="width: 85%; position: relative; height: 20px; display: block; align-self: center;">
+			</div>
+
+
+			<div style="width: 92%; height: auto; align-self: center;">
+				<div id="Left_Sensor_div" class="card" style="width: 45%;height: 150px;">
+					<table rules=none cellspacing=0>
+						<tr>
+							<td class="Card_banner">
+								<div class="vertical">&nbsp;&nbsp;Left Sensor</div>
+							</td>
+							<td>
+								<div style="width:100%; height: 100%; display: inline-block;">
+									<table style="width:100%; height: 100%; table-layout:fixed;">
+										<tr style="width:100%; height: 70%;">
+											<td class="huge_data blue">3.41V</td>
+											<td class="huge_data green">3.29V</td>
+										</tr>
+										<tr style="width:100%; height: 30%;">
+											<td class="huge_data suffix">ANALOG VOLTAGE</td>
+											<td class="huge_data suffix">DIGITAL VOLTAGE</td>
+										</tr>
+									</table>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div id="Right_Sensor_div" class="card" style="display: inline-block;width: 45%;height: 150px;">
+					<table rules=none cellspacing=0>
+						<tr>
+							<td class="Card_banner">
+								<div class="vertical">&nbsp;&nbsp;Right Sensor</div>
+							</td>
+							<td>
+								<div style="width:100%; height: 100%; display: inline-block;">
+									<table style="width:100%; height: 100%; table-layout:fixed;">
+										<tr style="width:100%; height: 70%;">
+											<td class="huge_data blue">3.18V</td>
+											<td class="huge_data green">3.20V</td>
+										</tr>
+										<tr style="width:100%; height: 30%;">
+											<td class="huge_data suffix">ANALOG VOLTAGE</td>
+											<td class="huge_data suffix">DIGITAL VOLTAGE</td>
+										</tr>
+									</table>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div id="Environment_Status_div" class="card" style="display: inline-block;width: 45%;height: 150px;" onclick="hide_chart()">
+					<table rules=none cellspacing=0>
+						<tr>
+							<td class="Card_banner">
+								<div class="vertical">&nbsp;&nbsp;Environment Status</div>
+							</td>
+							<td>
+								<div style="width:100%; height: 100%; display: inline-block;">
+									<table style="width:100%; height: 100%; table-layout:fixed;">
+										<tr style="width:100%; height: 70%;">
+											<td id="Environment_Temperature" class="huge_data orange">-22&#176;C</td>
+											<td id="Environment_Humidity" class="huge_data blue">57%</td>
+										</tr>
+										<tr style="width:100%; height: 30%;">
+											<td class="huge_data suffix">Environment Temperature</td>
+											<td class="huge_data suffix">Environment Humidity</td>
+										</tr>
+									</table>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div id="Radiation_Source_div" class="card" style="display: inline-block;width: 45%;height: 150px;">
+					<table rules=none cellspacing=0>
+						<tr>
+							<td class="Card_banner">
+								<div class="vertical">&nbsp;&nbsp;Radition Source</div>
+							</td>
+							<td>
+								<div style="width:100%; height: 100%; display: inline-block;">
+									<table style="width:100%; height: 100%; table-layout:fixed;">
+										<td style="width: 100%">
+											<tr style="width:100%; height: 70%; vertical-align: center;">
+												<td>
+													<embed src="Fonts/SVG/LR_Indicator.svg" type="image/svg+xml" style="height: 45%; vertical-align: bottom;"/>
+												</td>
+											</tr>
+											<tr style="width:100%; height: 30%;">
+												<td class="huge_data suffix">Radiation Source Position</td>
+											</tr>
+										</td>
+									</table>
+								</div>
+							</td>
+							<td>
+								<div style="width:100%; height: 100%; display: inline-block;">
+									<table style="width:100%; height: 100%; table-layout:fixed;">
+										<tr style="width:100%; height: 100%; vertical-align: center;">
+											<td width="144px" rules=none cellspacing=0>
+												<embed src="Fonts/SVG/MATRIX.svg" type="image/svg+xml" style="width: 90%;max-height: 90%; vertical-align: center;"/>
+											</td>
+											<td>
+												<div style="width: 100%; height: 100%; position: relative;">
+													<table rules=none cellspacing=0>
+														<tr style="height: 30%; text-align: left;">
+															<td class="huge_data tiny_data">
+																12.34
+															</td>
+														</tr>
+														<tr style="height: 17%; text-align: left;">
+															<td class="huge_data tiny_suffix">
+																AVERAGE
+															</td>
+														</tr>
+														<tr style="height: 30%; text-align: left;">
+															<td class="huge_data tiny_data green">
+																23.14
+															</td>
+														</tr>
+														<tr style="height: 17%; text-align: left;">
+															<td class="huge_data tiny_suffix">
+																AVERAGE
+															</td>
+														</tr>
+														<tr>
+														</tr>
+													</table>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</center>
+
+		<center>
+			<canvas id="Envrionment Status" style="width:85%;" oncontextmenu="DBG_Switch();">
+			</canvas>
+		</center>
+		
+		<center>
+			<div style="width: 85%; position: relative; height: 32px; display: block; align-self: center;">
+				<h2>Occupancy Map</h2>
+			</div>
+			<div class="div_line pink">
+			</div>
+			<div style="width: 85%; position: relative; height: 20px; display: block; align-self: center;">
+			</div>
+			<div style="width: 85%; position: relative; display: block; align-self: center;">
+				<table>
+					<col style="width: 50%;"/>
+					<col style="width: 50%;"/>
+					<tbody>
+						<tr>
+							<td align="center">
+								<div class="image_show">
+									<div>
+										<table>
+											<tr>
+												<td class="huge_data white" style="height: 25%;background-color: #b0b0b0; font-size:40px; line-height: 36px; vertical-align: middle;">
+													LEFT
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>TIMESTAMP</b><br>
+													1523852881545
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>DATE</b><br>
+													2018-04-15
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>TEMPERATURE</b><br>
+													-22.23&#176;C
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>HUMIDITY</b><br>
+													62.19%
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>RADIATION ON</b><br>
+													YES
+												</td>
+											</tr>
+										</table>
+									</div>
+									<img src="OccupancyMap/L1.png" />
+								</div>
+							</td>
+							<td align="center">
+								<div class="image_show">
+									<div>
+										<table>
+											<tr>
+												<td class="huge_data white" style="height: 25%;background-color: #b0b0b0; font-size:40px; line-height: 36px; vertical-align: middle;">
+													RIGHT
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>TIMESTAMP</b><br>
+													1523852881545
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>DATE</b><br>
+													2018-04-15
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>TEMPERATURE</b><br>
+													-22.23&#176;C
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>HUMIDITY</b><br>
+													62.19%
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>RADIATION ON</b><br>
+													YES
+												</td>
+											</tr>
+										</table>
+									</div>
+									<img src="OccupancyMap/R1.png" />
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+
+			<div style="position: relative;top: 0px;left: 0px; height: 5px; display: block;" align="center">
+			</div>
+
+			<table width="85%" border="0" align="center" style="border-style: none; table-layout:fixed; width: 85%" rules=none cellspacing=0>
+				<col style="width: 4% " />
+				<col style="width: 0.4% " />
+				<col style="width: 12% " />
+				<col style="width: 12% " />
+				<col />
+				<col style="width: 18% " />
+				<tbody>
+
+					<tr style="height:60px">
+						<td style="background-color: rgba(255,255,255,0);color: #000;text-align: left;" colspan="6">
+							<h2>System Log</h2>
+						</td>
+					</tr>	
+
+					<tr style="height:40px">
+						<td style="background-color: #4BC2C5;color: #FFF;text-align: center;">
+							<p>ID</p>
+						</td>
+						<td style="background-color: #4BC2C5;color: #FFF;text-align: center;">
+						</td>
+						<td style="background-color: #4BC2C5;color: #FFF;text-align: center;">
+							<p>SOURCE</p>
+						</td>
+						<td style="background-color: #4BC2C5;color: #FFF;text-align: center;">
+							<p>TYPE</p>
+						</td>
+						<td style="background-color: #4BC2C5;color: #FFF;text-align: center;">
+							<p>CONTENT</p>
+						</td>
+						<td style="background-color: #4BC2C5;color: #FFF;text-align: center;">
+							<p>DATE</p>
+						</td>
+					</tr>
+
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);;text-align:center;">
+					</tr>
+
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>1</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>CURRENT</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>V4.16</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-23 17:15:01</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>216</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>Arduino_Board</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>ERROR</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>&lt;Arduino_Board_Error&gt;<br>INVALID_Serial_INPUT<br>H%47.4762$T%22.1419$&gt;<br>(Abort)</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-25 20:50:04</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>215</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>Arduino_Board</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>ERROR</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>&lt;Arduino_Board_Error&gt;<br>INVALID_Serial_INPUT<br>%48.0009$T%22.5346$&gt;<br>(Abort)</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-24 20:45:03</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>214</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>Note</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>V4.16 Upgrade Note:
+Automatic Upgrade Log posting online.</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-23 17:15:01</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>213</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>From V4.15 To V4.16</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-23 17:15:01</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>212</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>Arduino_Board</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>ERROR</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>&lt;Arduino_Board_Error&gt;<br>INVALID_Serial_INPUT<br>50.5750$T%21.1349$&gt;<br>(Abort)</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-23 05:29:04</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr style="height: 3px">
+						<td colspan="6" style="background-color:#4BC2C5;text-align:center;">
+					</tr>		 
+					<tr style="height: 10px">
+						<td colspan="6" style="background-color:#FFFFFF;text-align:center;">
+					</tr>	
+					<tr style="height: 30px">
+						<td colspan="6" style="background-color:#FFFFFF;text-align:center;">
+							<a href="Version-Gallery.html" style="color: #666666;">
+								<p>Click HERE For Verison Gallery</p>
+							</a>
+					</tr>
+				</tbody>
+			</table>
+
+
+			<div style="margin: 0 auto; width:85%; position: relative; border:none; text-align: center;height: 80px; background-color: #FFFFFF; color: #666; z-index:1; padding: 0px; vertical-align: middle;">
+					<div style="margin: 0 auto; width: 100% ; height: 100% ; position: absolute; left: 0px; top: 0px; z-index: 2; text-align: center; vertical-align: middle;">
+						<p><br>By Yuxuan Zhang</p>
+						<p>APRIL 2018</p><br>
+					</div>
+					<div style="margin: 0 auto; width: 100% ; height: 100% ; position: absolute; left: 0px; top: 0px; z-index: 3">
+						<a href="https://yuxuanzhang.myportfolio.com" style="display:block; width:100%; height:100%;"></a>
+					</div>
+			</div>
+
+		</center>
+
+		<!--######################################################################################-->
+		<script type="text/javascript" src="ZChart.js?V2.01"></script>
+		<script type="text/javascript">	
+			var Chart_1=ZChart.create("Envrionment Status",Enviornment_Status_Style);
+			var k=true;
+			var k2=true;
+			function hide_chart()
+			{
+				//alert(document.getElementById("Envrionment Status").className);
+				document.getElementById("Envrionment Status").className="allow_transiton";
+				if(k)
+				{
+					Chart_1.hide();
+					//Chart_1.update_data(undefined);
+				}
+				else
+				{
+					Chart_1.display();
+					//Chart_1.update_data(TH_Chart_Data_PKG1);
+				}
+				k=!k;
+				setTimeout(function(){document.getElementById("Envrionment Status").className="";},200);
+			}
+
+			Chart_1.onfocus= function(ts,L_data,R_data)
+			{
+				document.getElementById("Environment_Temperature").innerHTML=format_F(L_data[0],0).toString()+"&#176;C";
+				document.getElementById("Environment_Humidity").innerHTML=format_F(R_data[0],0).toString()+"%";
+			}
+
+			function switch_sensor()
+			{
+				var color=["#9E3200","#FF9F79","#C0C0C0","#56BCDD","#3A60AE"];
+				var color_vari=[4,3,4,3,5,4,2,3,3,2,4,3,4,3,1,2];
+				var switch_color=["#C0C0C0","#52BFBD"];
+				var switch_color_vari=[0,1];
+				if (!k2)
+				{
+					color_vari=[3,4,3,4,4,5,3,2,2,3,3,4,3,4,2,1];
+					switch_color_vari=[1,0]
+				}
+
+				var target=document.getElementById("matrix_icn_frame_L");
+				if (target==undefined) alert("NULL");
+				for(var i in target)
+				{
+					alert(i);
+				}
+				alert(target);
+
+				document.getElementById("matrix_icn_frame_L").fill=switch_color[switch_color_vari[0]];
+				document.getElementById("Sensor_ICN_L").fill      =switch_color[switch_color_vari[0]];
+
+				document.getElementById("matrix_icn_frame_R").fill=switch_color[switch_color_vari[1]];
+				document.getElementById("Sensor_ICN_R").fill      =switch_color[switch_color_vari[1]];
+
+				document.getElementById("matrix_dot_LL1").fill=color[color_vari[0]-1];
+				document.getElementById("matrix_dot_LL2").fill=color[color_vari[1]-1];
+				document.getElementById("matrix_dot_LR1").fill=color[color_vari[2]-1];
+				document.getElementById("matrix_dot_LR2").fill=color[color_vari[3]-1];
+				document.getElementById("matrix_dot_LL1").fill=color[color_vari[4]-1];
+				document.getElementById("matrix_dot_LL2").fill=color[color_vari[5]-1];
+				document.getElementById("matrix_dot_LR1").fill=color[color_vari[6]-1];
+				document.getElementById("matrix_dot_LR2").fill=color[color_vari[7]-1];
+				document.getElementById("matrix_dot_RL1").fill=color[color_vari[8]-1];
+				document.getElementById("matrix_dot_RL2").fill=color[color_vari[9]-1];
+				document.getElementById("matrix_dot_RR1").fill=color[color_vari[10]-1];
+				document.getElementById("matrix_dot_RR2").fill=color[color_vari[11]-1];
+				document.getElementById("matrix_dot_RL1").fill=color[color_vari[12]-1];
+				document.getElementById("matrix_dot_RL2").fill=color[color_vari[13]-1];
+				document.getElementById("matrix_dot_RR1").fill=color[color_vari[14]-1];
+				document.getElementById("matrix_dot_RR2").fill=color[color_vari[15]-1];
+			}
+		</script>
+	</body>
+</html>
