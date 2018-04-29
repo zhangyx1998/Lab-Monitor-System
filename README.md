@@ -21,6 +21,8 @@
 
 Notice: all source codes should be arranged exactly the same as what it was if you want to launch it normally. And if you use different serial port for arduino, or you make a different MySQL configuration, please change the settings at config.sh
 
+Also: You may see the demo [HERE](http://www.yuxuanzhang.net).
+
 ***
 
 ## Upgrade Notes
