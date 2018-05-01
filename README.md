@@ -3,6 +3,8 @@
 
 ## Project Description
 
+![Image](http://222.184.82.195:90/Gallery/Logic_Demo.svg)
+
 >This project, generally speaking, is intended for monitoring the experiment environment (specifically:temperature and hunidity in a closed environment), and make the environment data available though internet.
 >
 >We use an Arduino board with one (or more) HIH-6130 sensor attached on it, to upload data to a linux PC. The arduino source code Arduino_IO_board.ino and the python source code Arduino_IO_Build.py are available in this folder.
