@@ -62,7 +62,7 @@ def version_control():
         try:
           note_file=open(note_file_route,'r')
           content=note_file.read()
-          SQL_CMD="INSERT INTO "+log_table+" (MSG_Source, MSG_Type, MSG_Index) VALUES('VERSION', 'Note','"+version+" Upgrade Note:\n"+content+"');"
+          SQL_CMD="INSERT INTO "+log_table+" (MSG_Source, MSG_Type, MSG_Index) VALUES('VERSION', 'Note','"+version+" Upgrade Note:\n"+content.replace("\n"," ")+"');"
           cursor.execute(SQL_CMD)
         except:
           print("Log_file_not_exist")
