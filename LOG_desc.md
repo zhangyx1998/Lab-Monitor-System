@@ -3,10 +3,9 @@ This Document Defines What Is Expected in the Log Table
 #### SQL Log Format
 |     Title    |  ID   |  MSG_Source  | MSG_Source_ID|   MSG_Type   |  MSG_Type_ID |   Priority   |    ERR_ID    |       MSG_Index     |     Stamp    |   Date_Time  |
 |    Format    |  int  |    string    |      int     |    string    |      int     |      int     |      int     |        string       |      int     |   Date Time  |
-|:------------:|:-----:|:------------:|:------------:|:------------:|:------------:|:------------:|:------------:|:-------------------:|:------------:|:------------:|
-|    Example   |   1   |    VERSION   |       0      |    CURRENT   |       1      |       0      |       0      |        V4.17        |       1      | XXXX-XX-XX...|
-|    Example   |   2   |    VERSION   |       0      |    UPDATE    |       2      |       0      |       0      | From V4.16 to V4.17 |       1      | XXXX-XX-XX...|
-|    Example   |   3   | Arduino_Board|       1      |    ERROR     |       0      |       0      |       0      | From V4.16 to V4.17 |       1      | XXXX-XX-XX...|
+|    Example   |   1   |    VERSION   |       0      |    CURRENT   |       1      |       0      |       0      |        V4.17        |       1      | XXXX-XX-XX   |
+|    Example   |   2   |    VERSION   |       0      |    UPDATE    |       2      |       0      |       0      | From V4.16 to V4.17 |       1      | XXXX-XX-XX   |
+|    Example   |   3   | Arduino_Board|       1      |    ERROR     |       0      |       0      |       0      | From V4.16 to V4.17 |       1      | XXXX-XX-XX   |
 
 #### MSG_Source_ID List
 |     Source     |Source String| Source_ID |      Database Authorization     |  Additional Note  |
