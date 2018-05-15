@@ -84,7 +84,7 @@ def version_control():
     Log_ADD(
       "ERROR",
       "<Version_Inspection_Failed>Could Not Verify Version",
-      "VER_Ctrl")
+      "VER_Ctrl")#id=0001
     sys.exit(0)
 
 def Err_Identify(msg_string):

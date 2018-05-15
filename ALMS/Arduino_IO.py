@@ -53,7 +53,7 @@ class data_unit:
       self.val+=char_to_int(value_str[0])
       value_str=value_str[1:]
     if(value_str[0]!='.'):
-      Log_ADD("Exception",'Incorrect syntax from Arduino: "'+value_str[0]+'"" not expected',1,0,"Arduino_Board")
+      Log_ADD("Exception",'<Invalid_Syntax>#'+value_str+'#',"Arduino_Board")
     else:
       _pow=1;
       value_str=value_str[1:]
@@ -62,7 +62,7 @@ class data_unit:
         self.val+=_pow*char_to_int(value_str[0])
         value_str=value_str[1:]
       if(len(value_str)>0):
-        Log_ADD("Exception",'Incorrect syntax from Arduino: "'+value_str+'"" not expected',1,0,"Arduino_Board")
+        Log_ADD("ERROR",'<Invalid_Syntax>#'+value_str+'#',"Arduino_Board")
 
 def char_to_int(buff):
   if buff=='0': return 0
@@ -179,8 +179,8 @@ def fetch_data(Port, baudrate, time_out, timestamp, Host, User, Password, Databa
   except:
     Log_ADD(
             "ERROR",
-            '<Serial_Connection_Error>Serial_Port_Not_Responding#(Abort)'+Port+'#(Abort)',
-            "Arduino_IO")
+            '<Serial_Connection_Error>Serial_Port_Not_Responding#'+Port+'#(Abort)',
+            "Arduino_Board")
     #msg_type,msg_string,error_ID=0,priority=0,msg_source
     if(Show_All_Possible_Error==False):sys.exit(1)
   if Debug:
@@ -222,7 +222,7 @@ def fetch_data(Port, baudrate, time_out, timestamp, Host, User, Password, Databa
   if (RAW_Data_str.count('#')%2==1 or Show_All_Possible_Error):
     Log_ADD(
             "ERROR",
-            '<Arduino_Board_Error>INVALID_Serial_INPUT#'+RAW_Data_str+'#(Abort)',
+            '<Serial_Input_Error>INVALID_Serial_INPUT#'+RAW_Data_str+'#(Ignore)',
             "Arduino_Board")
     #msg_type,msg_string,error_ID=0,priority=0,msg_source
     if(Show_All_Possible_Error==False):sys.exit(1)
@@ -230,7 +230,7 @@ def fetch_data(Port, baudrate, time_out, timestamp, Host, User, Password, Databa
     err_str=RAW_Data_str[RAW_Data_str.find('#')+1:]
     err_str=err_str[:err_str.find('#')]
     Log_ADD(
-            "Exception",
+            "ERROR",
             err_str+"(PROCEED)",
             "Arduino_Board")
     #msg_type,msg_string,error_ID=0,priority=0,msg_source
@@ -242,7 +242,7 @@ def fetch_data(Port, baudrate, time_out, timestamp, Host, User, Password, Databa
   if (RAW_Data_str.count('<')!=1 or RAW_Data_str.count('>')!=1 or Show_All_Possible_Error):
     Log_ADD(
             "ERROR",
-            '<Arduino_Board_Error>INVALID_Serial_INPUT#'+RAW_Data_str+'#(Abort)',
+            '<Serial_Input_Error>INVALID_Serial_INPUT#'+RAW_Data_str+'#(Ignore)',
             "Arduino_Board")
     #msg_type,msg_string,error_ID=0,priority=0,msg_source
     if(Show_All_Possible_Error==False):sys.exit(1)
@@ -276,7 +276,7 @@ def fetch_data(Port, baudrate, time_out, timestamp, Host, User, Password, Databa
       if(DATA.table_name=='' or Show_All_Possible_Error):
         Log_ADD(
                 "ERROR",
-                '<Configuration_Error>INVALID_Data_TAG#'+Current_Data_str[:Current_Data_str.find('%')]+'#(PROCEED)',
+                '<Configuration_Error>INVALID_Data_Tag#'+Current_Data_str[:Current_Data_str.find('%')]+'#(PROCEED)',
                 "Arduino_IO")
         #msg_type,msg_string,error_ID=0,priority=0,msg_source
       if (DATA.table_name!=''):#else:
@@ -292,7 +292,7 @@ def fetch_data(Port, baudrate, time_out, timestamp, Host, User, Password, Databa
           if Show_All_Possible_Error: raise Exception("Not a real Exception")
         except:
           Log_ADD(
-                  "Exception",
+                  "ERROR",
                   '<Database_Upload_Error>Failed_To_Commit_CMD#'+Data_CMD+'#(PROCEED)',
                   "Database")
           #msg_type,msg_string,error_ID=0,priority=0,msg_source
