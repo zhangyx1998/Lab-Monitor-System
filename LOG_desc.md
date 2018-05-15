@@ -1,13 +1,15 @@
 This Document Defines What Is Expected in the Log Table
 
 #### SQL Log Format
-|     Title    |  ID   |  MSG_Source  | MSG_Source_ID|   MSG_Type   |  MSG_Type_ID |   Priority   |    ERR_ID    |       MSG_Index     |     Stamp    |   Date_Time  |
-|    Format    |  int  |    string    |      int     |    string    |      int     |      int     |      int     |        string       |      int     |   Date Time  |
-|    Example   |   1   |    VERSION   |       0      |    CURRENT   |       1      |       0      |       0      |        V4.17        |       1      | XXXX-XX-XX   |
-|    Example   |   2   |    VERSION   |       0      |    UPDATE    |       2      |       0      |       0      | From V4.16 to V4.17 |       1      | XXXX-XX-XX   |
-|    Example   |   3   | Arduino_Board|       1      |    ERROR     |       0      |       0      |       0      | From V4.16 to V4.17 |       1      | XXXX-XX-XX   |
+
+|  ID   |  MSG_Source  | MSG_Source_ID|   MSG_Type   |  MSG_Type_ID |    ERR_ID    |       MSG_Index     |     Stamp    |   Date_Time  |
+|  int  |    string    |      int     |    string    |      int     |      int     |        string       |      int     |   Date Time  |
+|   1   |    VERSION   |       0      |    CURRENT   |       1      |       0      |        V4.17        |       1      |   XXXX-XX-XX |
+|   2   |    VERSION   |       0      |    UPDATE    |       2      |       0      | From V4.16 to V4.17 |       1      |   XXXX-XX-XX |
+|   3   | Arduino_Board|       1      |    ERROR     |       0      |       0      | From V4.16 to V4.17 |       1      |   XXXX-XX-XX |
 
 #### MSG_Source_ID List
+
 |     Source     |Source String| Source_ID |      Database Authorization     |  Additional Note  |
 |:--------------:|:-----------:|:---------:|:-------------------------------:|:-----------------:|
 | Control_Service|     CTRL    |     0     |   Log:R/W/A   , Data: ReadONLY  | "DELETE" command will never be wirtten in the code, no access to change the data table, no worry about loss of data |
@@ -18,7 +20,8 @@ This Document Defines What Is Expected in the Log Table
 
 #### MSG_Type_ID List
 
-Exception: whichever the source is, (TYPE_ID) 0 is ALWAYS defined as error messages.
+Exception: whichever the source is, (TYPE_ID) 0 is ALWAYS defined as error messages. When and only when MSG_Type_ID=0, ERR_ID is non-zero.
+In case ERR_ID=0 and MSG_Type_ID!=0, ERR_ID will be negelected, unless otherwise defined (But using ERR_ID to do other things is not recommended).
 
 |Source_ID|Source|MsgType_ID|         TYPE_Def        |    Short String    |
 |:-------:|:----:|:--------:|:-----------------------:|:------------------:|
