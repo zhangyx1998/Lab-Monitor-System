@@ -34,24 +34,24 @@
 		</div>  
 
 		<center>
-			<div style="width: 85%; position: relative; height: 60px; display: block; align-self: center;">
+			<div style="width: 85%; max-width: 1280px; position: relative; height: 60px; display: block; align-self: center;">
 			</div><!--This div is meant to take the position of the head banner-->
 			<!--
-			<div class="notice red" style="width: 85%; text-align: left;">
+			<div class="notice red" style="width: 85%; max-width: 1280px; text-align: left;">
 				Notice: an unexpected system breakdown has happened because ARDUINO mistakenly received fake timestamp from debug tools. Therefore, data from 2018-4-11 13:38:01 to 2018-4-15 16:05:02 are unfortunately lost. We will do our best to prevent this accident from happening again.
 			</div>
 			-->
 			
-			<div style="width: 85%; position: relative; height: 32px; display: block; align-self: center;">
+			<div style="width: 85%; max-width: 1280px; position: relative; height: 32px; display: block; align-self: center;">
 				<h2>Current Status</h2>
 			</div>
 			<div class="div_line green">
 			</div>
-			<div style="width: 85%; position: relative; height: 20px; display: block; align-self: center;">
+			<div style="width: 85%; max-width: 1280px; position: relative; height: 20px; display: block; align-self: center;">
 			</div>
 
 
-			<div style="width: 92%; height: auto; align-self: center;">
+			<div style="width: 92%; max-width: 1385px; height: auto; align-self: center;">
 				<div id="Left_Sensor_div" class="card" style="width: 45%;height: 150px;">
 					<table rules=none cellspacing=0>
 						<tr>
@@ -193,14 +193,14 @@
 		</center>
 		
 		<center>
-			<div style="width: 85%; position: relative; height: 32px; display: block; align-self: center;">
+			<div style="width: 85%; max-width: 1280px; position: relative; height: 32px; display: block; align-self: center;">
 				<h2>Occupancy Map</h2>
 			</div>
 			<div class="div_line pink">
 			</div>
-			<div style="width: 85%; position: relative; height: 20px; display: block; align-self: center;">
+			<div style="width: 85%; max-width: 1280px; position: relative; height: 20px; display: block; align-self: center;">
 			</div>
-			<div style="width: 85%; position: relative; display: block; align-self: center;">
+			<div style="width: 85%; max-width: 1280px; position: relative; display: block; align-self: center;">
 				<table>
 					<col style="width: 50%;"/>
 					<col style="width: 50%;"/>
