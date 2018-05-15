@@ -188,7 +188,7 @@
 		</center>
 
 		<center>
-			<canvas id="Envrionment Status" style="width:85%;" oncontextmenu="DBG_Switch();">
+			<canvas id="Envrionment Status" style="width: 85%; max-width: 1280px;" oncontextmenu="DBG_Switch();">
 			</canvas>
 		</center>
 		
@@ -303,7 +303,7 @@
 			<div style="position: relative;top: 0px;left: 0px; height: 5px; display: block;" align="center">
 			</div>
 
-			<table width="85%" border="0" align="center" style="border-style: none; table-layout:fixed; width: 85%" rules=none cellspacing=0>
+			<table border="0" align="center" style="border-style: none; table-layout:fixed; width: 85%; max-width: 1280px;" rules=none cellspacing=0>
 				<col style="width: 4% " />
 				<col style="width: 0.4% " />
 				<col style="width: 12% " />
