@@ -1,3 +1,2 @@
-V4.16
-Webpage Generator(WPG) logic improvement
-Version Control(VER) is now able to automatically detect upgrade notes and add them to Log table.
+V4.17
+This version is made compatible with Github versioning
