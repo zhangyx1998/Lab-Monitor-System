@@ -365,7 +365,7 @@
 						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
 					</tr>
 
-					<tr class="log_table">#*!LineMerge$1*##*!intv$1*##*!max_rows$5*#
+					<tr class="log_table">#*!LineMerge$1*##*!intv$1*##*!max_rows$100*#
 							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
 								<p>#*<table$Log>ID$00000000*#</p>
 							</td>
