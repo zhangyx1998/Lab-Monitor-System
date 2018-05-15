@@ -94,8 +94,8 @@ def Error_priority(msg_string):
   return 0
 
 def Log_ADD(msg_type,msg_string,msg_source="VER_Ctrl"):
-  msg_string=msg_string.replace('\n','')
-  msg_string=msg_string.replace('\r','')
+  msg_string=msg_string.replace('\n',' ')
+  msg_string=msg_string.replace('\r',' ')
   error_ID=Err_Identify(msg_string)
   error_priority=Error_priority(msg_string)
   if Show_All_Possible_Error:
