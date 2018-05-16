@@ -475,8 +475,8 @@ tr.log_table:hover
 {
 	-webkit-transition: 0.1s ease-out;
 	transition: 0.1s ease-out;
-	-webkit-transform: scale(1.03, 1.03);
-	transform: scale(1.03, 1.03);
+	-webkit-transform: scale(1.02, 1.02);
+	transform: scale(1.02, 1.02);
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3), 05px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -484,8 +484,8 @@ tr.log_table:active
 {
 	-webkit-transition: 0.1s ease-out;
 	transition: 0.1s ease-out;
-	-webkit-transform: scale(0.98, 0.98);
-	transform: scale(0.98, 0.98);
+	-webkit-transform: scale(0.99, 0.99);
+	transform: scale(0.99, 0.99);
 }
 
 
@@ -585,7 +585,6 @@ td.img_tag{
 
 div.div_line{
 	width: 85%;
-	max-width: 1280px;
 	position: static;
 	height: 3px;
 	display: block;
@@ -612,6 +611,50 @@ td{
 	word-break:keep-all;
 	overflow: hidden;
 	text-overflow:ellipsis;
+}
+
+td.table_header.unactive{
+	background-color: #4BC2C5;
+	color: #FFF;
+	text-align: center;
+}
+
+.table_header.unactive:link{
+
+}
+
+.table_header.unactive:visited{
+	
+}
+
+.table_header.unactive:hover{
+	background-color: #5BD2D5;
+}
+
+.table_header.unactive:active{
+	background-color: #6BE2E5;
+}
+
+td.table_header.active{
+	background-color: #2BA2A5;
+	color: #FFF;
+	text-align: center;
+}
+
+.table_header.active:link{
+
+}
+
+.table_header.active:visited{
+	
+}
+
+.table_header.active:hover{
+	background-color: #3BB2B5;
+}
+
+.table_header.active:active{
+	background-color: #4BC2C5;
 }
 
 td.Card_banner{
@@ -663,32 +706,119 @@ div.flip{
 
 }
 
+div.tf_button{
+	font-family: "ZFont-regular";
+	font-size: 14px;
+	height: 20px;
+	line-height:18px;
+	border-width: 1.5px; 
+	border-style: solid;
+	border-radius: 8px;
+	overflow: ellipsis;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 7.5px;
+	margin-right: 7.5px;
+	display: inline-block;
+	float: left;
+}
+
+.tf_button.activated{
+	color: #1B9295;
+	border-color: rgba(255,255,255,1);
+	background-color: rgba(255,255,255,1);
+}
+
+.activated:link{
+
+}
+
+.activated:visited{
+
+}
+
+.activated:hover{
+	border-color: rgba(255,255,255,1);
+	background-color: rgba(255,255,255,0.8);
+}
+
+.activated:active{
+	border-color: rgba(255,255,255,1);
+	background-color: rgba(255,255,255,0.5);
+}
+
+.tf_button.unactivated{
+	color: rgba(255,255,255,1);
+	border-color: rgba(255,255,255,1);
+	background-color: rgba(255,255,255,0);
+}
+
+.unactivated:link{
+
+}
+
+.unactivated:visited{
+
+}
+
+.unactivated:hover{
+	border-color: rgba(255,255,255,1);
+	background-color: rgba(255,255,255,0.2);
+}
+
+.unactivated:active{
+	border-color: rgba(255,255,255,1);
+	background-color: rgba(255,255,255,0.4);
+}
+
 #Float_TAG
 {
+	font-family: "ZFont-thin";
 	position: fixed;
-	bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	bottom: 5px;
 	right: 10px;
-	height: 24px;
-	width: 200px; 
-	color: #FFFFFF;
-	background: rgba(0,0,0,0.6);ï¼š
-	border-width: 10px 5px 10px 5px; 
-	border-style: solid;
-	border-radius: 10px;
-	border-color: rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0);
-	overflow: ellipsis;
-}  
-	  
+	color: rgba(128,128,128,0.2);
+	background: rgba(255,255,255,0.2);
+	border: none;
+	border-style: none;
+	border-radius: 8px;
+}
+
 #Float_TAG p
 {  
 	margin: 0px auto; 
 	padding: 0px; 
 	text-align: center; 
 	vertical-align: middle;
-	font-size: 14px;
-	line-height: 22px;
-	letter-spacing:0px; 
+	font-size: 10px;
+	line-height: 18px;
+	letter-spacing: 0px; 
 }  
+
+#Float_TAG:link{
+
+}
+
+#Float_TAG:visited{
+
+}
+
+#Float_TAG:hover{
+	background: rgba(0,0,0,0.6);
+	color: rgba(255,255,255,1);
+}
+
+#Float_TAG:active{
+
+}
 
 .uni_table{
 	border-style: none;
@@ -751,4 +881,24 @@ div.flip{
 .uni:focus{
 		outline: none;
 	background-color: rgba(0,0,0,0);
+}
+
+input{
+	background-color: rgba(255,255,255,0.2);
+	color:#fff;
+	height: 26px;
+	width:100%;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-left: 10px;
+	padding-right: 10px;
+	display: inline-block;
+	float: left;
+	border: none;
+	outline: none;
+	border-radius: 0px;
+	font-size: 14px;
+	font-family: 'ZFont-light';
 }
