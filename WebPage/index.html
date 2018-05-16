@@ -30,28 +30,28 @@
 		</div>
 
 		<div id="Float_TAG" onclick="(function(){/*getElementById('Flaot_TG').style.display='none';*/location.reload(true);})()" style="z-index: 4">  
-    		<p>Last Update 2018-05-15 11:01:05</p>
+    		<p>Last Update 2018-05-16 15:16:04</p>
 		</div>  
 
 		<center>
-			<div style="width: 85%; position: relative; height: 60px; display: block; align-self: center;">
+			<div style="width: 85%; max-width: 1280px; position: relative; height: 60px; display: block; align-self: center;">
 			</div><!--This div is meant to take the position of the head banner-->
 			<!--
-			<div class="notice red" style="width: 85%; text-align: left;">
+			<div class="notice red" style="width: 85%; max-width: 1280px; text-align: left;">
 				Notice: an unexpected system breakdown has happened because ARDUINO mistakenly received fake timestamp from debug tools. Therefore, data from 2018-4-11 13:38:01 to 2018-4-15 16:05:02 are unfortunately lost. We will do our best to prevent this accident from happening again.
 			</div>
 			-->
 			
-			<div style="width: 85%; position: relative; height: 32px; display: block; align-self: center;">
+			<div style="width: 85%; max-width: 1280px; position: relative; height: 32px; display: block; align-self: center;">
 				<h2>Current Status</h2>
 			</div>
 			<div class="div_line green">
 			</div>
-			<div style="width: 85%; position: relative; height: 20px; display: block; align-self: center;">
+			<div style="width: 85%; max-width: 1280px; position: relative; height: 20px; display: block; align-self: center;">
 			</div>
 
 
-			<div style="width: 92%; height: auto; align-self: center;">
+			<div style="width: 92%; max-width: 1385px; height: auto; align-self: center;">
 				<div id="Left_Sensor_div" class="card" style="width: 45%;height: 150px;">
 					<table rules=none cellspacing=0>
 						<tr>
@@ -188,19 +188,19 @@
 		</center>
 
 		<center>
-			<canvas id="Envrionment Status" style="width:85%;" oncontextmenu="DBG_Switch();">
+			<canvas id="Envrionment Status" style="width: 85%; max-width: 1280px;" oncontextmenu="DBG_Switch();">
 			</canvas>
 		</center>
 		
 		<center>
-			<div style="width: 85%; position: relative; height: 32px; display: block; align-self: center;">
+			<div style="width: 85%; max-width: 1280px; position: relative; height: 32px; display: block; align-self: center;">
 				<h2>Occupancy Map</h2>
 			</div>
 			<div class="div_line pink">
 			</div>
-			<div style="width: 85%; position: relative; height: 20px; display: block; align-self: center;">
+			<div style="width: 85%; max-width: 1280px; position: relative; height: 20px; display: block; align-self: center;">
 			</div>
-			<div style="width: 85%; position: relative; display: block; align-self: center;">
+			<div style="width: 85%; max-width: 1280px; position: relative; display: block; align-self: center;">
 				<table>
 					<col style="width: 50%;"/>
 					<col style="width: 50%;"/>
@@ -303,7 +303,7 @@
 			<div style="position: relative;top: 0px;left: 0px; height: 5px; display: block;" align="center">
 			</div>
 
-			<table width="85%" border="0" align="center" style="border-style: none; table-layout:fixed; width: 85%" rules=none cellspacing=0>
+			<table border="0" align="center" style="border-style: none; table-layout:fixed; width: 85%; max-width: 1280px;" rules=none cellspacing=0>
 				<col style="width: 4% " />
 				<col style="width: 0.4% " />
 				<col style="width: 12% " />
@@ -416,7 +416,53 @@ This version is made compatible with Github versioning
 					
 					<tr class="log_table">
 							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
-								<p>238</p>
+								<p>216</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>Arduino_Board</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>ERROR</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>&lt;Arduino_Board_Error&gt;<br>INVALID_Serial_INPUT<br>H%47.4762$T%22.1419$&gt;<br>(Abort)</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-25 20:50:04</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>215</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>Arduino_Board</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>ERROR</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>&lt;Arduino_Board_Error&gt;<br>INVALID_Serial_INPUT<br>%48.0009$T%22.5346$&gt;<br>(Abort)</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-24 20:45:03</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>214</p>
 							</td>
 							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
 							</td>
@@ -431,7 +477,7 @@ This version is made compatible with Github versioning
 Automatic Upgrade Log posting online.</p>
 							</td>
 							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
-								<p>2018-05-15 10:56:01</p>
+								<p>2018-04-23 17:15:01</p>
 							</td>
 					</tr>
 					<tr style="height: 8px">
@@ -440,7 +486,7 @@ Automatic Upgrade Log posting online.</p>
 					
 					<tr class="log_table">
 							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
-								<p>237</p>
+								<p>213</p>
 							</td>
 							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
 							</td>
@@ -451,10 +497,10 @@ Automatic Upgrade Log posting online.</p>
 								<p>UPDATE</p>
 							</td>
 							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
-								<p>From V4.17 To V4.16</p>
+								<p>From V4.15 To V4.16</p>
 							</td>
 							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
-								<p>2018-05-15 10:56:01</p>
+								<p>2018-04-23 17:15:01</p>
 							</td>
 					</tr>
 					<tr style="height: 8px">
@@ -463,7 +509,53 @@ Automatic Upgrade Log posting online.</p>
 					
 					<tr class="log_table">
 							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
-								<p>236</p>
+								<p>212</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>Arduino_Board</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>ERROR</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>&lt;Arduino_Board_Error&gt;<br>INVALID_Serial_INPUT<br>50.5750$T%21.1349$&gt;<br>(Abort)</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-23 05:29:04</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>211</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>Arduino_Board</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>ERROR</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>&lt;Arduino_Board_Error&gt;<br>INVALID_Serial_INPUT<br>%45.0179$T%21.8096$&gt;<br>(Abort)</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-21 09:15:04</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>210</p>
 							</td>
 							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
 							</td>
@@ -471,16 +563,634 @@ Automatic Upgrade Log posting online.</p>
 								<p>VERSION</p>
 							</td>
 							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
-								<p>Note</p>
+								<p>UPDATE</p>
 							</td>
 							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
-								<p>V4.17 Upgrade Note:
-V4.17
-This version is made compatible with Github versioning
-</p>
+								<p>From V4.14 To V4.15</p>
 							</td>
 							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
-								<p>2018-05-15 10:55:33</p>
+								<p>2018-04-19 14:14:01</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>209</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>From V4.13 To V4.14</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-15 23:33:02</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>208</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>From V4.12 To V4.13</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-15 15:24:01</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>207</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>From V4.11 To V4.12</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-15 15:17:01</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>206</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>Arduino_IO</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>ERROR</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>&lt;Database_Upload_Error&gt;<br>Failed_To_Commit_CMD<br>INSERT INTO ARDUINO_IO (TS,ECC) VALUES(12345678,3);<br>(Abort)</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-15 15:16:01</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>205</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>Arduino_IO</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>ERROR</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>&lt;Database_Upload_Error&gt;<br>Failed_To_Commit_CMD<br>INSERT INTO ARDUINO_IO (TS,ECC) VALUES(12345678,3);<br>(Abort)</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-15 15:15:01</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>204</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>Arduino_IO</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>ERROR</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>&lt;Database_Upload_Error&gt;<br>Failed_To_Commit_CMD<br>INSERT INTO ARDUINO_IO (TS,ECC) VALUES(12345678,3);<br>(Abort)</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-15 15:14:01</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>203</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>Arduino_IO</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>ERROR</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>&lt;Database_Upload_Error&gt;<br>Failed_To_Commit_CMD<br>INSERT INTO ARDUINO_IO (TS,ECC) VALUES(12345678,3);<br>(Abort)</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-15 15:13:01</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>192</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>From V4.10 To V4.11</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-15 02:59:01</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>191</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>From V4.09 To V4.10</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-15 00:55:01</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>190</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>From V4.08 To V4.09</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-15 00:14:02</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>189</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>From V4.07 To V4.08</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-14 13:45:01</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>188</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>From V4.06 To V4.07</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-13 20:48:01</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>187</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>From V4.05 To V4.06</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-13 16:33:01</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>186</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>From V4.04 To V4.05</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-13 15:35:01</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>185</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>From V4.03 To V4.04</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-13 13:39:02</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>184</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>From V4.02 To V4.03</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-13 04:38:02</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>183</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>From V4.01 To V4.02</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-13 04:26:02</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>182</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>From V4.00 To V4.01</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-13 03:11:01</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>181</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>From V3.02 To V4.00</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-13 01:24:02</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>180</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>From V3.01 To V3.02</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-11 23:42:01</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>179</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>From V3.00 To V3.01</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-11 18:10:01</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>178</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>From V2.01 To V3.00</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-11 14:29:02</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>177</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>From V2.00 To V2.01</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-11 13:52:01</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>176</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>From V1.02 To V2.00</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-09 13:20:01</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>175</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>From V1.01 To V1.02</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-09 11:24:01</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>24</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>From V1.00 To V1.01</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-04-03 17:22:01</p>
+							</td>
+					</tr>
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p>1</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p>VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p>CURRENT</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p>V4.17</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p>2018-05-15 10:57:01</p>
 							</td>
 					</tr>
 					<tr style="height: 8px">
