@@ -1,2 +1,2 @@
-V4.17
-This version is made compatible with Github versioning
+V4.18
+Log table filter is plugged into the webpage

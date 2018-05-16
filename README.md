@@ -29,6 +29,12 @@ Also: You may see the demo [HERE](http://www.yuxuanzhang.net).
 
 ## Upgrade Notes
 
+#### V4.18
+
++ Log table filter is plugged into the webpage
+
+***
+
 #### V4.17
 
 + Github Compatiblity modification & test

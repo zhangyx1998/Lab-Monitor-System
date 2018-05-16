@@ -319,72 +319,168 @@
 					</tr>	
 
 					<tr style="height:40px">
-						<td style="background-color: #4BC2C5;color: #FFF;text-align: center;">
+						<td colspan="2" class="table_header unactive" id="Table_Title_0" onclick="switch_col_display(0)">
 							<p>ID</p>
 						</td>
-						<td style="background-color: #4BC2C5;color: #FFF;text-align: center;">
-						</td>
-						<td style="background-color: #4BC2C5;color: #FFF;text-align: center;">
+						<td colspan="1" class="table_header unactive" id="Table_Title_1" onclick="switch_col_display(1)">
 							<p>SOURCE</p>
 						</td>
-						<td style="background-color: #4BC2C5;color: #FFF;text-align: center;">
+						<td colspan="1" class="table_header unactive" id="Table_Title_2" onclick="switch_col_display(2)">
 							<p>TYPE</p>
 						</td>
-						<td style="background-color: #4BC2C5;color: #FFF;text-align: center;">
+						<td colspan="1" class="table_header unactive" id="Table_Title_3" onclick="switch_col_display(3)">
 							<p>CONTENT</p>
 						</td>
-						<td style="background-color: #4BC2C5;color: #FFF;text-align: center;">
+						<td colspan="1" class="table_header unactive" id="Table_Title_4" onclick="switch_col_display(4)">
 							<p>DATE</p>
+						</td>
+					</tr>
+
+					<tr id="col_filter_0" style="height: 40px; display: none;">
+						<td colspan="6" style="text-align:center; background-color:#1B9295;">
+							<table rules=none cellspacing=0 border="0" style="border-style: none; table-layout:fixed;">
+								<col style="width: 100px;"/>
+								<col style="width: 60px;"/>
+								<col style="width: 40px;"/>
+								<col style="width: 60px;"/>
+								<col />
+								<col style="width: 18%; " />
+								<tr style="height: 36px; color: #FFF;">
+									<td>
+										<p>Filter from</p>
+									</td>
+									<td>
+										<div style="width: 40px;"><input name="ID-1" style="text-align: center;" /></div>
+									</td>
+									<td style="text-align: center;">
+										<p>to</p>
+									</td>
+									<td>
+										<div style="width: 40px;"><input name="ID-2" style="text-align: center;" /></div>
+									</td>
+									<td style="text-align: left; padding-left: 10px; color: rgba(255,255,255,0.6);">
+										<p>leave blank for infinity</p>
+									</td>
+									<td>
+										<div class="tf_button unactivated" style="float: right;">RESET</div>
+										<div class="tf_button unactivated" style="float: right;">APPLY</div>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+
+					<tr id="col_filter_1" style="height: 40px; display: none;">
+						<td colspan="6" style="text-align:center; background-color:#1B9295;">
+							<div style="height:40px;">
+								<div class="tf_button unactivated">CONTROL</div>
+								<div class="tf_button activated">VERSION</div>
+								<div class="tf_button unactivated">ARDUINO_Board</div>
+								<div class="tf_button unactivated">ARDUINO_IO</div>
+								<div class="tf_button unactivated">WPG</div>
+								<div class="tf_button unactivated" style="float: right;">RESET</div>
+							</div>
+						</td>
+					</tr>
+
+					<tr id="col_filter_2" style=" display: none;">
+						<td colspan="3" style="text-align:right; background-color:#1B9295; color: #fff; padding-right: 10px;">
+								<div class="tf_button activated" style="float: left;">CaseSen</div>
+							<p>Keyword:</p>
+						</td>
+
+						<td colspan="2" style="text-align:center; background-color:#1B9295; color: #fff;">
+								<div style="position:relative; display: inline-block; float:left; width: 100%;">
+									<input/>
+								</div>
+						</td>
+
+						<td colspan="1" style="text-align:center; background-color:#1B9295;">
+							<div>
+								<div class="tf_button unactivated" style="float: left;">SEARCH</div>
+								<div class="tf_button unactivated" style="float: right;">RESET</div>
+							</div>
+						</td>
+					</tr>
+
+					<tr id="col_filter_3" style=" display: none;">
+						<td colspan="3" style="text-align:right; background-color:#1B9295; color: #fff; padding-right: 10px;">
+								<div class="tf_button activated" style="float: left;">CaseSen</div>
+							<p>Keyword:</p>
+						</td>
+
+						<td colspan="2" style="text-align:center; background-color:#1B9295; color: #fff;">
+								<div style="position:relative; display: inline-block; float:left; width: 100%;">
+									<input/>
+								</div>
+						</td>
+
+						<td colspan="1" style="text-align:center; background-color:#1B9295;">
+							<div>
+								<div class="tf_button unactivated" style="float: left;">SEARCH</div>
+								<div class="tf_button unactivated" style="float: right;">RESET</div>
+							</div>
+						</td>
+					</tr>
+
+					<tr id="col_filter_4" style=" display: none;">
+						<td colspan="6" style="text-align:center; background-color:#1B9295;">
+							<table rules=none cellspacing=0 border="0" style="border-style: none; table-layout:fixed;">
+								<col style="width: 100px;"/>
+								<col style="width: 100px;"/>
+								<col style="width: 40px;"/>
+								<col style="width: 100px;"/>
+								<col />
+								<col style="width: 18%; " />
+								<tr style="height: 36px; color: #FFF;">
+									<td>
+										<p>Filter from</p>
+									</td>
+									<td>
+										<div style="width: 80px;"><input name="ID-1" style="text-align: center;" /></div>
+									</td>
+									<td style="text-align: center;">
+										<p>to</p>
+									</td>
+									<td>
+										<div style="width: 80px;"><input name="ID-2" style="text-align: center;" /></div>
+									</td>
+									<td style="text-align: left; padding-left: 10px; color: rgba(255,255,255,0.6);">
+										<p>leave blank for infinity, YYYY-MM-DD (Required) HH:MM:SS (Optional)</p>
+									</td>
+									<td>
+										<div class="tf_button unactivated" style="float: right;">RESET</div>
+										<div class="tf_button unactivated" style="float: right;">APPLY</div>
+									</td>
+								</tr>
+							</table>
 						</td>
 					</tr>
 
 					<tr style="height: 8px">
 						<td colspan="6" style="background-color:rgba(255,255,255,0);;text-align:center;">
 					</tr>
-
-					<tr class="log_table">
+				<!------->
+					<tr class="log_table" id="data-row-#*row_count*#">#*!LineMerge$1*##*!intv$1*##*!max_rows$100*#
 							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
-								<p>#*<table$Log>ID$-00000000*#</p>
+								<p><!--DATA-->#*<table$Log>ID$00000000*#</p>
 							</td>
 							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
 							</td>
 							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
-								<p>#*<table$Log>MSG_Source$-00000000*#</p>
+								<p><!--DATA-->#*<table$Log>MSG_Source$00000000*#</p>
 							</td>
 							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
-								<p>#*<table$Log>MSG_Type$-00000000*#</p>
+								<p><!--DATA-->#*<table$Log>MSG_Type$00000000*#</p>
 							</td>
 							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
-								<p>#*<table$Log>MSG_Index$-00000000*#</p>
+								<p><!--DATA-->#*<table$Log>MSG_Index$00000000*#</p>
 							</td>
 							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
-								<p>#*<table$Log>Date_Time$-00000000*#</p>
+								<p><!--DATA-->#*<table$Log>Date_Time$00000000*#</p>
 							</td>
 					</tr>
-					<tr style="height: 8px">
-						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
-					</tr>
-
-					<tr class="log_table">#*!LineMerge$1*##*!intv$1*##*!max_rows$100*#
-							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
-								<p>#*<table$Log>ID$00000000*#</p>
-							</td>
-							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
-							</td>
-							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
-								<p>#*<table$Log>MSG_Source$00000000*#</p>
-							</td>
-							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
-								<p>#*<table$Log>MSG_Type$00000000*#</p>
-							</td>
-							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
-								<p>#*<table$Log>MSG_Index$00000000*#</p>
-							</td>
-							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
-								<p>#*<table$Log>Date_Time$00000000*#</p>
-							</td>
-					</tr>
-					<tr style="height: 8px">
+					<tr style="height: 8px" id="data-row-blk-#*row_count*#">
 						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
 					</tr>
 					#*!LineMerge$0*#
@@ -446,48 +542,31 @@
 				document.getElementById("Environment_Humidity").innerHTML=format_F(R_data[0],0).toString()+"%";
 			}
 
-			function switch_sensor()
+			var col_display=[0,0,0,0,0];
+
+			function switch_col_display(col)
 			{
-				var color=["#9E3200","#FF9F79","#C0C0C0","#56BCDD","#3A60AE"];
-				var color_vari=[4,3,4,3,5,4,2,3,3,2,4,3,4,3,1,2];
-				var switch_color=["#C0C0C0","#52BFBD"];
-				var switch_color_vari=[0,1];
-				if (!k2)
+				var status=col_display[col];
+				for(var i=0;i<5;i++)
 				{
-					color_vari=[3,4,3,4,4,5,3,2,2,3,3,4,3,4,2,1];
-					switch_color_vari=[1,0]
+					col_display[i]=0;
+				}
+				col_display[col]=1-status;
+
+				for(var i=0;i<5;i++)
+				{
+					if(col_display[i]==1)
+					{
+						document.getElementById("Table_Title_"+i.toString()).className="table_header active";
+						document.getElementById("col_filter_"+i.toString()).style.display="";
+					}
+					else
+					{
+						document.getElementById("Table_Title_"+i.toString()).className="table_header unactive";
+						document.getElementById("col_filter_"+i.toString()).style.display="none";
+					}
 				}
 
-				var target=document.getElementById("matrix_icn_frame_L");
-				if (target==undefined) alert("NULL");
-				for(var i in target)
-				{
-					alert(i);
-				}
-				alert(target);
-
-				document.getElementById("matrix_icn_frame_L").fill=switch_color[switch_color_vari[0]];
-				document.getElementById("Sensor_ICN_L").fill      =switch_color[switch_color_vari[0]];
-
-				document.getElementById("matrix_icn_frame_R").fill=switch_color[switch_color_vari[1]];
-				document.getElementById("Sensor_ICN_R").fill      =switch_color[switch_color_vari[1]];
-
-				document.getElementById("matrix_dot_LL1").fill=color[color_vari[0]-1];
-				document.getElementById("matrix_dot_LL2").fill=color[color_vari[1]-1];
-				document.getElementById("matrix_dot_LR1").fill=color[color_vari[2]-1];
-				document.getElementById("matrix_dot_LR2").fill=color[color_vari[3]-1];
-				document.getElementById("matrix_dot_LL1").fill=color[color_vari[4]-1];
-				document.getElementById("matrix_dot_LL2").fill=color[color_vari[5]-1];
-				document.getElementById("matrix_dot_LR1").fill=color[color_vari[6]-1];
-				document.getElementById("matrix_dot_LR2").fill=color[color_vari[7]-1];
-				document.getElementById("matrix_dot_RL1").fill=color[color_vari[8]-1];
-				document.getElementById("matrix_dot_RL2").fill=color[color_vari[9]-1];
-				document.getElementById("matrix_dot_RR1").fill=color[color_vari[10]-1];
-				document.getElementById("matrix_dot_RR2").fill=color[color_vari[11]-1];
-				document.getElementById("matrix_dot_RL1").fill=color[color_vari[12]-1];
-				document.getElementById("matrix_dot_RL2").fill=color[color_vari[13]-1];
-				document.getElementById("matrix_dot_RR1").fill=color[color_vari[14]-1];
-				document.getElementById("matrix_dot_RR2").fill=color[color_vari[15]-1];
 			}
 		</script>
 	</body>

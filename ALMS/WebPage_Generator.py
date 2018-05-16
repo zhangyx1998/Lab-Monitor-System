@@ -214,7 +214,7 @@ def identify_table(table_tag):
 		flag+=1
 	return -1
 
-def intp(CMD,index):
+def intp(CMD,index,row_count):
 	#print "intp in root index = %d"%index
 	if (Debug and Display_Detail): print "------  INTP >> "+CMD+" INTV %06d" % index
 	if CMD=='CURRENT_TIMESTAMP':
@@ -222,6 +222,8 @@ def intp(CMD,index):
 	if CMD=='General_Status':
 		if (Debug and Display_Detail): return "DEBUG"
 		return "NORMAL"
+	if CMD=='row_count':
+		return str(row_count)
 	if CMD.count('RANDOM$')>0:
 		amp=to_num(CMD[CMD.find('$')+1:])
 		return ("%.4f"%(amp*(random.random()-0.5)))
@@ -320,7 +322,7 @@ def generate(InputTableExpect,file_stream,Path):
 						falg=True
 						line_buf=line
 						while(line.count('#*')>0 and line.count('*#')>0):
-							replace_str=intp(line[line.find('#*')+2:line.find("*#")],index)
+							replace_str=intp(line[line.find('#*')+2:line.find("*#")],index,row_count)
 							if replace_str.count(Err_exit_str)>0: flag=False
 							line=line[:line.find('#*')]+replace_str+line[line.find('*#')+2:]
 						#print "ROOT index = %d" % index +" intv = %d" % intv + " lines = %d" % eof_flag
