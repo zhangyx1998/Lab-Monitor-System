@@ -585,6 +585,7 @@ td.img_tag{
 
 div.div_line{
 	width: 85%;
+	max-width: 1280px;
 	position: static;
 	height: 2px;
 	display: block;
