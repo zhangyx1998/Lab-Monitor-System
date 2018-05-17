@@ -586,7 +586,7 @@ td.img_tag{
 div.div_line{
 	width: 85%;
 	position: static;
-	height: 3px;
+	height: 2px;
 	display: block;
 	align-self: center;
 }
@@ -604,7 +604,7 @@ div.div_line.blue{
 }
 
 div.div_line.pink{
-	background-color: #CD9FED;
+	background-color: #EF7FBD;
 }
 
 td{

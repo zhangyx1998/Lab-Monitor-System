@@ -19,7 +19,7 @@
 					</td>
 					<td colspan="1" align="right" valign="center" height="60px" style="line-height:20px;overflow: hidden;">
 						<h3>
-							General Status: #*General_Status*#<br>
+							General Status: NORMAL<br>
 							LBL pixelKr project team at Bekeley
 						</h3>
 					</td>
@@ -30,10 +30,11 @@
 		</div>
 
 		<div id="Float_TAG" onclick="(function(){/*getElementById('Flaot_TG').style.display='none';*/location.reload(true);})()" style="z-index: 4">  
-    		<p>Last Update #*CURRENT_TIMESTAMP*#</p>
+    		<p>Last Update 2018-05-16 15:19:04</p>
 		</div>  
 
 		<center>
+			<!---->
 			<div style="width: 85%; max-width: 1280px; position: relative; height: 60px; display: block; align-self: center;">
 			</div><!--This div is meant to take the position of the head banner-->
 			<!--
@@ -350,20 +351,38 @@
 										<p>Filter from</p>
 									</td>
 									<td>
-										<div style="width: 40px;"><input name="ID-1" style="text-align: center;" /></div>
+										<div style="width: 40px;">
+											<input 
+												style="text-align: center;"
+												id="Input_id_min"
+												onchange="filter_text_change('id_min','integer')" 
+											/>
+										</div>
 									</td>
 									<td style="text-align: center;">
 										<p>to</p>
 									</td>
 									<td>
-										<div style="width: 40px;"><input name="ID-2" style="text-align: center;" /></div>
+										<div style="width: 40px;">
+											<input
+												style="text-align: center;"
+												id="Input_id_max"
+												onchange="filter_text_change('id_max','integer')"
+											/>
+										</div>
 									</td>
 									<td style="text-align: left; padding-left: 10px; color: rgba(255,255,255,0.6);">
 										<p>leave blank for infinity</p>
 									</td>
 									<td>
-										<div class="tf_button unactivated" style="float: right;">RESET</div>
-										<div class="tf_button unactivated" style="float: right;">APPLY</div>
+										<div class="tf_button unactivated" onclick="filter_reset()" style="float: right;">RESET</div>
+										<div class="tf_button unactivated"
+											 style="float: right;"
+											 id="APPLY_id"
+											 onclick="filter_apply_switch('id')" 
+											 >
+											APPLY
+										</div>
 									</td>
 								</tr>
 							</table>
@@ -373,52 +392,105 @@
 					<tr id="col_filter_1" style="height: 40px; display: none;">
 						<td colspan="6" style="text-align:center; background-color:#1B9295;">
 							<div style="height:40px;">
-								<div class="tf_button unactivated">CONTROL</div>
-								<div class="tf_button activated">VERSION</div>
-								<div class="tf_button unactivated">ARDUINO_Board</div>
-								<div class="tf_button unactivated">ARDUINO_IO</div>
-								<div class="tf_button unactivated">WPG</div>
-								<div class="tf_button unactivated" style="float: right;">RESET</div>
+								<div class=  "tf_button activated"
+									 id=     "SourceSwitch_CONTROL"
+									 onclick="filter_source_change('CONTROL')">
+									CONTROL
+								</div>
+								<div class=  "tf_button activated"
+									 id=     "SourceSwitch_VERSION"
+									 onclick="filter_source_change('VERSION')">
+									VERSION
+								</div>
+								<div class=  "tf_button activated"
+									 id=     "SourceSwitch_Arduino_Board"
+									 onclick="filter_source_change('Arduino_Board')">
+									ARDUINO_Board
+								</div>
+								<div class=  "tf_button activated"
+									 id=     "SourceSwitch_Arduino_IO"
+									 onclick="filter_source_change('Arduino_IO')">
+									ARDUINO_IO
+								</div>
+								<div class=  "tf_button activated"
+									 id=     "SourceSwitch_WPG"
+									 onclick="filter_source_change('WPG')">
+									WPG
+								</div>
+
+								<div class="tf_button unactivated" onclick="filter_reset()" style="float: right;">RESET</div>
 							</div>
 						</td>
 					</tr>
 
 					<tr id="col_filter_2" style=" display: none;">
 						<td colspan="3" style="text-align:right; background-color:#1B9295; color: #fff; padding-right: 10px;">
-								<div class="tf_button activated" style="float: left;">CaseSen</div>
+								<div class="tf_button activated"
+									 style="float: left;"
+									 id="CaseSen_type"
+									 onclick="filter_casesen_switch('type')">
+									CaseSen
+								</div>
 							<p>Keyword:</p>
 						</td>
 
 						<td colspan="2" style="text-align:center; background-color:#1B9295; color: #fff;">
 								<div style="position:relative; display: inline-block; float:left; width: 100%;">
-									<input/>
+									<input
+										id="Input_type_keyword"
+										onchange="filter_text_change('type_keyword','string')"
+									/>
 								</div>
 						</td>
 
 						<td colspan="1" style="text-align:center; background-color:#1B9295;">
 							<div>
-								<div class="tf_button unactivated" style="float: left;">SEARCH</div>
-								<div class="tf_button unactivated" style="float: right;">RESET</div>
+									<div class="tf_button unactivated" onclick="filter_reset()" style="float: right;">
+										RESET
+									</div>
+									<div class="tf_button unactivated"
+										 style="float: right;"
+										 id="APPLY_type"
+										 onclick="filter_apply_switch('type')" 
+										 >
+										APPLY
+									</div>
 							</div>
 						</td>
 					</tr>
 
 					<tr id="col_filter_3" style=" display: none;">
 						<td colspan="3" style="text-align:right; background-color:#1B9295; color: #fff; padding-right: 10px;">
-								<div class="tf_button activated" style="float: left;">CaseSen</div>
+								<div class="tf_button activated"
+									 style="float: left;"
+									 id="CaseSen_content"
+									 onclick="filter_casesen_switch('content')">
+									CaseSen
+								</div>
 							<p>Keyword:</p>
 						</td>
 
 						<td colspan="2" style="text-align:center; background-color:#1B9295; color: #fff;">
 								<div style="position:relative; display: inline-block; float:left; width: 100%;">
-									<input/>
+									<input
+										id="Input_content_keyword"
+										onchange="filter_text_change('content_keyword','string')"
+									/>
 								</div>
 						</td>
 
 						<td colspan="1" style="text-align:center; background-color:#1B9295;">
-							<div>
-								<div class="tf_button unactivated" style="float: left;">SEARCH</div>
-								<div class="tf_button unactivated" style="float: right;">RESET</div>
+							<div>		
+								<div class="tf_button unactivated" onclick="filter_reset()" style="float: right;">
+									RESET
+								</div>
+								<div class="tf_button unactivated"
+									 style="float: right;"
+									 id="APPLY_content"
+									 onclick="filter_apply_switch('content')" 
+									 >
+									APPLY
+								</div>
 							</div>
 						</td>
 					</tr>
@@ -437,20 +509,39 @@
 										<p>Filter from</p>
 									</td>
 									<td>
-										<div style="width: 80px;"><input name="ID-1" style="text-align: center;" /></div>
+										<div style="width: 80px;">
+											<input
+												style="text-align: center;"
+												id="Input_date_min"
+												onchange="filter_text_change('date_min','date')"
+											/>
+										</div>
 									</td>
 									<td style="text-align: center;">
 										<p>to</p>
 									</td>
 									<td>
-										<div style="width: 80px;"><input name="ID-2" style="text-align: center;" /></div>
+										<div style="width: 80px;">
+											<input
+												style="text-align: center;"
+												id="Input_date_max"
+												onchange="filter_text_change('date_max','date')"
+											/>
+										</div>
 									</td>
 									<td style="text-align: left; padding-left: 10px; color: rgba(255,255,255,0.6);">
 										<p>leave blank for infinity, YYYY-MM-DD (Required) HH:MM:SS (Optional)</p>
 									</td>
 									<td>
-										<div class="tf_button unactivated" style="float: right;">RESET</div>
-										<div class="tf_button unactivated" style="float: right;">APPLY</div>
+										<div class="tf_button unactivated" onclick="filter_reset()" style="float: right;">RESET</div>
+										
+										<div class="tf_button unactivated"
+											 style="float: right;"
+											 id="APPLY_date"
+											 onclick="filter_apply_switch('date')" 
+											 >
+											APPLY
+										</div>
 									</td>
 								</tr>
 							</table>
@@ -514,15 +605,15 @@
 
 		<!--######################################################################################-->
 		<script type="text/javascript" src="ZChart.js?V2.01"></script>
+		<script type="text/javascript" src="ZTable.js?V2.01"></script>
 		<script type="text/javascript">	
 			var Chart_1=ZChart.create("Envrionment Status",Enviornment_Status_Style);
-			var k=true;
-			var k2=true;
+			var Chart_1_display_switch=true;
 			function hide_chart()
 			{
 				//alert(document.getElementById("Envrionment Status").className);
 				document.getElementById("Envrionment Status").className="allow_transiton";
-				if(k)
+				if(Chart_1_display_switch)
 				{
 					Chart_1.hide();
 					//Chart_1.update_data(undefined);
@@ -532,7 +623,7 @@
 					Chart_1.display();
 					//Chart_1.update_data(TH_Chart_Data_PKG1);
 				}
-				k=!k;
+				Chart_1_display_switch=!Chart_1_display_switch;
 				setTimeout(function(){document.getElementById("Envrionment Status").className="";},200);
 			}
 
@@ -540,33 +631,6 @@
 			{
 				document.getElementById("Environment_Temperature").innerHTML=format_F(L_data[0],0).toString()+"&#176;C";
 				document.getElementById("Environment_Humidity").innerHTML=format_F(R_data[0],0).toString()+"%";
-			}
-
-			var col_display=[0,0,0,0,0];
-
-			function switch_col_display(col)
-			{
-				var status=col_display[col];
-				for(var i=0;i<5;i++)
-				{
-					col_display[i]=0;
-				}
-				col_display[col]=1-status;
-
-				for(var i=0;i<5;i++)
-				{
-					if(col_display[i]==1)
-					{
-						document.getElementById("Table_Title_"+i.toString()).className="table_header active";
-						document.getElementById("col_filter_"+i.toString()).style.display="";
-					}
-					else
-					{
-						document.getElementById("Table_Title_"+i.toString()).className="table_header unactive";
-						document.getElementById("col_filter_"+i.toString()).style.display="none";
-					}
-				}
-
 			}
 		</script>
 	</body>

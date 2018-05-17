@@ -132,10 +132,10 @@ var ZChart =
 			//DATA
 			var ChartDataPKG;
 			var ChartStyle;
-			var Button_table={};
-			Button_table.Banner=undefined;
-			Button_table.L=[];
-			Button_table.R=[];
+			var ZChart_Button_list={};
+			ZChart_Button_list.Banner=undefined;
+			ZChart_Button_list.L=[];
+			ZChart_Button_list.R=[];
 			//var timer = setInterval(refresh(evt),100);
 			//ARROWS ▶ ◀ ▲ ▼
 			//Preset
@@ -357,15 +357,15 @@ var ZChart =
 			{
 				ChartDataPKG=PKG;
 
-				Button_table.Banner=undefined;
-				Button_table.L=[];
-				Button_table.R=[];
+				ZChart_Button_list.Banner=undefined;
+				ZChart_Button_list.L=[];
+				ZChart_Button_list.R=[];
 
 				if(ChartDataPKG!=undefined)
 				{
 					if(ChartStyle.Display_Banner)
 					{
-						Button_table.Banner=[];
+						ZChart_Button_list.Banner=[];
 
 						var banner_button_L=ZButton.create(chart,ChartDataPKG.Left_Axis_Name,Banner_line_height,object.font_size_uni_str(18)+" ZFont-regular Heavy",1);
 						banner_button_L.display();
@@ -374,19 +374,19 @@ var ZChart =
 						banner_button_L.onclick=function(status)
 						{
 
-							for(var buttons in Button_table.L)
+							for(var buttons=0;buttons<ZChart_Button_list.L.length;buttons++)
 							{
-								if(status==2) Button_table.L[buttons].display();
-								else Button_table.L[buttons].hide();
+								if(status==2) ZChart_Button_list.L[buttons].display();
+								else ZChart_Button_list.L[buttons].hide();
 							}
-							for(var buttons in Button_table.R)
+							for(var buttons=0;buttons<ZChart_Button_list.R.length;buttons++)
 							{
-								Button_table.R[buttons].hide();
+								ZChart_Button_list.R[buttons].hide();
 							}
-							Button_table.Banner[1].status=1;
+							ZChart_Button_list.Banner[1].status=1;
 							object.refresh();
 						};
-						Button_table.Banner.push(banner_button_L);
+						ZChart_Button_list.Banner.push(banner_button_L);
 
 						var banner_button_R=ZButton.create(chart,ChartDataPKG.Right_Axis_Name,Banner_line_height,object.font_size_uni_str(18)+" ZFont-regular Heavy",1);
 						banner_button_R.display();
@@ -394,19 +394,19 @@ var ZChart =
 						banner_button_R.onfocus=function(){object.refresh()};
 						banner_button_R.onclick=function(status)
 						{
-							for(var buttons in Button_table.L)
+							for(var buttons=0;buttons<ZChart_Button_list.L.length;buttons++)
 							{
-								Button_table.L[buttons].hide();
+								ZChart_Button_list.L[buttons].hide();
 							}
-							for(var buttons in Button_table.R)
+							for(var buttons=0;buttons<ZChart_Button_list.R.length;buttons++)
 							{
-								if(status==2) Button_table.R[buttons].display();
-								else Button_table.R[buttons].hide();
+								if(status==2) ZChart_Button_list.R[buttons].display();
+								else ZChart_Button_list.R[buttons].hide();
 							}
-							Button_table.Banner[0].status=1;
+							ZChart_Button_list.Banner[0].status=1;
 							object.refresh()
 						};
-						Button_table.Banner.push(banner_button_R);
+						ZChart_Button_list.Banner.push(banner_button_R);
 
 						var name_pointer=0;
 
@@ -435,7 +435,7 @@ var ZChart =
 										ChartDataPKG.HighLight.L[this_object.tinydataPKG.cur_i][this_object.tinydataPKG.cur_j]=1;
 										object.refresh();
 									}
-									Button_table.L.push(data_button);
+									ZChart_Button_list.L.push(data_button);
 									name_pointer++;
 								}
 								HIGHLIGHT.push(0);
@@ -470,7 +470,7 @@ var ZChart =
 										ChartDataPKG.HighLight.R[this_object.tinydataPKG.cur_i][this_object.tinydataPKG.cur_j]=1;
 										object.refresh();
 									}
-									Button_table.R.push(data_button);
+									ZChart_Button_list.R.push(data_button);
 									name_pointer++;
 								}
 								HIGHLIGHT.push(0);
@@ -523,7 +523,7 @@ var ZChart =
 			object.graph_banner = function(ctx)
 			{
 				var previous_HEIGHT_Banner=HEIGHT_Banner;
-				if(ChartStyle.Display_Banner && Button_table.Banner!=undefined)
+				if(ChartStyle.Display_Banner && ZChart_Button_list.Banner!=undefined)
 				{
 					ctx.fillStyle=Banner_Color;
 					ctx.fillRect(
@@ -537,17 +537,17 @@ var ZChart =
 					ctx.fillText(chart_ID,WIDTH/2,Banner_line_height/2);
 					text_len=ctx.measureText(chart_ID).width*1.3;
 					text_len=text_len>WIDTH/3?text_len:WIDTH/3;
-					Button_table.Banner[0].height=Banner_line_height;
-					Button_table.Banner[0].resetFont(object.font_size_uni_str(18)+" ZFont-bold");
-					Button_table.Banner[0].draw(
+					ZChart_Button_list.Banner[0].height=Banner_line_height;
+					ZChart_Button_list.Banner[0].resetFont(object.font_size_uni_str(18)+" ZFont-bold");
+					ZChart_Button_list.Banner[0].draw(
 						0,
 						0,
 						Left_Axis_Color,
 						"left",
 						(WIDTH-text_len)/2);
-					Button_table.Banner[1].height=Banner_line_height;
-					Button_table.Banner[1].resetFont(object.font_size_uni_str(18)+" ZFont-bold");
-					Button_table.Banner[1].draw(
+					ZChart_Button_list.Banner[1].height=Banner_line_height;
+					ZChart_Button_list.Banner[1].resetFont(object.font_size_uni_str(18)+" ZFont-bold");
+					ZChart_Button_list.Banner[1].draw(
 						WIDTH,
 						0,
 						Right_Axis_Color,
@@ -556,49 +556,49 @@ var ZChart =
 
 					HEIGHT_Banner=Banner_line_height;
 
-					if(Button_table.Banner[0].status==2 || Button_table.Banner[1].status==2)
+					if(ZChart_Button_list.Banner[0].status==2 || ZChart_Button_list.Banner[1].status==2)
 					{
-						if(Button_table.Banner[0].status==2)
+						if(ZChart_Button_list.Banner[0].status==2)
 						{
 							ctx.fillStyle=Left_Axis_Color;
 							ctx.fillRect(0,HEIGHT_Banner,WIDTH,HEIGHT_Banner);
 							var n=0;
 							var x_handle=0;
-							for(var i=0;i<Button_table.L.length;i++)
+							for(var i=0;i<ZChart_Button_list.L.length;i++)
 							{
-								if(Button_table.L[i].width+x_handle>WIDTH && Button_table.L[i].width<WIDTH)
+								if(ZChart_Button_list.L[i].width+x_handle>WIDTH && ZChart_Button_list.L[i].width<WIDTH)
 								{
 									HEIGHT_Banner+=Banner_line_height;
 									x_handle=0;
 									ctx.fillStyle=Left_Axis_Color;
 									ctx.fillRect(0,HEIGHT_Banner,WIDTH,Banner_line_height);
 								}
-								Button_table.L[i].height=Banner_line_height;
-								Button_table.L[i].resetFont(object.font_size_uni_str(15)+" ZFont-regular");
-								Button_table.L[i].draw(x_handle,HEIGHT_Banner,Left_Axis_Color);
-								x_handle+=Button_table.L[i].width;
+								ZChart_Button_list.L[i].height=Banner_line_height;
+								ZChart_Button_list.L[i].resetFont(object.font_size_uni_str(15)+" ZFont-regular");
+								ZChart_Button_list.L[i].draw(x_handle,HEIGHT_Banner,Left_Axis_Color);
+								x_handle+=ZChart_Button_list.L[i].width;
 							}
 							HEIGHT_Banner+=Banner_line_height;
 						}
-						else if(Button_table.Banner[1].status==2)
+						else if(ZChart_Button_list.Banner[1].status==2)
 						{
 							ctx.fillStyle=Right_Axis_Color;
 							ctx.fillRect(0,HEIGHT_Banner,WIDTH,HEIGHT_Banner);
 							var n=0;
 							var x_handle=0;
-							for(var i=0;i<Button_table.R.length;i++)
+							for(var i=0;i<ZChart_Button_list.R.length;i++)
 							{
-								if(Button_table.R[i].width+x_handle>WIDTH && Button_table.R[i].width<WIDTH)
+								if(ZChart_Button_list.R[i].width+x_handle>WIDTH && ZChart_Button_list.R[i].width<WIDTH)
 								{
 									HEIGHT_Banner+=Banner_line_height;
 									x_handle=0;
 									ctx.fillStyle=Right_Axis_Color;
 									ctx.fillRect(0,HEIGHT_Banner,WIDTH,Banner_line_height);
 								}
-								Button_table.R[i].height=Banner_line_height;
-								Button_table.R[i].resetFont(object.font_size_uni_str(15)+" ZFont-regular");
-								Button_table.R[i].draw(x_handle,HEIGHT_Banner,Right_Axis_Color);
-								x_handle+=Button_table.R[i].width;
+								ZChart_Button_list.R[i].height=Banner_line_height;
+								ZChart_Button_list.R[i].resetFont(object.font_size_uni_str(15)+" ZFont-regular");
+								ZChart_Button_list.R[i].draw(x_handle,HEIGHT_Banner,Right_Axis_Color);
+								x_handle+=ZChart_Button_list.R[i].width;
 							}
 							HEIGHT_Banner+=Banner_line_height;
 						}
