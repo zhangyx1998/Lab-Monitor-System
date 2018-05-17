@@ -51,7 +51,7 @@ WPG_password='--password #NA'
 WPG_Database='--Database ATLAS_Main'
 WPG_DefaultTable='--DefaultTable ARDUINO_IO'
 WPG_InputTableExpect='--InputTableExpect <ARDUINO_IO$TS/fake_ts@TS$ECC/d@ECC$ET/4f@Env_Temp$EH/4f@Env_Humidity$ET_D/4f@Env_Temp$EH_D/4f@Env_Humidity$DT/dt@Last_Update$DT_Str/str@Last_Update$><Log$ID/d@ID$MSG_Source@MSG_Source$MSG_Type/cvt@MSG_Type$Priority@Priority$ERR_ID@ERR_ID$MSG_Index/cvt@MSG_Index$Stamp@Stamp$Date_Time@Date_Time$>'
-WPG_file_stream='--file_stream $/WebPage/index.html@/ALMS/Raw_HTML/index.html.zsc$/WebPage/ZChart.js@/ALMS/Raw_HTML/ZChart.js.zsc$/WebPage/style.js@/ALMS/Raw_HTML/style.js.zsc$/WebPage/data.js@/ALMS/Raw_HTML/data.js.zsc$/WebPage/ZButton.js@/ALMS/Raw_HTML/ZButton.js.zsc$/WebPage/global.css@/ALMS/Raw_HTML/global.css.zsc$'
+WPG_file_stream='--file_stream $/WebPage/index.html@/ALMS/Raw_HTML/index.html.zsc$/WebPage/data.js@/ALMS/Raw_HTML/data.js.zsc$'
 CONFIG_WPG="${WPG_host} ${WPG_user} ${WPG_password} ${WPG_Database} ${WPG_DefaultTable} ${WPG_InputTableExpect} ${WPG_file_stream} ${WPG_timestamp}"
 #echo $CONFIG_WPG
 #-----------------------------------------------------
