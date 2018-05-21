@@ -36,5 +36,5 @@ P.S. what to expect if the upload is successful:
 * Input `<DATA>`, do not forget to press `ENTER`.
 * The expected output looks like: `<$H%12.3456$T%65.4321$>`.
 * `H` stands for Humidity, `T` stands for temperature. (But this is not always true, because the tags are maunally defined. When we have more than one sensors, we are likely to change the tag and make it looks like `T1`,`H1`,`T2`,`H2`...)
-* Note that temperture is given in centigrade, and humidity is given in percentage. Check the output with other data sources to determine if your sensor is accurate.
+* Note that the temperture is given in centigrade, and humidity is given in percentage. Compare the output with other data sources to determine whether your sensor is accurate.
 * Error messages lives in a pair of pond signs, contact me if you saw any.
