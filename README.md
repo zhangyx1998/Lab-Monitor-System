@@ -3,7 +3,7 @@
 
 ## Project Description
 
-![Image](http://222.184.82.195:90/Gallery/Logic_Demo.svg)
+![Image](https://github.com/zhangyx1998/Lab-Monitor-System/blob/master/WebPage/Gallery/Logic_Demo.svg)
 
 >This project, generally speaking, is intended for monitoring the experiment environment (specifically:temperature and hunidity in a closed environment), and make the environment data available though internet.
 >
