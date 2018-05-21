@@ -1,4 +1,4 @@
-### How to upload .ino file to your Arduino
+### How to upload `.ino` file to your Arduino
 This document explains the necessary steps to upload your code onto an Arduino board.
 
 * **Make sure you have Arduino IDE ready on your computer.**
@@ -6,7 +6,7 @@ This document explains the necessary steps to upload your code onto an Arduino b
   * You can go to [Arduino official download website](https://www.arduino.cc/en/Main/software) and download the IDE corresponding to your operating system.
 
 * **Configure your IDE settings to ensure a safe upload.**
-  * There are mainly three configurations that you may need to change before uplaoding.
+  * There are mainly three configurations that you may need to change before uploading.
   * Before configuring, **DO NOT FORGET to connect your Arduino board to your computer!**
   * First, the board type. (go to: `Tools >> Board:...`) Usually, the board type is printed on the board. If you are not sure which kind of board you are using, just google it.
   * Then, check the Port. (go to:`Tools >> Port:...`) In most cases, the IDE will automatically configure it for you, and it will even tell you which kind of Arduino Board is currently connected to your computer. But just in case you connected more than one serial device to your computer, or the IDE made some mistakes, you should always check it before hit the upload button.
@@ -21,6 +21,7 @@ This document explains the necessary steps to upload your code onto an Arduino b
   * Find library named "Wire", click "install"
 
 * **Upload**
+  * If you have made the file connection between Arduino IDE and `.ino` file, just double click the file and Arduino IDE will be launched and the desired file will be opened. Otherwise, right click on the desired `.ino` file, choose `open with...`, and choose Arduino IDE to open it. Check "Make Default" if you want to make Arduino IDE the default program for all `.ino` file. (It varies with your system)
   * If you made any change to the code, you can always hit the round-shaped "Check" button on the top left of the window. This will compile your code and alert you if any errors are found.
   * To upload, hit the second round-shaped button on the top left of the window, which is an arrow. Before doing this, always check the configurations mentioned above!
   * Wish you succeed!
