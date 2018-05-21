@@ -7,7 +7,7 @@ This document explains the necessary steps to upload your code onto an Arduino b
 
 * **Configure your IDE settings to ensure a safe upload.**
   * There are mainly three configurations that you may need to change before uplaoding.
-  * Before configuring, **Do NOT forget to connect your Arduino board to your computer!**
+  * Before configuring, **DO NOT FORGET to connect your Arduino board to your computer!**
   * First, the board type. (go to: `Tools >> Board:...`) Usually, the board type is printed on the board. If you are not sure which kind of board you are using, just google it.
   * Then, check the Port. (go to:`Tools >> Port:...`) In most cases, the IDE will automatically configure it for you, and it will even tell you which kind of Arduino Board is currently connected to your computer. But just in case you connected more than one serial device to your computer, or the IDE made some mistakes, you should always check it before hit the upload button.
   * Finally, the ISP (Programmer). (go to:`Tools >> Programmer`) In most cases, just use "AVRISP mkII", which is the default ISP, it works fine.
