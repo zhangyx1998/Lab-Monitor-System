@@ -21,9 +21,9 @@ This document explains the necessary steps to upload your code onto an Arduino b
   * Find library named "Wire", click "install"
 
 * **Upload**
-  * If you made any change to the code, you can always hit the round-shaped "Check" button on the top left on the window. This will compile your code and alert you if any errors are found.
+  * If you made any change to the code, you can always hit the round-shaped "Check" button on the top left of the window. This will compile your code and alert you if any errors are found.
   * To upload, hit the second round-shaped button on the top left of the window, which is an arrow. Before doing this, always check the configurations mentioned above!
-  * Wish you success!
+  * Wish you succeed!
 
 P.S. what to expect if the upload is successful:
 * You will find the last to logs of the console is white-colored and looks like this:
