@@ -1,10 +1,10 @@
 ### This Document Defines What Is Expected in the Log Table
 
-#### SQL Log Format
+#### SQL Log Format (New)
 
-|  ID   |   MSG_Source  | MSG_Source_ID|   MSG_Type   |  MSG_Type_ID |    ERR_ID    |       MSG_Index     |     Stamp    |   Date_Time  |
-|:-----:|:-------------:|:------------:|:------------:|:------------:|:------------:|:-------------------:|:------------:|:------------:|
-|  int  |    string     |      int     |    string    |      int     |      int     |        string       |      int     |   Date Time  |
+|  ID   |  Time_Stamp  |   Source_ID  |    Type_ID   |    ERR_ID    |       MSG_Index     |     Stamp    |   Date_Time  |
+|:-----:|:------------:|:------------:|:------------:|:------------:|:-------------------:|:------------:|:------------:|
+|  int  |      int     |      int     |      int     |      int     |        string       |      int     |   Date Time  |
 
 #### MSG Source List
 
@@ -25,8 +25,9 @@ In case ERR_ID=0 and MSG_Type_ID!=0, ERR_ID will be negelected, unless otherwise
 |:-------:|:---------:|:--------:|:-----------------------:|:------------------:|
 |    0    |  VERSION  |   0001   | Current Running Version |      CURRENT       |
 |    0    |  VERSION  |   0002   | Version Update Log      |      UPDATE        |
-|    0    |    CTRL   |  *0003   | Regular Inspection Log  |      INSPECT       |
-|    0    |    CTRL   |  *0004   | Automatic Respond Taken |      OPERATE       |
+|    0    |  VERSION  |   0003   | Version Update Note     |      Note          |
+|    0    |    CTRL   |  *0004   | Regular Inspection Log  |      INSPECT       |
+|    0    |    CTRL   |  *0005   | Automatic Respond Taken |      OPERATE       |
 |    1    | AIO_Board |   0001   | Message of expections   |        MSG         |
 |    2    |    AIO    |   0001   | Message of expections   |        MSG         |
 |    3    |    WPG    |   0001   | Message of expections   |        MSG         |
@@ -39,8 +40,7 @@ Note that every part of the system has its unique ID, and all pre-defined errors
 
 |Source_ID|Source|ERR_ID|       Identical String      |       ERROR Define       |          Action          |
 |:-------:|:----:|:----:|:---------------------------:|:------------------------ |:------------------------:|
-|    0    | VER  | 0001 | <Version_Inspection_Failed> | Could Not Verify Version |        Undefined         |
-|    0    | CTRL | 0001 |             NA              |            NA            |        Undefined         |
+|    0    | CTRL | 0001 |<Version_Inspection_Failed>  | Could Not Verify Version |        Undefined         |
 |    1    | AIO_B| 0001 |<Serial_Connection_Error>    |Serial_Port_Not_Responding(Abort)|        Undefined  |
 |    1    | AIO_B| 0002 |<Serial_Input_Error>         |INVALID_Serial_INPUT      |        Undefined         |
 |    1    | AIO_B| 0003 |<Invalid_Syntax>             |INVALID_String_Syntax     |        Undefined         |
@@ -51,3 +51,55 @@ Note that every part of the system has its unique ID, and all pre-defined errors
 |    3    | WPG  | 0001 |             NA              |            NA            |        Undefined         |
 
 Above are all known errors that might occur in the current system.
+
+#### Version Update Command
+
+ALTER TABLE ATLAS_Main.Log ADD TS INT DEFAULT 0 AFTER ID;
+
+ALTER TABLE ATLAS_Main.Log ADD Source_ID INT AFTER TS;
+
+ALTER TABLE ATLAS_Main.Log ADD Type_ID INT AFTER Source_ID;
+
+UPDATE ATLAS_Main.Log SET Source_ID=0 WHERE MSG_Source="CTRL";
+
+UPDATE ATLAS_Main.Log SET Source_ID=0 WHERE MSG_Source="VERSION";
+
+UPDATE ATLAS_Main.Log SET Source_ID=1 WHERE MSG_Source="Arduino_Board";
+
+UPDATE ATLAS_Main.Log SET Source_ID=2 WHERE MSG_Source="Arduino_IO";
+
+UPDATE ATLAS_Main.Log SET Type_ID=0 WHERE MSG_Type="ERROR";
+
+UPDATE ATLAS_Main.Log SET Type_ID=1 WHERE Source_ID=0 AND MSG_Type="CURRENT";
+
+UPDATE ATLAS_Main.Log SET Type_ID=2 WHERE Source_ID=0 AND MSG_Type="UPDATE";
+
+UPDATE ATLAS_Main.Log SET Type_ID=3 WHERE Source_ID=0 AND MSG_Type="Note";
+
+UPDATE ATLAS_Main.Log SET Type_ID=1 WHERE Source_ID=1 AND MSG_Type="MSG";
+
+UPDATE ATLAS_Main.Log SET Type_ID=1 WHERE Source_ID=2 AND MSG_Type="MSG";
+
+UPDATE ATLAS_Main.Log SET ERR_ID=1 WHERE Type_ID=0 AND MSG_Index LIKE "%<Version_Inspection_Failed>%";
+
+UPDATE ATLAS_Main.Log SET ERR_ID=1 WHERE Type_ID=0 AND MSG_Index LIKE "%<Serial_Connection_Error>%";
+
+UPDATE ATLAS_Main.Log SET ERR_ID=2 WHERE Type_ID=0 AND MSG_Index LIKE "%<Serial_Input_Error>%";
+
+UPDATE ATLAS_Main.Log SET ERR_ID=3 WHERE Type_ID=0 AND MSG_Index LIKE "%<Invalid_Syntax>%";
+
+UPDATE ATLAS_Main.Log SET ERR_ID=1 WHERE Type_ID=0 AND MSG_Index LIKE "%<Database_Initialization_Error>%";
+
+UPDATE ATLAS_Main.Log SET ERR_ID=2 WHERE Type_ID=0 AND MSG_Index LIKE "%<Database_Upload_Error>%";
+
+UPDATE ATLAS_Main.Log SET ERR_ID=3 WHERE Type_ID=0 AND MSG_Index LIKE "%<Configuration_Error>%";
+
+UPDATE ATLAS_Main.Log SET ERR_ID=4 WHERE Type_ID=0 AND MSG_Index LIKE "%<Configuration_Error>%";
+
+**After Transformation**
+
+ALTER TABLE ATLAS_Main.Log DROP COLUMN MSG_Source;
+
+ALTER TABLE ATLAS_Main.Log DROP COLUMN MSG_Type;
+
+ALTER TABLE ATLAS_Main.Log DROP COLUMN Priority;
