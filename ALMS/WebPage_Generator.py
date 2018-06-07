@@ -24,12 +24,12 @@ Login_key=DB_Key()
 class DB_Struct:
 	def __init__(self,name='',InputExpect=''):
 		self.tableName=name
-		self.col_Count=0 #COL
-		self.line_Count=0 #Lines of raw data
-		self.col_NAME=[] #Database Col Name
-		self.col_TAG_NAME=[] #RAW Webpage Tag Name
-		self.col_TYPE=[] #Datatype (d:int f:float n:notspecified)
-		self.RAW=[]		 #Data from Database will be stored here
+		self.col_Count=0 		#COL
+		self.line_Count=0 		#Lines of raw data
+		self.col_NAME=[] 		#Database Col Name
+		self.col_TAG_NAME=[] 	#RAW Webpage Tag Name
+		self.col_TYPE=[] 		#Datatype (d:int f:float n:notspecified)
+		self.RAW=[]		 		#Data from Database will be stored here
 
 		while InputExpect.count('$')>1:
 			InputExpect=InputExpect[InputExpect.find('$')+1:]
@@ -139,7 +139,7 @@ class DB_Struct:
 			if self.col_TYPE[Value_ID]=='4f': return "%.4f" % self.RAW[Line_ID][Value_ID]
 			if self.col_TYPE[Value_ID]=='dt': return unicode(self.RAW[Line_ID][Value_ID])
 			if self.col_TYPE[Value_ID]=='str': return '"'+unicode(self.RAW[Line_ID][Value_ID])+'"'
-			if self.col_TYPE[Value_ID]=='cvt': 
+			if self.col_TYPE[Value_ID]=='cvt':
 				t_str=self.RAW[Line_ID][Value_ID]
 				t_str=t_str.replace('&','&amp;')
 				t_str=t_str.replace('<','&lt;')
@@ -164,6 +164,9 @@ Data=[]
 Table_Count=0
 
 def c2i(buf):
+	"""
+	This function converts character digits to real number
+	"""
 	if (buf=='1'): return 1
 	if (buf=='2'): return 2
 	if (buf=='3'): return 3
@@ -176,6 +179,9 @@ def c2i(buf):
 	return 0
 
 def to_num(r_str):
+	"""
+	This function converts string to integer
+	"""
 	int_flag=1;
 	if (Debug and Display_Detail): print("------  To_num >> "+r_str)
 	while r_str.count(' ')>0 :
@@ -207,6 +213,10 @@ def to_num(r_str):
 	return num
 
 def identify_table(table_tag):
+	"""
+	This function will find corresponding table in the registeration table,
+	and return its flag(int)
+	"""
 	flag=0
 	while flag<Table_Count:
 		if Data[flag].tableName==table_tag:
@@ -215,6 +225,9 @@ def identify_table(table_tag):
 	return -1
 
 def intp(CMD,index,row_count):
+	"""
+	This function will break down the Command(CMD), and execute them one by another
+	"""
 	#print "intp in root index = %d"%index
 	if (Debug and Display_Detail): print "------  INTP >> "+CMD+" INTV %06d" % index
 	if CMD=='CURRENT_TIMESTAMP':
@@ -244,6 +257,12 @@ def intp(CMD,index,row_count):
 	else: return Err_exit_str+'Error No Such Table: '+ CMD_table
 
 def generate(InputTableExpect,file_stream,Path):
+	"""
+	This is the main function.
+	This function eats in a list of files awaiting translation,
+		along with a list of tables where data come from.
+	And it spits out a bunch of file that contains desired inforamtion.
+	"""
 	global Table_Count
 	global Data
 	while (InputTableExpect.count('<')>0 and InputTableExpect.count('>')>0):

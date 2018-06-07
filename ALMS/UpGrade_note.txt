@@ -1,2 +1,3 @@
-V4.18
-Log table filter is plugged into the webpage
+V5.00 PRE_Release
+This is the pre version of version 5, not a release.
+This version introduces control service, and alters the format of the database.

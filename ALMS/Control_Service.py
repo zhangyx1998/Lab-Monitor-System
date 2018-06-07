@@ -2,8 +2,6 @@
 ##
 ## Code By Yuxuan
 ## 
-
-
 import sys
 import argparse
 import time
@@ -64,7 +62,7 @@ def version_control():
         try:
           note_file=open(note_file_route,'r')
           content=note_file.read()
-          SQL_CMD="INSERT INTO "+log_table+" (MSG_Source, MSG_Type, MSG_Index) VALUES('VERSION', 'Note','"+version+" Upgrade Note:\n"+content.replace("\n"," ")+"');"
+          SQL_CMD="INSERT INTO "+log_table+" (Source_ID, Type_ID, ERR_ID) VALUES('VERSION', 'Note','"+version+" Upgrade Note:\n"+content.replace("\n"," ")+"');"
           cursor.execute(SQL_CMD)
         except:
           print("Log_file_not_exist")
@@ -90,16 +88,39 @@ def version_control():
     sys.exit(0)
 
 def Err_Identify(msg_string):
+  if(msg_string.lower()=='<Version_Inspection_Failed>'.lower()): return 1
+  if(msg_string.lower()=='<Serial_Connection_Error>'.lower()): return 1
+  if(msg_string.lower()=='<Serial_Input_Error>'.lower()): return 2
+  if(msg_string.lower()=='<Invalid_Syntax>'.lower()): return 3
+  if(msg_string.lower()=='<Database_Initialization_Error>'.lower()): return 1
+  if(msg_string.lower()=='<Database_Upload_Error>'.lower()): return 2
+  if(msg_string.lower()=='<Configuration_Error>'.lower()): return 3
   return 0
 
-def Error_priority(msg_string):
+def Type_Identify(msg_string):
+  if(msg_string.lower()=='ERROR'.lower()): return 0
+  if(msg_string.lower()=='CURRENT'.lower()): return 1
+  if(msg_string.lower()=='UPDATE'.lower()): return 2
+  if(msg_string.lower()=='Note'.lower()): return 3
+  if(msg_string.lower()=='INSPECT'.lower()): return 4
+  if(msg_string.lower()=='OPERATE'.lower()): return 5
+  if(msg_string.lower()=='MSG'.lower()): return 1
   return 0
 
-def Log_ADD(msg_type,msg_string,msg_source="VER_Ctrl"):
+def Source_Identify(msg_string):
+  if(msg_string.lower()=='CTRL'.lower()): return 0
+  if(msg_string.lower()=='VERSION'.lower()): return 0
+  if(msg_string.lower()=='AIO_Board'.lower()): return 1
+  if(msg_string.lower()=='AIO'.lower()): return 2
+  if(msg_string.lower()=='WPG'.lower()): return 3
+  return 0
+
+def Log_ADD(msg_type,msg_string,msg_source):
   msg_string=msg_string.replace('\n',' ')
   msg_string=msg_string.replace('\r',' ')
+  source_ID=Source_Identify(msg_source)
+  type_ID=Type_Identify(msg_type)
   error_ID=Err_Identify(msg_string)
-  error_priority=Error_priority(msg_string)
   if Show_All_Possible_Error:
     msg_type="$FAKE$ "+msg_type
   if Debug:
@@ -123,7 +144,7 @@ def Log_ADD(msg_type,msg_string,msg_source="VER_Ctrl"):
       return 0
     stamp=0
     if (error_priority!=0): stamp=1
-    INSERT_CMD="INSERT INTO "+log_table+" (MSG_Source, MSG_Type, Priority, ERR_ID, MSG_Index, Stamp) VALUES('"+msg_source+"','"+msg_type+"',"+ '%d' % error_priority+","+ '%d' % error_ID+",'"+msg_string+"',"+ '%d' % stamp+");"
+    INSERT_CMD="INSERT INTO "+log_table+" (Source_ID, Type_ID, ERR_ID, MSG_Index) VALUES('"+ '%d' % source_ID+"','"+ '%d' % type_ID+"',"+ '%d' % error_ID+",'"+msg_string+");"
     cursor.execute(INSERT_CMD)
     db.commit()
     db.close()

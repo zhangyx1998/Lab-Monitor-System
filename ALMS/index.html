@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<!--<meta http-equiv="refresh" content="300">-->
+		<title>Env Monitor</title> 
+		<link rel="stylesheet" type="text/css" href="global.css">
+	</head>
+
+	<body>
+		<div style="margin: 0 auto; width:100%; position: fixed; top: 0px; left: 0px; text-align: center;height: 60px; background-color: rgb(10,100,170); color: #FFFFFF; z-index:1;">
+			<table width="100%" border="0" align="center" rules=none cellspacing=0 cellpadding=0>
+				<tr>
+					<td colspan="1" align="right" valign="center" width="8%">
+					</td>
+					<td colspan="1" align="left" valign="center" width="54%" height="60px" style="overflow: hidden;">
+						<h1>ATLAS Lab Environment Monitor System</h1>
+					</td>
+					<td colspan="1" align="right" valign="center" height="60px" style="line-height:20px;overflow: hidden;">
+						<h3>
+							General Status: NORMAL<br>
+							LBL pixelKr project team at Bekeley
+						</h3>
+					</td>
+					<td colspan="1" align="right" valign="center" width="8%">
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="Float_TAG" onclick="(function(){/*getElementById('Flaot_TG').style.display='none';*/location.reload(true);})()" style="z-index: 4">  
+    		<p>Last Update 2018-06-06 17:14:50</p>
+		</div>  
+
+		<center>
+			<!---->
+			<div style="width: 85%; max-width: 1280px; position: relative; height: 60px; display: block; align-self: center;">
+			</div><!--This div is meant to take the position of the head banner-->
+			<!--
+			<div class="notice red" style="width: 85%; max-width: 1280px; text-align: left;">
+				Notice: an unexpected system breakdown has happened because ARDUINO mistakenly received fake timestamp from debug tools. Therefore, data from 2018-4-11 13:38:01 to 2018-4-15 16:05:02 are unfortunately lost. We will do our best to prevent this accident from happening again.
+			</div>
+			-->
+			
+			<div style="width: 85%; max-width: 1280px; position: relative; height: 32px; display: block; align-self: center;">
+				<h2>Current Status</h2>
+			</div>
+			<div class="div_line green">
+			</div>
+			<div style="width: 85%; max-width: 1280px; position: relative; height: 20px; display: block; align-self: center;">
+			</div>
+
+
+			<div style="width: 92%; max-width: 1385px; height: auto; align-self: center;">
+				<div id="Left_Sensor_div" class="card" style="width: 45%;height: 150px;">
+					<table rules=none cellspacing=0>
+						<tr>
+							<td class="Card_banner">
+								<div class="vertical">&nbsp;&nbsp;Left Sensor</div>
+							</td>
+							<td>
+								<div style="width:100%; height: 100%; display: inline-block;">
+									<table style="width:100%; height: 100%; table-layout:fixed;">
+										<tr style="width:100%; height: 70%;">
+											<td class="huge_data blue">3.41V</td>
+											<td class="huge_data green">3.29V</td>
+										</tr>
+										<tr style="width:100%; height: 30%;">
+											<td class="huge_data suffix">ANALOG VOLTAGE</td>
+											<td class="huge_data suffix">DIGITAL VOLTAGE</td>
+										</tr>
+									</table>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div id="Right_Sensor_div" class="card" style="display: inline-block;width: 45%;height: 150px;">
+					<table rules=none cellspacing=0>
+						<tr>
+							<td class="Card_banner">
+								<div class="vertical">&nbsp;&nbsp;Right Sensor</div>
+							</td>
+							<td>
+								<div style="width:100%; height: 100%; display: inline-block;">
+									<table style="width:100%; height: 100%; table-layout:fixed;">
+										<tr style="width:100%; height: 70%;">
+											<td class="huge_data blue">3.18V</td>
+											<td class="huge_data green">3.20V</td>
+										</tr>
+										<tr style="width:100%; height: 30%;">
+											<td class="huge_data suffix">ANALOG VOLTAGE</td>
+											<td class="huge_data suffix">DIGITAL VOLTAGE</td>
+										</tr>
+									</table>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div id="Environment_Status_div" class="card" style="display: inline-block;width: 45%;height: 150px;" onclick="hide_chart()">
+					<table rules=none cellspacing=0>
+						<tr>
+							<td class="Card_banner">
+								<div class="vertical">&nbsp;&nbsp;Environment Status</div>
+							</td>
+							<td>
+								<div style="width:100%; height: 100%; display: inline-block;">
+									<table style="width:100%; height: 100%; table-layout:fixed;">
+										<tr style="width:100%; height: 70%;">
+											<td id="Environment_Temperature" class="huge_data orange">-22&#176;C</td>
+											<td id="Environment_Humidity" class="huge_data blue">57%</td>
+										</tr>
+										<tr style="width:100%; height: 30%;">
+											<td class="huge_data suffix">Environment Temperature</td>
+											<td class="huge_data suffix">Environment Humidity</td>
+										</tr>
+									</table>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div id="Radiation_Source_div" class="card" style="display: inline-block;width: 45%;height: 150px;">
+					<table rules=none cellspacing=0>
+						<tr>
+							<td class="Card_banner">
+								<div class="vertical">&nbsp;&nbsp;Radition Source</div>
+							</td>
+							<td>
+								<div style="width:100%; height: 100%; display: inline-block;">
+									<table style="width:100%; height: 100%; table-layout:fixed;">
+										<td style="width: 100%">
+											<tr style="width:100%; height: 70%; vertical-align: center;">
+												<td>
+													<embed src="Fonts/SVG/LR_Indicator.svg" type="image/svg+xml" style="height: 45%; vertical-align: bottom;"/>
+												</td>
+											</tr>
+											<tr style="width:100%; height: 30%;">
+												<td class="huge_data suffix">Radiation Source Position</td>
+											</tr>
+										</td>
+									</table>
+								</div>
+							</td>
+							<td>
+								<div style="width:100%; height: 100%; display: inline-block;">
+									<table style="width:100%; height: 100%; table-layout:fixed;">
+										<tr style="width:100%; height: 100%; vertical-align: center;">
+											<td width="144px" rules=none cellspacing=0>
+												<embed src="Fonts/SVG/MATRIX.svg" type="image/svg+xml" style="width: 90%;max-height: 90%; vertical-align: center;"/>
+											</td>
+											<td>
+												<div style="width: 100%; height: 100%; position: relative;">
+													<table rules=none cellspacing=0>
+														<tr style="height: 30%; text-align: left;">
+															<td class="huge_data tiny_data">
+																12.34
+															</td>
+														</tr>
+														<tr style="height: 17%; text-align: left;">
+															<td class="huge_data tiny_suffix">
+																AVERAGE
+															</td>
+														</tr>
+														<tr style="height: 30%; text-align: left;">
+															<td class="huge_data tiny_data green">
+																23.14
+															</td>
+														</tr>
+														<tr style="height: 17%; text-align: left;">
+															<td class="huge_data tiny_suffix">
+																AVERAGE
+															</td>
+														</tr>
+														<tr>
+														</tr>
+													</table>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</center>
+
+		<center>
+			<canvas id="Envrionment Status" style="width: 85%; max-width: 1280px;" oncontextmenu="DBG_Switch();">
+			</canvas>
+		</center>
+		
+		<center>
+			<div style="width: 85%; max-width: 1280px; position: relative; height: 32px; display: block; align-self: center;">
+				<h2>Occupancy Map</h2>
+			</div>
+			<div class="div_line pink">
+			</div>
+			<div style="width: 85%; max-width: 1280px; position: relative; height: 20px; display: block; align-self: center;">
+			</div>
+			<div style="width: 85%; max-width: 1280px; position: relative; display: block; align-self: center;">
+				<table>
+					<col style="width: 50%;"/>
+					<col style="width: 50%;"/>
+					<tbody>
+						<tr>
+							<td align="center">
+								<div class="image_show">
+									<div>
+										<table>
+											<tr>
+												<td class="huge_data white" style="height: 25%;background-color: #b0b0b0; font-size:40px; line-height: 36px; vertical-align: middle;">
+													LEFT
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>TIMESTAMP</b><br>
+													1523852881545
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>DATE</b><br>
+													2018-04-15
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>TEMPERATURE</b><br>
+													-22.23&#176;C
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>HUMIDITY</b><br>
+													62.19%
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>RADIATION ON</b><br>
+													YES
+												</td>
+											</tr>
+										</table>
+									</div>
+									<img src="OccupancyMap/L1.png" />
+								</div>
+							</td>
+							<td align="center">
+								<div class="image_show">
+									<div>
+										<table>
+											<tr>
+												<td class="huge_data white" style="height: 25%;background-color: #b0b0b0; font-size:40px; line-height: 36px; vertical-align: middle;">
+													RIGHT
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>TIMESTAMP</b><br>
+													1523852881545
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>DATE</b><br>
+													2018-04-15
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>TEMPERATURE</b><br>
+													-22.23&#176;C
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>HUMIDITY</b><br>
+													62.19%
+												</td>
+											</tr>
+											<tr>
+												<td class="img_tag" style="height: 15%;">
+													<b>RADIATION ON</b><br>
+													YES
+												</td>
+											</tr>
+										</table>
+									</div>
+									<img src="OccupancyMap/R1.png" />
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+
+			<div style="position: relative;top: 0px;left: 0px; height: 5px; display: block;" align="center">
+			</div>
+
+			<table border="0" align="center" style="border-style: none; table-layout:fixed; width: 85%; max-width: 1280px;" rules=none cellspacing=0>
+				<col style="width: 4% " />
+				<col style="width: 0.4% " />
+				<col style="width: 12% " />
+				<col style="width: 12% " />
+				<col />
+				<col style="width: 18% " />
+				<tbody>
+
+					<tr style="height:60px">
+						<td style="background-color: rgba(255,255,255,0);color: #000;text-align: left;" colspan="6">
+							<h2>System Log</h2>
+						</td>
+					</tr>	
+
+					<tr style="height:40px">
+						<td colspan="2" class="table_header unactive" id="Table_Title_0" onclick="switch_col_display(0)">
+							<p>ID</p>
+						</td>
+						<td colspan="1" class="table_header unactive" id="Table_Title_1" onclick="switch_col_display(1)">
+							<p>SOURCE</p>
+						</td>
+						<td colspan="1" class="table_header unactive" id="Table_Title_2" onclick="switch_col_display(2)">
+							<p>TYPE</p>
+						</td>
+						<td colspan="1" class="table_header unactive" id="Table_Title_3" onclick="switch_col_display(3)">
+							<p>CONTENT</p>
+						</td>
+						<td colspan="1" class="table_header unactive" id="Table_Title_4" onclick="switch_col_display(4)">
+							<p>DATE</p>
+						</td>
+					</tr>
+
+					<tr id="col_filter_0" style="height: 40px; display: none;">
+						<td colspan="6" style="text-align:center; background-color:#1B9295;">
+							<table rules=none cellspacing=0 border="0" style="border-style: none; table-layout:fixed;">
+								<col style="width: 100px;"/>
+								<col style="width: 60px;"/>
+								<col style="width: 40px;"/>
+								<col style="width: 60px;"/>
+								<col />
+								<col style="width: 18%; " />
+								<tr style="height: 36px; color: #FFF;">
+									<td>
+										<p>Filter from</p>
+									</td>
+									<td>
+										<div style="width: 40px;">
+											<input 
+												style="text-align: center;"
+												id="Input_id_min"
+												onchange="filter_text_change('id_min','integer')" 
+											/>
+										</div>
+									</td>
+									<td style="text-align: center;">
+										<p>to</p>
+									</td>
+									<td>
+										<div style="width: 40px;">
+											<input
+												style="text-align: center;"
+												id="Input_id_max"
+												onchange="filter_text_change('id_max','integer')"
+											/>
+										</div>
+									</td>
+									<td style="text-align: left; padding-left: 10px; color: rgba(255,255,255,0.6);">
+										<p>leave blank for infinity</p>
+									</td>
+									<td>
+										<div class="tf_button unactivated" onclick="filter_reset()" style="float: right;">RESET</div>
+										<div class="tf_button unactivated"
+											 style="float: right;"
+											 id="APPLY_id"
+											 onclick="filter_apply_switch('id')" 
+											 >
+											APPLY
+										</div>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+
+					<tr id="col_filter_1" style="height: 40px; display: none;">
+						<td colspan="6" style="text-align:center; background-color:#1B9295;">
+							<div style="height:40px;">
+								<div class=  "tf_button activated"
+									 id=     "SourceSwitch_CONTROL"
+									 onclick="filter_source_change('CONTROL')">
+									CONTROL
+								</div>
+								<div class=  "tf_button activated"
+									 id=     "SourceSwitch_VERSION"
+									 onclick="filter_source_change('VERSION')">
+									VERSION
+								</div>
+								<div class=  "tf_button activated"
+									 id=     "SourceSwitch_Arduino_Board"
+									 onclick="filter_source_change('Arduino_Board')">
+									ARDUINO_Board
+								</div>
+								<div class=  "tf_button activated"
+									 id=     "SourceSwitch_Arduino_IO"
+									 onclick="filter_source_change('Arduino_IO')">
+									ARDUINO_IO
+								</div>
+								<div class=  "tf_button activated"
+									 id=     "SourceSwitch_WPG"
+									 onclick="filter_source_change('WPG')">
+									WPG
+								</div>
+
+								<div class="tf_button unactivated" onclick="filter_reset()" style="float: right;">RESET</div>
+							</div>
+						</td>
+					</tr>
+
+					<tr id="col_filter_2" style=" display: none;">
+						<td colspan="3" style="text-align:right; background-color:#1B9295; color: #fff; padding-right: 10px;">
+								<div class="tf_button activated"
+									 style="float: left;"
+									 id="CaseSen_type"
+									 onclick="filter_casesen_switch('type')">
+									CaseSen
+								</div>
+							<p>Keyword:</p>
+						</td>
+
+						<td colspan="2" style="text-align:center; background-color:#1B9295; color: #fff;">
+								<div style="position:relative; display: inline-block; float:left; width: 100%;">
+									<input
+										id="Input_type_keyword"
+										onchange="filter_text_change('type_keyword','string')"
+									/>
+								</div>
+						</td>
+
+						<td colspan="1" style="text-align:center; background-color:#1B9295;">
+							<div>
+									<div class="tf_button unactivated" onclick="filter_reset()" style="float: right;">
+										RESET
+									</div>
+									<div class="tf_button unactivated"
+										 style="float: right;"
+										 id="APPLY_type"
+										 onclick="filter_apply_switch('type')" 
+										 >
+										APPLY
+									</div>
+							</div>
+						</td>
+					</tr>
+
+					<tr id="col_filter_3" style=" display: none;">
+						<td colspan="3" style="text-align:right; background-color:#1B9295; color: #fff; padding-right: 10px;">
+								<div class="tf_button activated"
+									 style="float: left;"
+									 id="CaseSen_content"
+									 onclick="filter_casesen_switch('content')">
+									CaseSen
+								</div>
+							<p>Keyword:</p>
+						</td>
+
+						<td colspan="2" style="text-align:center; background-color:#1B9295; color: #fff;">
+								<div style="position:relative; display: inline-block; float:left; width: 100%;">
+									<input
+										id="Input_content_keyword"
+										onchange="filter_text_change('content_keyword','string')"
+									/>
+								</div>
+						</td>
+
+						<td colspan="1" style="text-align:center; background-color:#1B9295;">
+							<div>		
+								<div class="tf_button unactivated" onclick="filter_reset()" style="float: right;">
+									RESET
+								</div>
+								<div class="tf_button unactivated"
+									 style="float: right;"
+									 id="APPLY_content"
+									 onclick="filter_apply_switch('content')" 
+									 >
+									APPLY
+								</div>
+							</div>
+						</td>
+					</tr>
+
+					<tr id="col_filter_4" style=" display: none;">
+						<td colspan="6" style="text-align:center; background-color:#1B9295;">
+							<table rules=none cellspacing=0 border="0" style="border-style: none; table-layout:fixed;">
+								<col style="width: 100px;"/>
+								<col style="width: 100px;"/>
+								<col style="width: 40px;"/>
+								<col style="width: 100px;"/>
+								<col />
+								<col style="width: 18%; " />
+								<tr style="height: 36px; color: #FFF;">
+									<td>
+										<p>Filter from</p>
+									</td>
+									<td>
+										<div style="width: 80px;">
+											<input
+												style="text-align: center;"
+												id="Input_date_min"
+												onchange="filter_text_change('date_min','date')"
+											/>
+										</div>
+									</td>
+									<td style="text-align: center;">
+										<p>to</p>
+									</td>
+									<td>
+										<div style="width: 80px;">
+											<input
+												style="text-align: center;"
+												id="Input_date_max"
+												onchange="filter_text_change('date_max','date')"
+											/>
+										</div>
+									</td>
+									<td style="text-align: left; padding-left: 10px; color: rgba(255,255,255,0.6);">
+										<p>leave blank for infinity, YYYY-MM-DD (Required) HH:MM:SS (Optional)</p>
+									</td>
+									<td>
+										<div class="tf_button unactivated" onclick="filter_reset()" style="float: right;">RESET</div>
+										
+										<div class="tf_button unactivated"
+											 style="float: right;"
+											 id="APPLY_date"
+											 onclick="filter_apply_switch('date')" 
+											 >
+											APPLY
+										</div>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+
+					<tr style="height: 8px">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);;text-align:center;">
+					</tr>
+				<!------->
+					<tr class="log_table" id="data-row-0">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->213</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V4.16 To NA</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-06 15:27:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-0">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-1">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->212</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->Note</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->V4.16 Upgrade Note:
+Automatic Upgrade Log posting online.</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-1">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-2">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->211</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V4.08 To V4.16</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-2">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-3">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->210</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V4.14 To V4.08</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-3">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-4">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->209</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V4.13 To V4.14</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-4">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-5">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->208</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V4.12 To V4.13</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-5">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-6">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->207</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V4.11 To V4.12</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-6">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-7">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->206</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->Arduino_IO</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->ERROR</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->&lt;Database_Upload_Error&gt;<br>Failed_To_Commit_CMD<br>INSERT INTO ARDUINO_IO (TS,ECC) VALUES(12345678,3);<br>(Abort)</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:40:35</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-7">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-8">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->205</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->Arduino_IO</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->ERROR</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->&lt;Database_Upload_Error&gt;<br>Failed_To_Commit_CMD<br>INSERT INTO ARDUINO_IO (TS,ECC) VALUES(12345678,3);<br>(Abort)</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:40:35</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-8">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-9">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->204</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->Arduino_IO</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->ERROR</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->&lt;Database_Upload_Error&gt;<br>Failed_To_Commit_CMD<br>INSERT INTO ARDUINO_IO (TS,ECC) VALUES(12345678,3);<br>(Abort)</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:40:35</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-9">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-10">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->203</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->Arduino_IO</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->ERROR</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->&lt;Database_Upload_Error&gt;<br>Failed_To_Commit_CMD<br>INSERT INTO ARDUINO_IO (TS,ECC) VALUES(12345678,3);<br>(Abort)</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:40:35</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-10">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-11">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->192</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V4.10 To V4.11</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-11">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-12">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->191</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V4.09 To V4.10</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-12">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-13">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->190</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V4.08 To V4.09</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-13">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-14">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->189</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V4.07 To V4.08</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-14">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-15">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->188</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V4.06 To V4.07</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-15">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-16">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->187</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V4.05 To V4.06</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-16">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-17">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->186</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V4.04 To V4.05</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-17">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-18">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->185</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V4.03 To V4.04</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-18">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-19">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->184</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V4.02 To V4.03</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-19">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-20">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->183</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V4.01 To V4.02</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-20">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-21">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->182</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V4.00 To V4.01</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-21">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-22">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->181</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V3.02 To V4.00</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-22">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-23">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->180</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V3.01 To V3.02</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-23">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-24">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->179</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V3.00 To V3.01</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-24">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-25">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->178</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V2.01 To V3.00</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-25">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-26">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->177</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V2.00 To V2.01</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-26">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-27">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->176</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V1.02 To V2.00</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-27">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-28">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->175</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V1.01 To V1.02</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-28">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-29">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->24</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->UPDATE</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->From V1.00 To V1.01</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-04 13:31:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-29">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr class="log_table" id="data-row-30">
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+								<p><!--DATA-->1</p>
+							</td>
+							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
+								<p><!--DATA-->VERSION</p>
+							</td>
+							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
+								<p><!--DATA-->CURRENT</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
+								<p><!--DATA-->NA</p>
+							</td>
+							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000000;">
+								<p><!--DATA-->2018-06-06 15:27:26</p>
+							</td>
+					</tr>
+					<tr style="height: 8px" id="data-row-blk-30">
+						<td colspan="6" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
+					
+					<tr style="height: 3px">
+						<td colspan="6" style="background-color:#4BC2C5;text-align:center;">
+					</tr>		 
+					<tr style="height: 10px">
+						<td colspan="6" style="background-color:#FFFFFF;text-align:center;">
+					</tr>	
+					<tr style="height: 30px">
+						<td colspan="6" style="background-color:#FFFFFF;text-align:center;">
+							<a href="Version-Gallery.html" style="color: #666666;">
+								<p>Click HERE For Verison Gallery</p>
+							</a>
+					</tr>
+				</tbody>
+			</table>
+
+
+			<div style="margin: 0 auto; width:85%; position: relative; border:none; text-align: center;height: 80px; background-color: #FFFFFF; color: #666; z-index:1; padding: 0px; vertical-align: middle;">
+					<div style="margin: 0 auto; width: 100% ; height: 100% ; position: absolute; left: 0px; top: 0px; z-index: 2; text-align: center; vertical-align: middle;">
+						<p><br>By Yuxuan Zhang</p>
+						<p>APRIL 2018</p><br>
+					</div>
+					<div style="margin: 0 auto; width: 100% ; height: 100% ; position: absolute; left: 0px; top: 0px; z-index: 3">
+						<a href="https://yuxuanzhang.myportfolio.com" style="display:block; width:100%; height:100%;"></a>
+					</div>
+			</div>
+
+		</center>
+
+		<!--######################################################################################-->
+		<script type="text/javascript" src="ZChart.js?V2.01"></script>
+		<script type="text/javascript" src="ZTable.js?V2.01"></script>
+		<script type="text/javascript">	
+			var Chart_1=ZChart.create("Envrionment Status",Enviornment_Status_Style);
+			var Chart_1_display_switch=true;
+			function hide_chart()
+			{
+				//alert(document.getElementById("Envrionment Status").className);
+				document.getElementById("Envrionment Status").className="allow_transiton";
+				if(Chart_1_display_switch)
+				{
+					Chart_1.hide();
+					//Chart_1.update_data(undefined);
+				}
+				else
+				{
+					Chart_1.display();
+					//Chart_1.update_data(TH_Chart_Data_PKG1);
+				}
+				Chart_1_display_switch=!Chart_1_display_switch;
+				setTimeout(function(){document.getElementById("Envrionment Status").className="";},200);
+			}
+
+			Chart_1.onfocus= function(ts,L_data,R_data)
+			{
+				document.getElementById("Environment_Temperature").innerHTML=format_F(L_data[0],0).toString()+"&#176;C";
+				document.getElementById("Environment_Humidity").innerHTML=format_F(R_data[0],0).toString()+"%";
+			}
+		</script>
+	</body>
+</html>
