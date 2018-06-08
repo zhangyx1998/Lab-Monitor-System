@@ -1,0 +1,22 @@
+#### chip database desc
+
+**commands**
+
+CREATE TABLE CHIP(
+ID        INT NOT NULL AUTO_INCREMENT,
+Wafer     INT NOT NULL DEFAULT 0,
+col       INT NOT NULL DEFAULT 0,
+row       INT NOT NULL DEFAULT 0,
+Diced_LOC VARCHAR(8)   DEFAULT "N/A",
+Diced_DT  TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
+Thickness FLOAT        DEFAULT 0,
+BUMPED    BOOLEAN      DEFAULT FALSE,
+Flip_to   VARCHAR(64)  DEFAULT "NONE",
+Flip_DT   TIMESTAMP    ,
+Board     INT          ,
+Board_DT  TIMESTAMP    ,
+Status    VARCHAR(512) DEFAULT "",
+Location  VARCHAR(512) DEFAULT "",
+Comment   VARCHAR(1024),
+PRIMARY KEY (ID)
+);
