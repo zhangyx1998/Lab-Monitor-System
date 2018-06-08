@@ -3,7 +3,7 @@
 **commands**
 
 CREATE TABLE CHIP(
-ID        INT NOT NULL AUTO_INCREMENT,
+SN        VARCHAR(8) NOT NULL,
 Wafer     INT NOT NULL DEFAULT 0,
 col       INT NOT NULL DEFAULT 0,
 row       INT NOT NULL DEFAULT 0,
@@ -20,3 +20,7 @@ Location  VARCHAR(512) DEFAULT "",
 Comment   VARCHAR(1024),
 PRIMARY KEY (ID)
 );
+
+INSERT INTO CHIP
+(Wafer,col,row,Diced_LOC,Diced_DT,Board,Board_DT,Status,Location,Comment) VALUES
+()
