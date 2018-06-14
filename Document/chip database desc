@@ -17,10 +17,13 @@ Board     INT          ,
 Board_DT  TIMESTAMP    ,
 Status    VARCHAR(512) DEFAULT "",
 Location  VARCHAR(512) DEFAULT "",
-Comment   VARCHAR(1024),
-PRIMARY KEY (ID)
+Chip_Comment   VARCHAR(1024) DEFAULT "" NOT NULL,
+Board_Comment  VARCHAR(1024) DEFAULT "" NOT NULL,
+PRIMARY KEY (SN)
 );
+
+ALTER TABLE chip.CHIP ADD Board_Comment VARCHAR(1024) AFTER Chip_Comment;
 
 INSERT INTO CHIP
 (Wafer,col,row,Diced_LOC,Diced_DT,Board,Board_DT,Status,Location,Comment) VALUES
-()
+('0x0C11')
