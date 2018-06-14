@@ -29,6 +29,26 @@ Also: You may see the demo [HERE](http://www.yuxuanzhang.net).
 
 ## Upgrade Notes
 
+#### V5.00
+
++ Current developing version
++ Control Service Online
++ Log Table reformat
++ Alarm system online
++ Code rearrangement
++ Chip Database online
++ Easier Installation
+
+***
+
+#### V4.19
+
++ Real environment deploy
++ Bug fix (minus values)
++ Git branches generated:`matster`,`release`,`dev`
+
+***
+
 #### V4.18
 
 + Log table filter is plugged into the webpage

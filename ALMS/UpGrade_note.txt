@@ -1,3 +1,8 @@
-V5.00 PRE_Release
-This is the pre version of version 5, not a release.
-This version introduces control service, and alters the format of the database.
+V5.00
+Current developing version
+Control Service Online
+Log Table reformat
+Alarm system online
+Code rearrangement
+Chip Database online
+Easier Installation
