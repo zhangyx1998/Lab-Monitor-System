@@ -62,16 +62,19 @@ def version_control():
         SQL_CMD="UPDATE "+log_table+" SET MSG_Index='"+version+"' WHERE MSG_Type='CURRENT'"
         #print SQL_CMD
         cursor.execute(SQL_CMD)
-      if (note_file_route!=''):
-        try:
+      try:
+        if (note_file_route!=''):
           note_file=open(note_file_route,'r')
           content=note_file.read()
           Log_ADD(
                   "Note",
                   version+" Upgrade Note:\n"+content.replace("\n"," "),
                   "VERSION")
-        except:
-          print("Log_file_not_exist")
+      except:
+        Log_ADD(
+                "ERROR",
+                "<Log_File_Not_Exist>",
+                "VERSION")
     db.commit()
     db.close()
 
@@ -135,13 +138,17 @@ def Log_ADD(msg_type,msg_string,msg_source):
   if Debug:
     print(msg_source+' >> ' + msg_type + ' >> ' + msg_string)
     msg_type="Debug "+msg_type
-  if(log_file_route!=''): 
-    try:
-      err_out = open(log_file_route, 'a')
-    except:
-      err_out = open(log_file_route, 'w')
-    err_out.write(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+' '+msg_type+' '+msg_string+'\n')
-    err_out.close()
+  try:
+    if(log_file_route!=''): 
+      try:
+        err_out = open(log_file_route, 'a')
+      except:
+        err_out = open(log_file_route, 'w')
+      err_out.write(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+' '+msg_type+' '+msg_string+'\n')
+      err_out.close()
+  except:
+    log_file_route=''
+    #Do Nothing
   if(log_table!='' or True):
     try:
       #if Debug: print("LOG_Service >> Debug >> Connecting to Database using "+L_Key.Host+' '+L_Key.ID+' '+L_Key.PW+' '+L_Key.DB)
