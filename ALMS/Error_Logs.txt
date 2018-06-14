@@ -1,0 +1,1 @@
+2018-06-14 11:59:15 ERROR <Database_Upload_Error>Failed_To_Commit_CMD#INSERT INTO ARDUINO_IO (TS,ECC) VALUES(12345678,3);#(Abort)
