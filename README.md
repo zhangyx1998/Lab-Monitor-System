@@ -29,12 +29,31 @@ Also: You may see the demo [HERE](http://www.yuxuanzhang.net).
 
 ## Upgrade Notes
 
+<<<<<<< HEAD
+=======
+#### V5.00
+
++ Current developing version
++ Control Service Online
++ Log Table reformat
++ Alarm system online
++ Code rearrangement
++ Chip Database online
++ Easier Installation
+
+***
+
+>>>>>>> dev
 #### V4.19
 
 + Real environment deploy
 + Bug fix (minus values)
 + Git branches generated:`matster`,`release`,`dev`
 
+<<<<<<< HEAD
+=======
+***
+>>>>>>> dev
 
 #### V4.18
 
