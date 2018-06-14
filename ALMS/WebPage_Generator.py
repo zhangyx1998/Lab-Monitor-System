@@ -130,41 +130,6 @@ class DB_Struct:
             if self.col_TYPE[Value_ID]=='cvt': print '------  ------'+self.RAW[Line_ID][Value_ID]
             if self.col_TYPE[Value_ID]=='fake_ts': print "%d" % ((self.RAW[Line_ID][Value_ID]) if(self.RAW[Line_ID][Value_ID]>1523600000000) else (self.RAW[Line_ID][Value_ID]+350880224-60000))
 
-
-<<<<<<< HEAD
-			if Value_ID==-1: return Err_exit_str+'"Error Invaild_Argument: '+CMD[:CMD.find('$')]+'"'
-			if Line_ID>=self.line_Count: return Err_exit_str+'"Error Time Exceed Maximum: '+"%d"%Line_ID+'"'
-			if Line_ID<0: return Err_exit_str
-			if self.col_TYPE[Value_ID]=='n': return str(self.RAW[Line_ID][Value_ID])
-			if self.col_TYPE[Value_ID]=='d': return "%d" % self.RAW[Line_ID][Value_ID]
-			if self.col_TYPE[Value_ID]=='f': return "%.f" % self.RAW[Line_ID][Value_ID]
-			if self.col_TYPE[Value_ID]=='1f': return "%.1f" % self.RAW[Line_ID][Value_ID]
-			if self.col_TYPE[Value_ID]=='2f': return "%.2f" % self.RAW[Line_ID][Value_ID]
-			if self.col_TYPE[Value_ID]=='3f': return "%.3f" % self.RAW[Line_ID][Value_ID]
-			if self.col_TYPE[Value_ID]=='4f': return "%.4f" % self.RAW[Line_ID][Value_ID]
-			if self.col_TYPE[Value_ID]=='dt': return unicode(self.RAW[Line_ID][Value_ID])
-			if self.col_TYPE[Value_ID]=='str': return '"'+unicode(self.RAW[Line_ID][Value_ID])+'"'
-			if self.col_TYPE[Value_ID]=='cvt': 
-				t_str=self.RAW[Line_ID][Value_ID]
-				t_str=t_str.replace('&','&amp;')
-				t_str=t_str.replace('<','&lt;')
-				t_str=t_str.replace('>>','&ggt;')
-				t_str=t_str.replace('>','&gt;')
-				t_str=t_str.replace('&gt;','&gt;<br>')
-				t_str=t_str.replace('&ggt;','&gt;&gt;')
-				t_str=t_str.replace('"','&quot;')
-				t_str=t_str.replace("'",'&apos;')
-				t_str=t_str.replace('#','<br>')
-				if(t_str[len(t_str)-3:]=='<br>'):t_str=t_str[len(t_str)-3:]
-				while (t_str.count('<br><br>')>0) : t_str=t_str.replace('<br><br>','<br>')
-				t_str=t_str.replace('$FAKE$ ','')
-				return t_str
-			if self.col_TYPE[Value_ID]=='fake_ts': 
-				return "%d" % ((self.RAW[Line_ID][Value_ID]) if(self.RAW[Line_ID][Value_ID]>1523600000000) else (self.RAW[Line_ID][Value_ID]+350880224-60000))
-		if (Debug and Display_Detail):
-			print "------  ------ ERROR In Final Intp: "+self.tableName		
-		return Err_exit_str+'Unkonwn Error'
-=======
       if Value_ID==-1: return Err_exit_str+'<Invaild_Argument>#'+CMD[:CMD.find('$')]
       if Line_ID>=self.line_Count: return Err_exit_str+'"<Row_Exceed_Maximum>#'+"%d"%Line_ID
       if Line_ID<0: return Err_exit_str
@@ -197,109 +162,11 @@ class DB_Struct:
     if (Debug and Display_Detail):
       print "------  ------ ERROR In Final Intp: "+self.tableName    
     return Err_exit_str+'<Unkonwn_Error>#Line 161 in WPG'
->>>>>>> dev
 
 Data=[]
 Table_Count=0
 
 def c2i(buf):
-<<<<<<< HEAD
-	if (buf=='1'): return 1
-	if (buf=='2'): return 2
-	if (buf=='3'): return 3
-	if (buf=='4'): return 4
-	if (buf=='5'): return 5
-	if (buf=='6'): return 6
-	if (buf=='7'): return 7
-	if (buf=='8'): return 8
-	if (buf=='9'): return 9
-	return 0
-
-def to_num(r_str):
-	int_flag=1;
-	if (Debug and Display_Detail): print("------  To_num >> "+r_str)
-	while r_str.count(' ')>0 :
-		r_str=r_str[:r_str.find(' ')]+r_str[r_str.find(' ')+1:]
-	pow_L=10
-	pow_R=0.1
-	num=0
-	num_R=0
-	str_L=r_str
-	str_R=''
-	if(r_str.count('.')>0):
-		int_flag=0
-		str_L=r_str[:r_str.find('.')]
-		str_R=r_str[r_str.find('.')+1:]
-	while(str_L!=''):
-		buf=str_L[0]
-		str_L=str_L[1:]
-		num*=pow_L
-		num+=c2i(buf)
-	flag=1
-	while(str_R!=''):
-		buf=str_R[0]
-		str_R=str_R[1:]
-		num_R*=pow_L
-		flag*=pow_R
-		num_R+=c2i(buf)
-	if int_flag==0: num+=num_R*flag
-	else: num=int(num)
-	return num
-
-def identify_table(table_tag):
-	flag=0
-	while flag<Table_Count:
-		if Data[flag].tableName==table_tag:
-			return flag
-		flag+=1
-	return -1
-
-def intp(CMD,index,row_count):
-	#print "intp in root index = %d"%index
-	if (Debug and Display_Detail): print "------  INTP >> "+CMD+" INTV %06d" % index
-	if CMD=='CURRENT_TIMESTAMP':
-		return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-	if CMD=='General_Status':
-		if (Debug and Display_Detail): return "DEBUG"
-		return "NORMAL"
-	if CMD=='row_count':
-		return str(row_count)
-	if CMD.count('RANDOM$')>0:
-		amp=to_num(CMD[CMD.find('$')+1:])
-		return ("%.4f"%(amp*(random.random()-0.5)))
-	CMD_table=DefaultTable
-	if(CMD.count("<table$")==1):
-		Buf_str=CMD[:CMD.find('<table$')]
-		CMD=CMD[CMD.find('<table$')+7:]
-		CMD_table=CMD[:CMD.find('>')]
-		CMD=Buf_str+CMD[CMD.find('>')+1:]
-	Table_ID=identify_table(CMD_table)
-	if (Debug and Display_Detail): print "------  Identify >> "+CMD_table+" TaleID %d"%Table_ID
-	if (Debug and Display_Detail): print "------  de_Table >>"+CMD + " INTV %06d" % index
-	if (Debug and Display_Detail):
-		print "------  using table: "+CMD_table
-		print "------  Table_ID=%d" % Table_ID
-	#Above are special commands
-	if Table_ID>=0: return Data[Table_ID].intp(CMD,index)
-	else: return Err_exit_str+'Error No Such Table: '+ CMD_table
-
-def generate(InputTableExpect,file_stream,Path):
-	global Table_Count
-	global Data
-	while (InputTableExpect.count('<')>0 and InputTableExpect.count('>')>0):
-		InputExpect=InputTableExpect[InputTableExpect.find('<')+1:InputTableExpect.find('>')]
-		InputTableExpect=InputTableExpect[InputTableExpect.find('>')+1:]
-		if (Debug and Display_Detail): print InputExpect[:InputExpect.find('$')]
-		if (Debug and Display_Detail): print InputExpect[InputExpect.find('$'):]
-		new_table= DB_Struct(InputExpect[:InputExpect.find('$')],InputExpect[InputExpect.find('$'):])
-		Data.append(new_table)
-		Table_Count+=1
-	if (Debug and Display_Detail):
-		print "Import succeed, %d tables included" % Table_Count
-		#sys.exit(0)
-	#Interpretation of InputExpect Completed
-	#All needed data now stored in "Data[]"
-=======
   """
   This function converts character digits to real number
   """
@@ -482,8 +349,6 @@ def generate(InputTableExpect,file_stream,Path):
                 flag=False
                 if(replace_str!=Err_exit_str):
                   err_msg=replace_str.replace(Err_exit_str,'')
->>>>>>> dev
-
               line=line[:line.find('#*')]+replace_str+line[line.find('*#')+2:]
             #print "ROOT index = %d" % index +" intv = %d" % intv + " lines = %d" % eof_flag
             index+=intv
