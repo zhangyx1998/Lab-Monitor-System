@@ -1673,7 +1673,7 @@ var ZChart =
 		x-=int_x;
 		for (var i=0;i<n;i++) x*=10;
 		flo_x=Math.floor(x);
-		if (n<=0) return int_x.toString();
+		if (n<=0) return minus_flag+int_x.toString();
 
 		return minus_flag+int_x.toString()+"."+flo_x.toString();
 	}
