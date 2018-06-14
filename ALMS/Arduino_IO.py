@@ -63,6 +63,7 @@ class data_unit:
         value_str=value_str[1:]
       if(len(value_str)>0):
         Log_ADD("ERROR",'<Invalid_Syntax>#'+value_str+'#',"Arduino_Board")
+    self.val*=minus_sign_flag;
 
 def char_to_int(buff):
   if buff=='0': return 0

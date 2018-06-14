@@ -1667,14 +1667,15 @@ var ZChart =
 
 	function format_F(x,n)
 	{
-		var minus_flag=x>0?false:true;
+		var minus_flag=x>0?"":"-";
 		x=x>0?x:-x;
 		int_x=Math.floor(x);
 		x-=int_x;
 		for (var i=0;i<n;i++) x*=10;
 		flo_x=Math.floor(x);
 		if (n<=0) return int_x.toString();
-		return int_x.toString()+"."+flo_x.toString();
+
+		return minus_flag+int_x.toString()+"."+flo_x.toString();
 	}
 
 	function DBG_Switch()
