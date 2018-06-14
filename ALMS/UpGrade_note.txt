@@ -1,3 +1,14 @@
+<<<<<<< HEAD
 V4.19
 Real environment deploy
 Bug fix (minus values)
+=======
+V5.00
+Current developing version
+Control Service Online
+Log Table reformat
+Alarm system online
+Code rearrangement
+Chip Database online
+Easier Installation
+>>>>>>> dev

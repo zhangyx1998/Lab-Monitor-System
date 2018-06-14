@@ -12,24 +12,16 @@ import MySQLdb
 from array import array
 from datetime import datetime
 from time import sleep
+<<<<<<< HEAD
+=======
+import Control_Service
+from Control_Service import Log_ADD
+from Control_Service import Log_In_Key
+>>>>>>> dev
 
 Debug=False
 Show_All_Possible_Error=False
 # || Show_All_Possible_Error
-log_file_route=''
-log_table=''
-
-class Log_In_Key():
-  Host='NA'
-  ID='NA'
-  PW='NA'
-  DB='NA'
-  def __init__(self, Host, ID, PW, DB):
-      self.Host = Host
-      self.ID = ID
-      self.PW = PW
-      self.DB = DB
-L_Key=Log_In_Key('NA','NA','NA','NA')
 
 class data_unit:
   flag=''
@@ -336,22 +328,23 @@ if __name__ == '__main__':
   parser.add_argument('--Database',    default='ATLAS_Main', help='Name of Database')
   parser.add_argument('--Table',          default='ARDUINO_IO', help='Name of Target Table')
   parser.add_argument('--InputExpect',    default='$T@Env_Temp$H@Env_Humidity$',help='Sign of datatype and corresponding column name')
+
   parser.add_argument('--LogTable',     default='Log',         help='Target Error Table')
   parser.add_argument('--LogFile',      default='AIO_Logs.txt',      help='Target Version Control TXT file')
   parser.add_argument('--LOG_user',           default='Log_Upd', help='Database LOG username')
   parser.add_argument('--LOG_password',       default='pxKr_LOG',   help='Database LOG password')
   parser.add_argument('--Debug',          default=False,        action='store_true', help='Do not print to screen.')
+  
   parser.add_argument('--Show_All_Possible_Error',          default=False,        action='store_true', help='Do not print to screen.')
   
   args = parser.parse_args(sys.argv[1:])
   Debug=args.Debug
 
-  log_file_route=args.LogFile
-  log_table=args.LogTable
-
-  L_Key=Log_In_Key(args.host,args.LOG_user,args.LOG_password,args.Database)
-
   Show_All_Possible_Error=args.Show_All_Possible_Error
+
+  Control_Service.log_table=args.LogTable
+  Control_Service.log_file_route=args.LogFile
+  Control_Service.L_Key=Log_In_Key(args.host,args.LOG_user,args.LOG_password,args.Database)
 
   if args.timestamp==0: args.timestamp=(int)(time.time()*1000)
   fetch_data(args.port, args.baudrate, float(args.timeout), args.timestamp, args.host, args.user, args.password, args.Database, args.Table, args.InputExpect)
