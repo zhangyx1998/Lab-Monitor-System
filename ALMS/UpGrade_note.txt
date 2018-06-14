@@ -1,2 +1,3 @@
-V4.18
-Log table filter is plugged into the webpage
+V4.19
+Real environment deploy
+Bug fix (minus values)
