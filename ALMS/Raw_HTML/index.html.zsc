@@ -394,7 +394,7 @@
 							<div style="height:40px;">
 								<div class=  "tf_button activated"
 									 id=     "SourceSwitch_CONTROL"
-									 onclick="filter_source_change('CONTROL')">
+									 onclick="filter_source_change('CTRL')">
 									CONTROL
 								</div>
 								<div class=  "tf_button activated"
