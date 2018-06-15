@@ -68,55 +68,6 @@ def char_to_int(buff):
   if buff=='9': return 9
   return 0
 
-def Err_Identify(msg_string):
-  if (msg_string=="zhangyx"): return 1
-  return 0
-
-def Error_priority(msg_string):
-  if (msg_string=="zhangyx"): return 1
-  return 0
-
-def Log_ADD(msg_type,msg_string,msg_source="Arduino_IO"):
-  msg_string=msg_string.replace('\n','')
-  msg_string=msg_string.replace('\r','')
-  error_ID=Err_Identify(msg_string)+0
-  error_priority=Error_priority(msg_string)+0
-  if Show_All_Possible_Error:
-    msg_type="$FAKE$ "+msg_type
-  if Debug:
-    print(msg_source+' >> ' + msg_type + ' >> ' + msg_string)
-    msg_type="Debug "+msg_type
-  if(log_file_route!=''): 
-    try:
-      err_out = open(log_file_route, 'a')
-    except:
-      err_out = open(log_file_route, 'w')
-    err_out.write(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+' '+msg_type+' '+msg_string+'\n')
-    err_out.close()
-  if(log_table!=''):
-    try:
-      #if Debug: print("LOG_Service >> Debug >> Connecting to Database using "+L_Key.Host+' '+L_Key.ID+' '+L_Key.PW+' '+L_Key.DB)
-      db=MySQLdb.connect(L_Key.Host, L_Key.ID, L_Key.PW)
-      cursor = db.cursor()
-      SQL_CMD="use "+L_Key.DB
-      cursor.execute(SQL_CMD)
-    except:
-      print "Log System >> Failed To Login using "+L_Key.Host+" "+L_Key.ID+" "+L_Key.PW;
-      return 0
-    try:
-      stamp=0
-      if (error_priority!=0): stamp=1
-      INSERT_CMD="INSERT INTO "+log_table+" (MSG_Source, MSG_Type, Priority, ERR_ID, MSG_Index, Stamp) VALUES('"+msg_source+"','"+msg_type+"',"+ '%d' % error_priority+","+ '%d' % error_ID+",'"+msg_string+"',"+ '%d' % stamp+");"
-      cursor.execute(INSERT_CMD)
-      db.commit()
-      db.close()
-    except:
-      print "Log System >> Failed To add log using "+INSERT_CMD;
-      return 0
-  else:
-    print "Log System >> No Log Table available"
-    #not an online feature 
-
 def fetch_data(Port, baudrate, time_out, timestamp, Host, User, Password, Database, Table, InputExpect):
   #Start Database Connection
   if Debug:
