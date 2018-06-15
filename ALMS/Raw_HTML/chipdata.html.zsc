@@ -61,7 +61,7 @@
 							<p>BD</p>
 						</td>
 						<td colspan="1" class="table_header unactive" id="Table_Title_2" onclick="switch_col_display(2)">
-							<p>R/C</p>
+							<p>C/R</p>
 						</td>
 						<td colspan="1" class="table_header unactive" id="Table_Title_3" onclick="switch_col_display(3)">
 							<p>STATUS</p>
