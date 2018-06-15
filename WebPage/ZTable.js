@@ -30,7 +30,7 @@ var filter_list={
 	id_max: undefined,
 	id_applied: false,
 
-	source_list: ['CONTROL','VERSION','Arduino_Board','Arduino_IO','WPG'],
+	source_list: ['CTRL','VERSION','Arduino_Board','Arduino_IO','WPG'],
 
 	type_casesen: true,
 	type_keyword: '',
