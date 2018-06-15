@@ -17,4 +17,4 @@ TS=$[${TS_SC}*1000+TS_MS/1000000]
 python $C_DIR'/'${AIO_name} ${CONFIG_AIO} $TS '--Path' $1 $2
 python $C_DIR'/'${WPG_name} ${CONFIG_WPG} $TS '--Path' $1 $2
 python $C_DIR'/'${CTRL_name} ${CONFIG_CTRL} '--Path' ${C_DIR} $2
-sh chip_data.sh $2
+sh     $C_DIR'/'chip_data.sh $1 $2
