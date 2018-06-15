@@ -40,8 +40,7 @@ def version_control():
               "CTRL")
   db=MySQLdb.connect(L_Key.Host, L_Key.ID, L_Key.PW)
   cursor = db.cursor()
-  SQL_CMD="use "+L_Key.DB
-  cursor.execute(SQL_CMD)
+  cursor.execute("use "+L_Key.DB)
   cursor.execute("SELECT MSG_Index From Log WHERE MSG_Source='VERSION' and MSG_Type='CURRENT'")
   line = cursor.fetchone()
   db.close()
@@ -56,6 +55,7 @@ def version_control():
       #print SQL_CMD
       db=MySQLdb.connect(L_Key.Host, L_Key.ID, L_Key.PW)
       cursor = db.cursor()
+      cursor.execute("use "+L_Key.DB)
       cursor.execute(SQL_CMD)
       db.commit()
       db.close()
@@ -68,6 +68,7 @@ def version_control():
       #print SQL_CMD
       db=MySQLdb.connect(L_Key.Host, L_Key.ID, L_Key.PW)
       cursor = db.cursor()
+      cursor.execute("use "+L_Key.DB)
       cursor.execute(SQL_CMD)
       db.commit()
       db.close()
