@@ -1,7 +1,7 @@
 var TH_Chart_Data_PKG1= Object.create(ChartDataPKG);
 TH_Chart_Data_PKG1.upd_timestamp=#*TS$000000*#;
-TH_Chart_Data_PKG1.Data_L_Name=["ARDUINO_IO_T","Board-Sensor-1","Board-Sensor-2","Board-Sensor-3","Board-Sensor-4","Board-Sensor-5","Board-Sensor-6","Board-Sensor-7"];
-TH_Chart_Data_PKG1.Data_R_Name=["ARDUINO_IO_H","Board-Sensor-1","Board-Sensor-2","Board-Sensor-3","Board-Sensor-4","Board-Sensor-5","Board-Sensor-6","Board-Sensor-7"];
+TH_Chart_Data_PKG1.Data_L_Name=["ARDUINO_IO_T"];
+TH_Chart_Data_PKG1.Data_R_Name=["ARDUINO_IO_H"];
 TH_Chart_Data_PKG1.Left_Axis_Name="TEMPERATURE";
 TH_Chart_Data_PKG1.Right_Axis_Name="HUMIDITY";
 
@@ -17,47 +17,12 @@ TH_Chart_Data_PKG1.Data_L=
 		[
 			[
 				1,
-				#*!intv$60*##*TS$000000*#,
+				#*!intv$10*##*TS$000000*#,
 		 	]
 		 	,
 		 	[
 		 		2,
-				#*!intv$60*##*ET_D$000000*#,
-		 	]
-		 	,
-		 	[
-		 		1,
-				#*!intv$60*##*ET_D$000000*#+(#*RANDOM$1*#),
-		 	]
-		 	,
-		 	[
-		 		1,
-				#*!intv$60*##*ET_D$000000*#+(#*RANDOM$3*#),
-		 	]
-		 	,
-		 	[
-		 		1,
-				#*!intv$60*##*ET_D$000000*#+(#*RANDOM$1*#),
-		 	]
-		 	,
-		 	[
-		 		1,
-				#*!intv$60*##*ET_D$000000*#+(#*RANDOM$5*#),
-		 	]
-		 	,
-		 	[
-		 		1,
-				#*!intv$60*##*ET_D$000000*#+(#*RANDOM$3*#),
-		 	]
-		 	,
-		 	[
-		 		1,
-				#*!intv$60*##*ET_D$000000*#+(#*RANDOM$4*#),
-		 	]
-		 	,
-		 	[
-		 		1,
-				#*!intv$60*##*ET_D$000000*#+(#*RANDOM$2*#),
+				#*!intv$10*##*ET_D$000000*#,
 		 	]
 		 ]
 	];
@@ -66,47 +31,12 @@ TH_Chart_Data_PKG1.Data_R=
 		[
 			[
 				1,
-				#*!intv$60*##*TS$000000*#,
+				#*!intv$10*##*TS$000000*#,
 		 	]
 		 	,
 		 	[
 		 		2,
-				#*!intv$60*##*EH_D$000000*#,
-		 	]
-		 	,
-		 	[
-		 		1,
-				#*!intv$60*##*EH_D$000000*#+(#*RANDOM$1*#),
-		 	]
-		 	,
-		 	[
-		 		1,
-				#*!intv$60*##*EH_D$000000*#+(#*RANDOM$3*#),
-		 	]
-		 	,
-		 	[
-		 		1,
-				#*!intv$60*##*EH_D$000000*#+(#*RANDOM$1*#),
-		 	]
-		 	,
-		 	[
-		 		1,
-				#*!intv$60*##*EH_D$000000*#+(#*RANDOM$5*#),
-		 	]
-		 	,
-		 	[
-		 		1,
-				#*!intv$60*##*EH_D$000000*#+(#*RANDOM$3*#),
-		 	]
-		 	,
-		 	[
-		 		1,
-				#*!intv$60*##*EH_D$000000*#+(#*RANDOM$4*#),
-		 	]
-		 	,
-		 	[
-		 		1,
-				#*!intv$60*##*EH_D$000000*#+(#*RANDOM$2*#),
+				#*!intv$10*##*EH_D$000000*#,
 		 	]
 		 ]
 	];
