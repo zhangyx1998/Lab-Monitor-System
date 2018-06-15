@@ -32,76 +32,76 @@ class Log_In_Key():
 L_Key=Log_In_Key('NA','NA','NA','NA')
 
 def version_control():
-  try:
-    if Debug:
+  #try:
+  if Debug:
+      Log_ADD(
+              "Debug MSG",
+              'Version_Control >> Connecting to Database using '+L_Key.Host+' '+L_Key.ID+' '+L_Key.PW+' '+L_Key.DB,
+              "CTRL")
+  db=MySQLdb.connect(L_Key.Host, L_Key.ID, L_Key.PW)
+  cursor = db.cursor()
+  SQL_CMD="use "+L_Key.DB
+  cursor.execute(SQL_CMD)
+  cursor.execute("SELECT MSG_Index From Log WHERE MSG_Source='VERSION' and MSG_Type='CURRENT'")
+  line = cursor.fetchone()
+  db.close()
+  prev_version=line[0]
+  if (version!=prev_version):
+    if (prev_version.count('V')>0):
+      Log_ADD(
+              "UPDATE",
+              'From '+prev_version+' To '+version,
+              "CTRL")
+      SQL_CMD="UPDATE "+log_table+" SET MSG_Index='"+version+"' WHERE MSG_Type='CURRENT'"
+      #print SQL_CMD
+      db=MySQLdb.connect(L_Key.Host, L_Key.ID, L_Key.PW)
+      cursor = db.cursor()
+      cursor.execute(SQL_CMD)
+      db.commit()
+      db.close()
+    else:
+      Log_ADD(
+              "UPDATE",
+              'First Launch: '+version,
+              "CTRL")
+      SQL_CMD="UPDATE "+log_table+" SET MSG_Index='"+version+"' WHERE MSG_Type='CURRENT'"
+      #print SQL_CMD
+      db=MySQLdb.connect(L_Key.Host, L_Key.ID, L_Key.PW)
+      cursor = db.cursor()
+      cursor.execute(SQL_CMD)
+      db.commit()
+      db.close()
+    try:
+      if (note_file_route!=''):
+        note_file=open(note_file_route,'r')
+        content=note_file.read()
         Log_ADD(
-                "Debug MSG",
-                'Version_Control >> Connecting to Database using '+L_Key.Host+' '+L_Key.ID+' '+L_Key.PW+' '+L_Key.DB,
+                "Note",
+                version+" Upgrade Note:\n"+content.replace("\n"," "),
                 "CTRL")
-    db=MySQLdb.connect(L_Key.Host, L_Key.ID, L_Key.PW)
-    cursor = db.cursor()
-    SQL_CMD="use "+L_Key.DB
-    cursor.execute(SQL_CMD)
-    cursor.execute("SELECT MSG_Index From Log WHERE MSG_Source='VERSION' and MSG_Type='CURRENT'")
-    line = cursor.fetchone()
-    db.close()
-    prev_version=line[0]
-    if (version!=prev_version):
-      if (prev_version.count('V')>0):
-        Log_ADD(
-                "UPDATE",
-                'From '+prev_version+' To '+version,
-                "CTRL")
-        SQL_CMD="UPDATE "+log_table+" SET MSG_Index='"+version+"' WHERE MSG_Type='CURRENT'"
-        #print SQL_CMD
-        db=MySQLdb.connect(L_Key.Host, L_Key.ID, L_Key.PW)
-        cursor = db.cursor()
-        cursor.execute(SQL_CMD)
-        db.commit()
-        db.close()
-      else:
-        Log_ADD(
-                "UPDATE",
-                'First Launch: '+version,
-                "CTRL")
-        SQL_CMD="UPDATE "+log_table+" SET MSG_Index='"+version+"' WHERE MSG_Type='CURRENT'"
-        #print SQL_CMD
-        db=MySQLdb.connect(L_Key.Host, L_Key.ID, L_Key.PW)
-        cursor = db.cursor()
-        cursor.execute(SQL_CMD)
-        db.commit()
-        db.close()
-      try:
-        if (note_file_route!=''):
-          note_file=open(note_file_route,'r')
-          content=note_file.read()
-          Log_ADD(
-                  "Note",
-                  version+" Upgrade Note:\n"+content.replace("\n"," "),
-                  "CTRL")
-      except:
-        Log_ADD(
-                "ERROR",
-                "<Log_File_Not_Exist>",
-                "CTRL")
+    except:
+      Log_ADD(
+              "ERROR",
+              "<Log_File_Not_Exist>",
+              "CTRL")
 
-    if Debug:
-      if (version!=prev_version):
-        Log_ADD(
-                  "Debug MSG",
-                  'Version_Control >> Update Detected : ' + version + ' (Prev)' + prev_version,
-                  "CTRL")
-      else:
-        Log_ADD(
-                  "Debug MSG",
-                  'Version_Control >> Current_Version : ' + version,
-                  "CTRL")
-  except:
-    Log_ADD(
-      "MSG",
-      "<Version_Inspection_Failed> Could Not Verify Version",
-      "CTRL")#id=0001
-    sys.exit(0)
+  if Debug:
+    if (version!=prev_version):
+      Log_ADD(
+                "Debug MSG",
+                'Version_Control >> Update Detected : ' + version + ' (Prev)' + prev_version,
+                "CTRL")
+    else:
+      Log_ADD(
+                "Debug MSG",
+                'Version_Control >> Current_Version : ' + version,
+                "CTRL")
+  #except:
+  #  Log_ADD(
+  #    "MSG",
+  #    "<Version_Inspection_Failed> Could Not Verify Version",
+  #    "CTRL")#id=0001
+  #  sys.exit(0)
 
 def Err_Identify(msg_string):
   msg_string=msg_string[msg_string.find('<'):msg_string.find('>')+1]
