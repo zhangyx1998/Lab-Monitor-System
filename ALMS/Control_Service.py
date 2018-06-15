@@ -44,6 +44,7 @@ def version_control():
     cursor.execute(SQL_CMD)
     cursor.execute("SELECT MSG_Index From Log WHERE MSG_Source='VERSION' and MSG_Type='CURRENT'")
     line = cursor.fetchone()
+    db.close()
     prev_version=line[0]
     if (version!=prev_version):
       if (prev_version.count('V')>0):
@@ -53,7 +54,11 @@ def version_control():
                 "VERSION")
         SQL_CMD="UPDATE "+log_table+" SET MSG_Index='"+version+"' WHERE MSG_Type='CURRENT'"
         #print SQL_CMD
+        db=MySQLdb.connect(L_Key.Host, L_Key.ID, L_Key.PW)
+        cursor = db.cursor()
         cursor.execute(SQL_CMD)
+        db.commit()
+        db.close()
       else:
         Log_ADD(
                 "UPDATE",
@@ -61,7 +66,11 @@ def version_control():
                 "VERSION")
         SQL_CMD="UPDATE "+log_table+" SET MSG_Index='"+version+"' WHERE MSG_Type='CURRENT'"
         #print SQL_CMD
+        db=MySQLdb.connect(L_Key.Host, L_Key.ID, L_Key.PW)
+        cursor = db.cursor()
         cursor.execute(SQL_CMD)
+        db.commit()
+        db.close()
       try:
         if (note_file_route!=''):
           note_file=open(note_file_route,'r')
@@ -94,8 +103,6 @@ def version_control():
       "ERROR",
       "<Version_Inspection_Failed>Could Not Verify Version",
       "VER_Ctrl")#id=0001
-    db.commit()
-    db.close()
     sys.exit(0)
 
 def Err_Identify(msg_string):
