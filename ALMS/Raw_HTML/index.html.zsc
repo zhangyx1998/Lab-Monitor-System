@@ -393,7 +393,7 @@
 						<td colspan="6" style="text-align:center; background-color:#1B9295;">
 							<div style="height:40px;">
 								<div class=  "tf_button activated"
-									 id=     "SourceSwitch_CONTROL"
+									 id=     "SourceSwitch_CTRL"
 									 onclick="filter_source_change('CTRL')">
 									CONTROL
 								</div>
