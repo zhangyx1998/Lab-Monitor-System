@@ -35,9 +35,9 @@ def version_control():
   try:
     if Debug:
         Log_ADD(
-                "MSG",
+                "Debug MSG",
                 'Version_Control >> Connecting to Database using '+L_Key.Host+' '+L_Key.ID+' '+L_Key.PW+' '+L_Key.DB,
-                "Arduino_IO")
+                "CTRL")
     db=MySQLdb.connect(L_Key.Host, L_Key.ID, L_Key.PW)
     cursor = db.cursor()
     SQL_CMD="use "+L_Key.DB
@@ -51,7 +51,7 @@ def version_control():
         Log_ADD(
                 "UPDATE",
                 'From '+prev_version+' To '+version,
-                "VERSION")
+                "CTRL")
         SQL_CMD="UPDATE "+log_table+" SET MSG_Index='"+version+"' WHERE MSG_Type='CURRENT'"
         #print SQL_CMD
         db=MySQLdb.connect(L_Key.Host, L_Key.ID, L_Key.PW)
@@ -63,7 +63,7 @@ def version_control():
         Log_ADD(
                 "UPDATE",
                 'First Launch: '+version,
-                "VERSION")
+                "CTRL")
         SQL_CMD="UPDATE "+log_table+" SET MSG_Index='"+version+"' WHERE MSG_Type='CURRENT'"
         #print SQL_CMD
         db=MySQLdb.connect(L_Key.Host, L_Key.ID, L_Key.PW)
@@ -78,31 +78,29 @@ def version_control():
           Log_ADD(
                   "Note",
                   version+" Upgrade Note:\n"+content.replace("\n"," "),
-                  "VERSION")
+                  "CTRL")
       except:
         Log_ADD(
                 "ERROR",
                 "<Log_File_Not_Exist>",
-                "VERSION")
-    db.commit()
-    db.close()
+                "CTRL")
 
     if Debug:
       if (version!=prev_version):
         Log_ADD(
-                  "MSG",
+                  "Debug MSG",
                   'Version_Control >> Update Detected : ' + version + ' (Prev)' + prev_version,
-                  "Arduino_IO")
+                  "CTRL")
       else:
         Log_ADD(
-                  "MSG",
+                  "Debug MSG",
                   'Version_Control >> Current_Version : ' + version,
-                  "Arduino_IO")
+                  "CTRL")
   except:
     Log_ADD(
       "MSG",
-      "<Version_Inspection_Failed>Could Not Verify Version",
-      "VER_Ctrl")#id=0001
+      "<Version_Inspection_Failed> Could Not Verify Version",
+      "CTRL")#id=0001
     sys.exit(0)
 
 def Err_Identify(msg_string):
@@ -170,12 +168,12 @@ def Log_ADD(msg_type,msg_string,msg_source):
     stamp=0 #To be modified
     INSERT_CMD=( "INSERT INTO "+log_table
                + " (Source_ID, MSG_Source, Type_ID, MSG_Type, ERR_ID, MSG_Index) VALUES("
-               + '%d' % source_ID + ","
-               + "'" + msg_source + "',"
-               + '%d' % type_ID + ","
-               + "'" + msg_type +"',"
-               + '%d' % error_ID + ","
-               + "'"+msg_string+"');")
+               + '%d' % source_ID  + ", "
+               + "'"  + msg_source + "',"
+               + '%d' % type_ID    + ", "
+               + "'"  + msg_type   + "',"
+               + '%d' % error_ID   + ", "
+               + "'"  + msg_string + "' " + ");")
     #print(INSERT_CMD)
     cursor.execute(INSERT_CMD)
     db.commit()
@@ -209,4 +207,3 @@ if __name__ == '__main__':
 
   version_control()
   sys.exit(0)
-  

@@ -179,8 +179,8 @@ class DB_Struct:
       if self.col_TYPE[Value_ID]=='fake_ts': 
         return "%d" % ((self.RAW[Line_ID][Value_ID]) if(self.RAW[Line_ID][Value_ID]>1523600000000) else (self.RAW[Line_ID][Value_ID]+350880224-60000))
     if (Debug and Display_Detail):
-      print "------  ------ ERROR In Final Intp: "+self.tableName    
-    return Err_exit_str+'<Unkonwn_Error>#Line 161 in WPG'
+      print "In WPG.py ------  ------ ERROR In Final Intp: "+self.tableName    
+    return Err_exit_str+'<Unkonwn_Error>#Line 161 in WPG.py'
 
 Data=[]
 Table_Count=0
