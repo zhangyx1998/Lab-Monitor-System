@@ -29,9 +29,15 @@ Also: You may see the demo [HERE](http://www.yuxuanzhang.net).
 
 ## Upgrade Notes
 
+#### V5.02
+
++ Bug_Fix: Log Table Cursor Conflict
+
+***
+
 #### V5.01
 
-+Chip_Data webpage is now available at yuxuanzhang.net/chipdata.html
++ Chip_Data webpage is now available at yuxuanzhang.net/chipdata.html
 
 ***
 

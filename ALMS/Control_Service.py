@@ -100,7 +100,7 @@ def version_control():
                   "Arduino_IO")
   except:
     Log_ADD(
-      "ERROR",
+      "MSG",
       "<Version_Inspection_Failed>Could Not Verify Version",
       "VER_Ctrl")#id=0001
     sys.exit(0)

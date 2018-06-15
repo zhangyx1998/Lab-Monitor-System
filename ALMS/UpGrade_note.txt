@@ -1,2 +1,2 @@
-V5.01
-Chip_Data webpage is now available at yuxuanzhang.net/chipdata.html
+V5.02
+Bug_Fix: Log Table Cursor Conflict
