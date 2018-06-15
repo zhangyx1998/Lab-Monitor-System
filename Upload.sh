@@ -2,16 +2,16 @@ C_DIR="$( cd "$( dirname "$0" )" && pwd )"
 
 target_server="zhangyx1998@inkfish.dhcp.lbl.gov"
 
-target_folder="/home/zhangyx1998/Desktop/APPLIED/"
+target_folder="/home/zhangyx1998/Desktop/Chip_Database/"
 
 password="zhangyx1998-key"
 
 cd $C_DIR
 
 auto_ssh () {
-    echo "spawn ssh zhangyx1998@inkfish.dhcp.lbl.gov \"rm -r /home/zhangyx1998/Desktop/APPLIED/*\";"
+    echo "spawn ssh zhangyx1998@inkfish.dhcp.lbl.gov \"rm -r /home/zhangyx1998/Desktop/Chip_Database/*\";"
     expect -c "set timeout -1;
-                spawn ssh zhangyx1998@inkfish.dhcp.lbl.gov \"rm -r /home/zhangyx1998/Desktop/APPLIED/*\";
+                spawn ssh zhangyx1998@inkfish.dhcp.lbl.gov \"rm -r /home/zhangyx1998/Desktop/Chip_Database/*\";
                 expect {
                     *assword:* {send -- $1\r;
                                  expect {
@@ -43,5 +43,5 @@ auto_scp () {
                 "
     return $?
 }
-auto_scp $password * zhangyx1998@inkfish.dhcp.lbl.gov:/home/zhangyx1998/Desktop/APPLIED/
+auto_scp $password * zhangyx1998@inkfish.dhcp.lbl.gov:/home/zhangyx1998/Desktop/Chip_Database/
 #echo $?

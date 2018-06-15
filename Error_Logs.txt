@@ -1,4 +1,0 @@
-2018-06-14 12:28:40 Debug MSG Version_Control >> Connecting to Database using localhost Log_Upd pxKr_LOG ATLAS_Main
-2018-06-14 12:28:40 Debug MSG Version_Control >> Current_Version : V4.19
-2018-06-14 12:31:10 Debug MSG Version_Control >> Connecting to Database using localhost Log_Upd pxKr_LOG ATLAS_Main
-2018-06-14 12:31:10 Debug MSG Version_Control >> Current_Version : V4.19

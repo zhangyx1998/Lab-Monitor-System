@@ -1,8 +1,2 @@
-V5.00
-Current developing version
-Control Service Online
-Log Table reformat
-Alarm system online
-Code rearrangement
-Chip Database online
-Easier Installation
+V5.01
+Chip_Data webpage is now available at yuxuanzhang.net/chipdata.html

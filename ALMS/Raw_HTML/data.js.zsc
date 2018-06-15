@@ -48,16 +48,3 @@ function data_upd()
 }
 setTimeout(data_upd,50);
 
-var TH_Chart_Data_PKG2= Object.create(ChartDataPKG);
-TH_Chart_Data_PKG2.upd_timestamp=#*TS$000000*#;
-TH_Chart_Data_PKG2.Data_L_Name=[""];
-TH_Chart_Data_PKG2.Data_R_Name=[""];
-TH_Chart_Data_PKG2.Left_Axis_Name="N/A";
-TH_Chart_Data_PKG2.Right_Axis_Name="N/A";
-
-TH_Chart_Data_PKG2.Left_Axis_Color			="#B0B0B0";
-TH_Chart_Data_PKG2.Left_Axis_BKG_Color		="#B0B0B0";
-TH_Chart_Data_PKG2.Left_Axis_OnGrag_Color	="#B0B0B0";
-TH_Chart_Data_PKG2.Right_Axis_Color			="#B0B0B0";
-TH_Chart_Data_PKG2.Right_Axis_BKG_Color		="#B0B0B0";
-TH_Chart_Data_PKG2.Right_Axis_OnGrag_Color	="#B0B0B0";

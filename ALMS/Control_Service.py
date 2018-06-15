@@ -94,6 +94,8 @@ def version_control():
       "ERROR",
       "<Version_Inspection_Failed>Could Not Verify Version",
       "VER_Ctrl")#id=0001
+    db.commit()
+    db.close()
     sys.exit(0)
 
 def Err_Identify(msg_string):

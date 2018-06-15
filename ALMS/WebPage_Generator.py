@@ -133,6 +133,7 @@ class DB_Struct:
       if Value_ID==-1: return Err_exit_str+'<Invaild_Argument>#'+CMD[:CMD.find('$')]
       if Line_ID>=self.line_Count: return Err_exit_str+'"<Row_Exceed_Maximum>#'+"%d"%Line_ID
       if Line_ID<0: return Err_exit_str
+      if(self.RAW[Line_ID][Value_ID]==None): return "NA"
       if self.col_TYPE[Value_ID]=='n': return str(self.RAW[Line_ID][Value_ID])
       if self.col_TYPE[Value_ID]=='d': return "%d" % self.RAW[Line_ID][Value_ID]
       if self.col_TYPE[Value_ID]=='f': return "%.f" % self.RAW[Line_ID][Value_ID]
@@ -153,6 +154,24 @@ class DB_Struct:
         t_str=t_str.replace('"','&quot;')
         t_str=t_str.replace("'",'&apos;')
         t_str=t_str.replace('#','<br>')
+        if(t_str[len(t_str)-3:]=='<br>'):t_str=t_str[len(t_str)-3:]
+        while (t_str.count('<br><br>')>0) : t_str=t_str.replace('<br><br>','<br>')
+        t_str=t_str.replace('$FAKE$ ','')
+        return t_str
+      if self.col_TYPE[Value_ID]=='mvs': #multi value stack $val1@dt1$val2@dt2$
+        t_str=self.RAW[Line_ID][Value_ID]
+        t_str=t_str.replace('&','&amp;')
+        t_str=t_str.replace('<','&lt;')
+        t_str=t_str.replace('>>','&ggt;')
+        t_str=t_str.replace('>','&gt;')
+        t_str=t_str.replace('&gt;','&gt;<br>')
+        t_str=t_str.replace('&ggt;','&gt;&gt;')
+        t_str=t_str.replace('"','&quot;')
+        t_str=t_str.replace("'",'&apos;')
+        t_str=t_str.replace('#','<br>')
+        t_str=t_str.replace('$','</p><p>')
+        t_str=t_str.replace('@','<br>')
+        t_str=t_str[4:-4]
         if(t_str[len(t_str)-3:]=='<br>'):t_str=t_str[len(t_str)-3:]
         while (t_str.count('<br><br>')>0) : t_str=t_str.replace('<br><br>','<br>')
         t_str=t_str.replace('$FAKE$ ','')
@@ -388,7 +407,7 @@ if __name__ == '__main__':
   args = parser.parse_args(sys.argv[1:])
   DefaultTable=args.DefaultTable
   Debug=args.Debug
-  Debug=False;
+  #Debug=False;
   Login_key=DB_Key(args.host,args.user,args.password,args.Database)
 
   Control_Service.log_table=args.LogTable

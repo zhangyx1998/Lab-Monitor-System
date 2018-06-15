@@ -29,8 +29,12 @@ Also: You may see the demo [HERE](http://www.yuxuanzhang.net).
 
 ## Upgrade Notes
 
-<<<<<<< HEAD
-=======
+#### V5.01
+
++Chip_Data webpage is now available at yuxuanzhang.net/chipdata.html
+
+***
+
 #### V5.00
 
 + Current developing version
@@ -43,17 +47,13 @@ Also: You may see the demo [HERE](http://www.yuxuanzhang.net).
 
 ***
 
->>>>>>> dev
 #### V4.19
 
 + Real environment deploy
 + Bug fix (minus values)
 + Git branches generated:`matster`,`release`,`dev`
 
-<<<<<<< HEAD
-=======
 ***
->>>>>>> dev
 
 #### V4.18
 
