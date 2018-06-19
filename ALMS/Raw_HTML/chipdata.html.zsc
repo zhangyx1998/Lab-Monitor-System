@@ -9,7 +9,254 @@
 	</head>
 
 	<body>
-		<div style="margin: 0 auto; width:100%; position: fixed; top: 0px; left: 0px; text-align: center;height: 60px; background-color: rgb(10,100,170); color: #FFFFFF; z-index:1;">
+		<div id="Screen_Cover" style="position: fixed; width: 100%; height: 100%; top: 60px; left: 0px; z-index: 10; background-color: rgba(255,255,255,0.9); display: none;">
+			<table id="Wafer_Graph_Frame" border="0" align="center" style="border-style: none; table-layout:fixed; z-index: 11; height: 100%; width: 100%;" rules=none cellspacing=0>
+				<col style="width: 15%;"/>
+				<col />
+				<col style="width: 15%;"/>
+				<tbody>
+					<tr style="height: 5%">
+						<td
+						   colspan="3"
+						   style="text-align: center; vertical-align: bottom;"
+						>
+							<center><div style="width: 85%; max-width: 1280px;">
+								<h2 id="Wafer_Graph_Title"> Wafer 7</h2>
+							</div></center>
+						</td>
+					</tr>
+					<tr style="height: 70%">
+						<td></td>
+						<td>
+							<table id="Wafer_Graph"
+								   align="center"
+								   style="table-layout:fixed;
+								   		  z-index: 11;
+								   		  height: 100%;
+								   		  width: 100%;
+								   		  text-align: center;
+								   		  vertical-align: middle;
+								   		  "
+								   cellspacing="10">
+								<col style="width: 10%;"/>
+								<col style="width: 10%;"/>
+								<col style="width: 10%;"/>
+								<col style="width: 10%;"/>
+								<col style="width: 10%;"/>
+								<col style="width: 10%;"/>
+								<col style="width: 10%;"/>
+								<col style="width: 10%;"/>
+								<col style="width: 10%;"/>
+								<col style="width: 10%;"/>
+								<tbody>
+									<tr style="height: 8%">
+										<td id="WF-01-01"></td>
+										<td id="WF-01-02"></td>
+										<td id="WF-01-03"></td>
+										<td id="WF-01-04"></td>
+										<td id="WF-01-05" class="WF_Cell green">01-05<br>Working</td>
+										<td id="WF-01-06" class="WF_Cell yellow">01-06<br>In Transit</td>
+										<td id="WF-01-07"></td>
+										<td id="WF-01-08"></td>
+										<td id="WF-01-09"></td>
+										<td id="WF-01-10"></td>
+									</tr>
+									<tr style="height: 8%">
+										<td id="WF-02-01"></td>
+										<td id="WF-02-02"></td>
+										<td id="WF-02-03"></td>
+										<td id="WF-02-04" class="WF_Cell red">02-04<br>Not Good</td>
+										<td id="WF-02-05" class="WF_Cell none">02-05<br>Unknown</td>
+										<td id="WF-02-06" class="WF_Cell green">02-06<br>Working</td>
+										<td id="WF-02-07" class="WF_Cell none">02-07<br>Unknown</td>
+										<td id="WF-02-08" class="WF_Cell none">02-08<br>Unknown</td>
+										<td id="WF-02-09"></td>
+										<td id="WF-02-10"></td>
+									</tr>
+									<tr style="height: 8%">
+										<td id="WF-03-01"></td>
+										<td id="WF-03-02" class="WF_Cell none">03-02<br>Unknown</td>
+										<td id="WF-03-03" class="WF_Cell green">03-03<br>Working</td>
+										<td id="WF-03-04" class="WF_Cell green">03-04<br>Working</td>
+										<td id="WF-03-05" class="WF_Cell red">03-05<br>Bad_Chip</td>
+										<td id="WF-03-06" class="WF_Cell yellow">03-06<br>Untested</td>
+										<td id="WF-03-07" class="WF_Cell none">03-07<br>Unknown</td>
+										<td id="WF-03-08" class="WF_Cell none">03-08<br>Unknown</td>
+										<td id="WF-03-09" class="WF_Cell red">03-09<br>Bad_Chip</td>
+										<td id="WF-03-10"></td>
+									</tr>
+									<tr style="height: 8%">
+										<td id="WF-04-01"></td>
+										<td id="WF-04-02" class="WF_Cell none">04-02<br>Unknown</td>
+										<td id="WF-04-03" class="WF_Cell green">04-03<br>Working</td>
+										<td id="WF-04-04" class="WF_Cell green">04-04<br>Working</td>
+										<td id="WF-04-05" class="WF_Cell none">04-05<br>Unknown</td>
+										<td id="WF-04-06" class="WF_Cell yellow">04-06<br>Untested</td>
+										<td id="WF-04-07" class="WF_Cell none">04-07<br>Unknown</td>
+										<td id="WF-04-08" class="WF_Cell none">04-08<br>Unknown</td>
+										<td id="WF-04-09" class="WF_Cell none">04-09<br>Unknown</td>
+										<td id="WF-04-10"></td>
+									</tr>
+									<tr style="height: 8%">
+										<td id="WF-05-01"></td>
+										<td id="WF-05-02" class="WF_Cell green">05-02<br>W_Module</td>
+										<td id="WF-05-03" class="WF_Cell none">05-03<br>Unknown</td>
+										<td id="WF-05-04" class="WF_Cell green">05-04<br>Working</td>
+										<td id="WF-05-05" class="WF_Cell none">05-05<br>Unknown</td>
+										<td id="WF-05-06" class="WF_Cell green">05-06<br>Working</td>
+										<td id="WF-05-07" class="WF_Cell none">05-07<br>Unknown</td>
+										<td id="WF-05-08" class="WF_Cell none">05-08<br>Unknown</td>
+										<td id="WF-05-09" class="WF_Cell none">05-09<br>Unknown</td>
+										<td id="WF-05-10" class="WF_Cell none">05-10<br>Unknown</td>
+									</tr>
+									<tr style="height: 8%">
+										<td id="WF-06-01" class="WF_Cell green">06-01<br>Working</td>
+										<td id="WF-06-02" class="WF_Cell none">06-02<br>Unknown</td>
+										<td id="WF-06-03" class="WF_Cell red">06-03<br>No_Scans</td>
+										<td id="WF-06-04" class="WF_Cell green">06-04<br>Working</td>
+										<td id="WF-06-05" class="WF_Cell none">06-05<br>Unknown</td>
+										<td id="WF-06-06" class="WF_Cell green">06-06<br>Working</td>
+										<td id="WF-06-07" class="WF_Cell none">06-07<br>Unknown</td>
+										<td id="WF-06-08" class="WF_Cell none">06-08<br>Unknown</td>
+										<td id="WF-06-09" class="WF_Cell none">06-09<br>Unknown</td>
+										<td id="WF-06-10" class="WF_Cell none">06-10<br>Unknown</td>
+									</tr>
+									<tr style="height: 8%">
+										<td id="WF-07-01" class="WF_Cell green">07-01<br>Working</td>
+										<td id="WF-07-02" class="WF_Cell none">07-02<br>Unknown</td>
+										<td id="WF-07-03" class="WF_Cell green">07-03<br>Working</td>
+										<td id="WF-07-04" class="WF_Cell green">07-04<br>Working</td>
+										<td id="WF-07-05" class="WF_Cell none">07-05<br>Unknown</td>
+										<td id="WF-07-06" class="WF_Cell green">07-06<br>Working</td>
+										<td id="WF-07-07" class="WF_Cell none">07-07<br>Unknown</td>
+										<td id="WF-07-08" class="WF_Cell none">07-08<br>Unknown</td>
+										<td id="WF-07-09" class="WF_Cell none">07-09<br>Unknown</td>
+										<td id="WF-07-10" class="WF_Cell none">07-10<br>Unknown</td>
+									</tr>
+									<tr style="height: 8%">
+										<td id="WF-08-01" class="WF_Cell blue">08-01<br>OneBadCore</td>
+										<td id="WF-08-02" class="WF_Cell green">08-02<br>W_Moudle</td>
+										<td id="WF-08-03" class="WF_Cell none">08-03<br>Unknown</td>
+										<td id="WF-08-04" class="WF_Cell none">08-04<br>Unknown</td>
+										<td id="WF-08-05" class="WF_Cell none">08-05<br>Unknown</td>
+										<td id="WF-08-06" class="WF_Cell none">08-06<br>Unknown</td>
+										<td id="WF-08-07" class="WF_Cell none">08-07<br>Unknown</td>
+										<td id="WF-08-08" class="WF_Cell none">08-08<br>Unknown</td>
+										<td id="WF-08-09" class="WF_Cell none">08-09<br>Unknown</td>
+										<td id="WF-08-10" class="WF_Cell none">08-10<br>Unknown</td>
+									</tr>
+									<tr style="height: 8%">
+										<td id="WF-09-01"></td>
+										<td id="WF-09-02" class="WF_Cell none">09-02<br>Unknown</td>
+										<td id="WF-09-03" class="WF_Cell none">09-03<br>Unknown</td>
+										<td id="WF-09-04" class="WF_Cell red">09-04<br>Scan_Failed</td>
+										<td id="WF-09-05" class="WF_Cell yellow">09-05<br>In_Transit</td>
+										<td id="WF-09-06" class="WF_Cell yellow">09-06<br>In_Transit</td>
+										<td id="WF-09-07" class="WF_Cell none">09-07<br>Unknown</td>
+										<td id="WF-09-08" class="WF_Cell none">09-08<br>Unknown</td>
+										<td id="WF-09-09" class="WF_Cell none">09-09<br>Unknown</td>
+										<td id="WF-09-10" class="WF_Cell none">09-10<br>Unknown</td>
+									</tr>
+									<tr style="height: 8%">
+										<td id="WF-10-01"></td>
+										<td id="WF-10-02" class="WF_Cell green">10-02<br>Koji</td>
+										<td id="WF-10-03" class="WF_Cell green">10-03<br>Working</td>
+										<td id="WF-10-04" class="WF_Cell none">10-04<br>Unknown</td>
+										<td id="WF-10-05" class="WF_Cell green">10-05<br>Working</td>
+										<td id="WF-10-06" class="WF_Cell green">10-06<br>Working</td>
+										<td id="WF-10-07" class="WF_Cell green">10-07<br>Working</td>
+										<td id="WF-10-08" class="WF_Cell none">10-08<br>Unknown</td>
+										<td id="WF-10-09" class="WF_Cell none">10-09<br>Unknown</td>
+										<td id="WF-10-10"></td>
+									</tr>
+									<tr style="height: 8%">
+										<td id="WF-11-01"></td>
+										<td id="WF-11-02"></td>
+										<td id="WF-11-03" class="WF_Cell green">11-03<br>Working</td>
+										<td id="WF-11-04" class="WF_Cell green">11-04<br>Working</td>
+										<td id="WF-11-05" class="WF_Cell none">11-05<br>Unknown</td>
+										<td id="WF-11-06" class="WF_Cell none">11-06<br>Unknown</td>
+										<td id="WF-11-07" class="WF_Cell none">11-07<br>Unknown</td>
+										<td id="WF-11-08" class="WF_Cell none">11-08<br>Unknown</td>
+										<td id="WF-11-09"></td>
+										<td id="WF-11-10"></td>
+									</tr>
+									<tr style="height: 8%">
+										<td id="WF-12-01"></td>
+										<td id="WF-12-02"></td>
+										<td id="WF-12-03"></td>
+										<td id="WF-12-04" class="WF_Cell green">12-04<br>Working</td>
+										<td id="WF-12-05" class="WF_Cell green">12-05<br>Working</td>
+										<td id="WF-12-06" class="WF_Cell none">12-06<br>Unknown</td>
+										<td id="WF-12-07" class="WF_Cell none">12-07<br>Unknown</td>
+										<td id="WF-12-08"></td>
+										<td id="WF-12-09"></td>
+										<td id="WF-12-10"></td>
+									</tr>
+									<tr>
+										<td colspan="10"></td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td colspan="3">
+							<center>
+							<div style="height:40px; width: 85%; max-width: 1280px; padding-bottom: 10px;">
+								<div class=  "wf_button unactivated"
+									 id=     "WF_Button_01"
+									 onclick="reverse_buttom('01')">
+									WF01
+								</div>
+								<div class=  "wf_button unactivated"
+									 id=     "WF_Button_02"
+									 onclick="reverse_buttom('02')">
+									WF02
+								</div>
+								<div class=  "wf_button unactivated"
+									 id=     "WF_Button_03"
+									 onclick="reverse_buttom('03')">
+									WF03
+								</div>
+								<div class=  "wf_button unactivated"
+									 id=     "WF_Button_04"
+									 onclick="reverse_buttom('04')">
+									WF04
+								</div>
+								<div class=  "wf_button unactivated"
+									 id=     "WF_Button_05"
+									 onclick="reverse_buttom('05')">
+									WF05
+								</div>
+								<div class=  "wf_button unactivated"
+									 id=     "WF_Button_06"
+									 onclick="reverse_buttom('06')">
+									WF06
+								</div>
+								<div class=  "wf_button activated"
+									 id=     "WF_Button_07"
+									 onclick="reverse_buttom('07')">
+									WF07
+								</div>
+								<div class=  "wf_button unactivated"
+									 id=     "SC_BACK"
+									 onclick="flip_display('Screen_Cover')">
+									BACK
+								</div>
+								<div class="tf_button unactivated" onclick="filter_reset()" style="float: right;">RESET</div>
+							</div>
+							<div style="height: 40px; width: 85%; max-width: 1280px;">
+							</div>
+							</center>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div style="margin: 0 auto; width:100%; position: fixed; top: 0px; left: 0px; text-align: center;height: 60px; background-color: rgb(10,100,170); color: #FFFFFF; z-index:100;">
 			<table width="100%" border="0" align="center" rules=none cellspacing=0 cellpadding=0>
 				<tr>
 					<td colspan="1" align="right" valign="center" width="8%">
@@ -29,7 +276,7 @@
 			</table>
 		</div>
 
-		<div id="Float_TAG" onclick="(function(){/*getElementById('Flaot_TG').style.display='none';*/location.reload(true);})()" style="z-index: 4">  
+		<div id="Float_TAG" onclick="(function(){/*getElementById('Flaot_TG').style.display='none';*/location.reload(true);})()" style="z-index: 100">  
     		<p>Last Update #*CURRENT_TIMESTAMP*#</p>
 		</div>
 
@@ -40,11 +287,11 @@
 			<table border="0" align="center" style="border-style: none; table-layout:fixed; width: 85%; max-width: 1280px;" rules=none cellspacing=0>
 				<col style="width: 4% " />
 				<col style="width: 0.4% " />
-				<col style="width: 4% " />
+				<col style="width: 6% " />
 				<col style="width: 6% " />
 				<col />
-				<col style="width: 25% " />
-				<col style="width: 30% " />
+				<col style="width: 15% " />
+				<col style="width: 20% " />
 				<tbody>
 
 					<tr style="height:60px">
@@ -58,10 +305,10 @@
 							<p>WF</p>
 						</td>
 						<td colspan="1" class="table_header unactive" id="Table_Title_1" onclick="switch_col_display(1)">
-							<p>BD</p>
+							<p>C-R</p>
 						</td>
 						<td colspan="1" class="table_header unactive" id="Table_Title_2" onclick="switch_col_display(2)">
-							<p>C/R</p>
+							<p>BD</p>
 						</td>
 						<td colspan="1" class="table_header unactive" id="Table_Title_3" onclick="switch_col_display(3)">
 							<p>STATUS</p>
@@ -78,17 +325,18 @@
 						<td colspan="6" style="background-color:rgba(255,255,255,0);;text-align:center;">
 					</tr>
 
-					<tr class="log_table" id="data-row-#*row_count*#">#*!LineMerge$1*##*!intv$1*#
-							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;">
+					<tr class="log_table" id="data-row-#*row_count*#" onclick="filp_info_row_display(#*row_count*#)">#*!LineMerge$1*##*!intv$1*#
+							<td style="line-height:28px;background-color:#AAAAAA;text-align: center; color: #fff;" 
+								onclick="flip_display('Screen_Cover');filp_info_row_display(#*row_count*#)">
 								<p><!--DATA-->#*Wafer$00000000*#</p>
 							</td>
 							<td style="line-height:28px;background-color:#4BC2C5;text-align: center; color: #fff;">
 							</td>
 							<td style="line-height:28px;background-color:#DDDDDD;text-align: center; color: #000;">
-								<p><!--DATA-->#*Board$00000000*#</p>
+								<p><!--DATA-->#*row$00000000*#-#*col$00000000*#</p>
 							</td>
 							<td style="line-height:28px;background-color:#EEEEEE;text-align: center; color: #000;">
-								<p><!--DATA-->#*row$00000000*#-#*col$00000000*#</p>
+								<p><!--DATA-->#*Board$00000000*#</p>
 							</td>
 							<td style="line-height:28px;background-color:#DDEEE8;text-align: center; color: #000;">
 								<p><!--DATA-->#*Status$00000000*#</p>
@@ -103,6 +351,16 @@
 					<tr style="height: 8px" id="data-row-blk-#*row_count*#">
 						<td colspan="7" style="background-color:rgba(255,255,255,0);text-align:center;">
 					</tr>
+					<tr class="log_table" id="info-row-#*row_count*#" style="display: none;">
+						<td colspan="7" style="line-height:24px;background-color:#EEEEEE;text-align: center; color: #000;">
+							<p>Chip&nbsp;Comment:&nbsp;#*Chip_Comment$0*#</p>
+							<p>Board&nbsp;Comment:&nbsp;#*Board_Comment$0*#</p>
+							<p>Wafer&nbsp;Thickness:#*Thickness$0*#&nbsp;Diced_at:#*Diced_LOC$0*#&nbsp;#*Diced_DT$0*#</p>
+						</td>
+					</tr>
+					<tr style="height: 8px; display: none;" id="info-row-blk-#*row_count*#">
+						<td colspan="7" style="background-color:rgba(255,255,255,0);text-align:center;">
+					</tr>
 					#*!LineMerge$0*#
 					<tr style="height: 3px">
 						<td colspan="7" style="background-color:#4BC2C5;text-align:center;">
@@ -113,5 +371,35 @@
 				</tbody>
 			</table>
 		</center>
+		<script type="text/javascript">
+			function flip_display(ID)
+			{
+				if (document.getElementById(ID).style.display=="none")
+				{
+					document.getElementById(ID).style.display='';
+				}
+				else
+				{
+					document.getElementById(ID).style.display="none";
+				}
+			}
+			function filp_info_row_display(ID)
+			{
+				flip_display("info-row-"+ID.toString());
+				flip_display("info-row-blk-"+ID.toString());
+			}
+
+			function reverse_buttom(name)
+			{
+				if (document.getElementById("WF_Button_"+name).className=="wf_button activated")
+				{
+					document.getElementById("WF_Button_"+name).className="wf_button unactivated"
+				}
+				else
+				{
+					document.getElementById("WF_Button_"+name).className="wf_button activated"
+				}
+			}
+		</script>
 	</body>
 </html>

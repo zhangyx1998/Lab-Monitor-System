@@ -10,7 +10,7 @@ from Control_Service import Log_ADD
 from Control_Service import Log_In_Key
 
 Debug=False
-Display_Detail=False
+Display_Detail=True
 DefaultTable=''
 Err_exit_str="![In_Web_Page_Generator_Err_exit_request]!"
 #Input Expect: $T@Env_Temp$H@Env_Humidity$
@@ -85,7 +85,7 @@ class DB_Struct:
       print self.col_TYPE
 
   def identify(self,tag):
-    if (Debug and Display_Detail): print self.tableName+" identify >> "+tag
+    if (Debug and Display_Detail): print "------  " + self.tableName + " identify >> " + tag
     flag=0
     while flag<self.col_Count:
       if self.col_TAG_NAME[flag]==tag:
@@ -112,7 +112,7 @@ class DB_Struct:
       else:
         Line_ID=self.line_Count+to_num(CMD[CMD.find('$')+1:])-index-1
 
-      if (Debug and Display_Detail):
+      if (Debug and Display_Detail and Line_ID<self.line_Count and Line_ID>=0):
         print "------  ------  In Final Intp: "+self.tableName+" %d "%Value_ID+"%d"%Line_ID
         if Value_ID==-1: print '------  "Error Invaild_Argument: '+CMD[:CMD.find('$')]+'"'
         else: 
@@ -413,6 +413,11 @@ if __name__ == '__main__':
   Control_Service.log_table=args.LogTable
   Control_Service.log_file_route=args.LogFile
   Control_Service.L_Key=Log_In_Key(args.host,args.LOG_user,args.LOG_password,args.Database)
+
+  if(Debug):
+    print(args.InputTableExpect)
+    print(args.file_stream)
+    print(args.Path)
 
   generate(args.InputTableExpect,args.file_stream,args.Path)
   sys.exit(0)

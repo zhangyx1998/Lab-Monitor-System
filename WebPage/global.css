@@ -582,6 +582,49 @@ td.img_tag{
 	font-family: "ZFont-regular";
 }
 
+td.WF_Cell{
+	border: solid;
+	border-width: 1px;
+	border-color: #999999;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.WF_Cell.none{
+	background-color: rgba(255,255,255,0.8);
+	color: #000;
+	font-family: "ZFont-thin";
+}
+
+.WF_Cell.green{
+	background-color: rgba(80,180,90,0.8);
+	color: #FFF;
+	font-family: "ZFont-regular";
+}
+
+.WF_Cell.red{
+	background-color: rgba(200,100,100,0.8);
+	color: #fff;
+	font-family: "ZFont-bold";
+}
+
+.WF_Cell.blue{
+	background-color: rgba(0,140,255,0.8);
+	color: #FFF;
+	font-family: "ZFont-regular";
+}
+
+.WF_Cell.yellow{
+	background-color: rgba(255,255,50,0.8);
+	color: #000;
+	font-family: "ZFont-regular";
+}
+
+.WF_Cell.gray{
+	background-color: rgba(200,200,200,0.8);
+	color: #000;
+	font-family: "ZFont-regular";
+}
 
 div.div_line{
 	width: 85%;
@@ -734,20 +777,20 @@ div.tf_button{
 	background-color: rgba(255,255,255,1);
 }
 
-.activated:link{
+.tf_button.activated:link{
 
 }
 
-.activated:visited{
+.tf_button.activated:visited{
 
 }
 
-.activated:hover{
+.tf_button.activated:hover{
 	border-color: rgba(255,255,255,1);
 	background-color: rgba(255,255,255,0.8);
 }
 
-.activated:active{
+.tf_button.activated:active{
 	border-color: rgba(255,255,255,1);
 	background-color: rgba(255,255,255,0.5);
 }
@@ -758,22 +801,91 @@ div.tf_button{
 	background-color: rgba(255,255,255,0);
 }
 
-.unactivated:link{
+.tf_button.unactivated:link{
 
 }
 
-.unactivated:visited{
+.tf_button.unactivated:visited{
 
 }
 
-.unactivated:hover{
+.tf_button.unactivated:hover{
 	border-color: rgba(255,255,255,1);
 	background-color: rgba(255,255,255,0.2);
 }
 
-.unactivated:active{
+.tf_button.unactivated:active{
 	border-color: rgba(255,255,255,1);
 	background-color: rgba(255,255,255,0.4);
+}
+
+div.wf_button{
+	font-family: "ZFont-regular";
+	font-size: 14px;
+	height: 20px;
+	line-height:18px;
+	border-width: 1.5px; 
+	border-style: solid;
+	border-radius: 8px;
+	overflow: ellipsis;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 7.5px;
+	margin-right: 7.5px;
+	display: inline-block;
+	float: left;
+}
+
+.wf_button.activated{
+	color: #FFF;
+	border-color: rgba(150,150,150,1);
+	background-color: rgba(150,150,150,1);
+}
+
+.wf_button.activated:link{
+
+}
+
+.wf_button.activated:visited{
+
+}
+
+.wf_button.activated:hover{
+	border-color: rgba(150,150,150,1);
+	background-color: rgba(150,150,150,0.8);
+}
+
+.wf_button.activated:active{
+	border-color: rgba(150,150,150,1);
+	background-color: rgba(150,150,150,0.5);
+}
+
+.wf_button.unactivated{
+	color: rgba(150,150,150,1);
+	border-color: rgba(150,150,150,1);
+	background-color: rgba(255,255,255,0);
+}
+
+.wf_button.unactivated:link{
+
+}
+
+.wf_button.unactivated:visited{
+
+}
+
+.wf_button.unactivated:hover{
+	border-color: rgba(120,120,120,1);
+	background-color: rgba(120,120,120,0.2);
+}
+
+.wf_button.unactivated:active{
+	border-color: rgba(120,120,120,1);
+	background-color: rgba(120,120,120,0.4);
 }
 
 #Float_TAG

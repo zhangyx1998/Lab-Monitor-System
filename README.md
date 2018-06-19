@@ -29,6 +29,13 @@ Also: You may see the demo [HERE](http://www.yuxuanzhang.net).
 
 ## Upgrade Notes
 
+#### V5.03
+
++ Chip_database update: Wafer Graph is now online
++ Webpage appearence adjustment and imporvement
+
+***
+
 #### V5.02
 
 + Bug_Fix: Log Table Cursor Conflict

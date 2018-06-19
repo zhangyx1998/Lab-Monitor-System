@@ -1,2 +1,3 @@
-V5.02
-Bug_Fix: Log Table Cursor Conflict
+V5.03
+Chip_database update: Wafer Graph is now online <br>
+Webpage appearence adjustment and imporvement
