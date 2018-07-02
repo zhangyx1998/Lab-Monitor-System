@@ -291,6 +291,7 @@ if __name__ == '__main__':
 
   Show_All_Possible_Error=args.Show_All_Possible_Error
 
+  Control_Service.Debug=Debug
   Control_Service.log_table=args.LogTable
   Control_Service.log_file_route=args.LogFile
   Control_Service.L_Key=Log_In_Key(args.host,args.LOG_user,args.LOG_password,args.Database)

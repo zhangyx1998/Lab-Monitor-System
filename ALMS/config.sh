@@ -26,7 +26,7 @@ CONFIG_CTRL="${CommonCONFIG} ${CTRL_Note} --Version ${Version}"
 #-----------------------------------------------------
 #------------------ARDUINO_IO Arguments---------------
 #-----------------------------------------------------
-AIO_port='--port /dev/ttyACM1'
+AIO_port='--port /dev/ttyACM0'
 AIO_baudrate='--baudrate 9600'
 AIO_timeout='--timeout 1'
 AIO_timestamp='--timestamp'

@@ -41,7 +41,7 @@ def version_control():
   db=MySQLdb.connect(L_Key.Host, L_Key.ID, L_Key.PW)
   cursor = db.cursor()
   cursor.execute("use "+L_Key.DB)
-  cursor.execute("SELECT MSG_Index From Log WHERE MSG_Source='VERSION' and MSG_Type='CURRENT'")
+  cursor.execute("SELECT MSG_Index From Log WHERE ID=1")
   line = cursor.fetchone()
   db.close()
   prev_version=line[0]
@@ -51,7 +51,7 @@ def version_control():
               "UPDATE",
               'From '+prev_version+' To '+version,
               "CTRL")
-      SQL_CMD="UPDATE "+log_table+" SET MSG_Index='"+version+"' WHERE MSG_Type='CURRENT'"
+      SQL_CMD="UPDATE "+log_table+" SET MSG_Index='"+version+"' WHERE ID=1"
       #print SQL_CMD
       db=MySQLdb.connect(L_Key.Host, L_Key.ID, L_Key.PW)
       cursor = db.cursor()
@@ -64,7 +64,7 @@ def version_control():
               "UPDATE",
               'First Launch: '+version,
               "CTRL")
-      SQL_CMD="UPDATE "+log_table+" SET MSG_Index='"+version+"' WHERE MSG_Type='CURRENT'"
+      SQL_CMD="UPDATE "+log_table+" SET MSG_Index='"+version+"' WHERE ID=1"
       #print SQL_CMD
       db=MySQLdb.connect(L_Key.Host, L_Key.ID, L_Key.PW)
       cursor = db.cursor()
@@ -168,11 +168,11 @@ def Log_ADD(msg_type,msg_string,msg_source):
       return 0
     stamp=0 #To be modified
     INSERT_CMD=( "INSERT INTO "+log_table
-               + " (Source_ID, MSG_Source, Type_ID, MSG_Type, ERR_ID, MSG_Index) VALUES("
+               + " (Source_ID, Type_ID, ERR_ID, MSG_Index) VALUES("
                + '%d' % source_ID  + ", "
-               + "'"  + msg_source + "',"
+               #+ "'"  + msg_source + "',"
                + '%d' % type_ID    + ", "
-               + "'"  + msg_type   + "',"
+               #+ "'"  + msg_type   + "',"
                + '%d' % error_ID   + ", "
                + "'"  + msg_string + "' " + ");")
     #print(INSERT_CMD)
